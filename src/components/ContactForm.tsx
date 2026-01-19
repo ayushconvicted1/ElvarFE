@@ -15,10 +15,10 @@ export default function ContactSection() {
   const [open, setOpen] = useState<number | null>(null);
 
   return (
-    <section className="py-24 px-6 bg-paper">
+    <section className="py-24 px-6">
       {/* FAQ */}
       <div className="max-w-2xl mx-auto mb-32">
-        <h2 className="font-[family-name:var(--font-primary)] text-3xl text-center text-[var(--color-ink)]/80 mb-12 font-bold">
+        <h2 className="font-parisienne text-4xl text-center lg:text-5xl italic text-heading mb-6">
           Frequently Asked Questions
         </h2>
         <div className="border-t border-[var(--color-ink)]/10">
@@ -50,7 +50,7 @@ export default function ContactSection() {
 
       {/* Form */}
       <div className="max-w-xl mx-auto text-center">
-        <h2 className="font-parisienne text-4xl lg:text-5xl italic text-[var(--color-gold)] mb-2">
+        <h2 className="font-parisienne text-4xl lg:text-5xl italic text-heading mb-2">
           Request Invitation
         </h2>
         <p className="text-xs mb-12 opacity-60">
@@ -116,7 +116,7 @@ export default function ContactSection() {
           </div>
 
           <div className="text-center pt-8">
-            <button className="bg-[#D8C6B0] hover:bg-[var(--color-gold)] text-white px-12 py-4 text-xs tracking-[0.2em] uppercase w-full md:w-auto shadow-sm transition-colors">
+            <button className="bg-[#D8C6B0] hover:bg-heading text-white px-12 py-4 text-xs tracking-[0.2em] uppercase w-full md:w-auto shadow-sm transition-colors">
               Submit
             </button>
           </div>

@@ -25,7 +25,7 @@ export default function Features() {
   return (
     <section className="py-24 lg:px-20 px-6 max-w-7xl mx-auto">
       <div className="text-center mb-16">
-        <h2 className="font-parisienne text-4xl lg:text-5xl italic text-gold mb-4">
+        <h2 className="font-parisienne text-4xl lg:text-5xl italic text-heading mb-4">
           Curated For The Few
         </h2>
         <p className="text-sm max-w-2xl mx-auto leading-relaxed opacity-80">
@@ -38,7 +38,7 @@ export default function Features() {
         {features.map((f, i) => (
           <div
             key={i}
-            className="flex flex-col items-center text-center p-6 border border-ink/20 bg-white/40"
+            className="flex flex-col items-center text-center p-6 border border-ink/20"
           >
             <div className="relative w-full aspect-square mb-6 border border-[#96663A] overflow-hidden group">
               {/* Base image - hidden on mobile, visible on desktop, fades out on hover */}

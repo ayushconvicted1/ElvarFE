@@ -6,6 +6,7 @@
   --color-paper: #f9f7f2;
   --color-ink: #3e362e;
   --color-gold: #c6b095;
+  --color-heading: #0D236D;
 
   /* Fonts - matches the variables from layout.tsx */
   --font-serif: var(--font-cormorant), ui-serif, Georgia, serif;
@@ -33,12 +34,21 @@
 }
 
 /* 3. Global Reset */
+html {
+  background-image: url('/BG.webp');
+  background-size: 100% auto;
+  background-position: top center;
+  background-attachment: scroll;
+  min-height: 100%;
+}
+
 body {
-  background-color: var(--background);
+  background: transparent;
   color: var(--foreground);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100%;
 }
 
 /* 4. Custom Utility Classes */
