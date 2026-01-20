@@ -38,7 +38,7 @@ export default function MembersAccess({ url }: { url?: string }) {
       ref={containerRef} 
       className="w-full py-24 flex justify-center items-center px-4"
     >
-      <div className="relative w-full h-auto max-w-4xl">
+      <div className="relative w-full h-auto">
         <video
           ref={videoRef}
           src={url || "/door.mp4"}

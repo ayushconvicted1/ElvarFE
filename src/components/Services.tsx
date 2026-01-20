@@ -44,6 +44,11 @@ const services = [
     label: "Assets & Acquisition",
     video: "/Assets.mp4",
   },
+  {
+    id: "wellness",
+    label: "Wellness & Personal Care",
+    video: "/Wellness.mp4",
+  }
 ];
 
 const ITEM_HEIGHT = 80;
@@ -98,7 +103,7 @@ export default function Services() {
   return (
     <section 
       ref={containerRef}
-      className="w-full py-32 flex flex-col lg:flex-row gap-12 items-center overflow-hidden"
+      className="w-full py-24 flex flex-col lg:flex-row gap-12 items-center overflow-hidden"
     >
       
       {/* --- Left Menu --- */}
@@ -145,8 +150,8 @@ export default function Services() {
                     className={clsx(
                       "group text-left text-lg lg:text-xl tracking-wide transition-all duration-300 flex items-center gap-3 relative w-full",
                       isActive
-                        ? "text-gold font-normal translate-x-4 scale-105 origin-left"
-                        : "text-ink/40 hover:text-ink/70 font-light"
+                        ? "text-gold translate-x-4 scale-105 origin-left"
+                        : "text-ink/40 hover:text-ink/70"
                     )}
                   >
                     <span
@@ -158,7 +163,7 @@ export default function Services() {
                       <span className="block w-0 h-0 border-t-[5px] border-t-transparent border-l-8 border-l-gold border-b-[5px] border-b-transparent" />
                     </span>
 
-                    <span className={isActive ? "font-serif italic" : ""}>
+                    <span>
                       {service.label}
                     </span>
                   </button>

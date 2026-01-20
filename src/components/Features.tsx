@@ -25,8 +25,8 @@ export default function Features() {
   return (
     <section className="py-24 lg:px-20 px-6 max-w-7xl mx-auto">
       <div className="text-center mb-16">
-        <h2 className="font-parisienne text-4xl lg:text-5xl italic text-heading mb-4">
-          Curated For The Few
+        <h2 className="font-italiano text-4xl lg:text-5xl italic text-heading mb-4">
+          Curated for the few
         </h2>
         <p className="text-sm max-w-2xl mx-auto leading-relaxed opacity-80">
           Elvār Private operates on the principles of absolute discretion,

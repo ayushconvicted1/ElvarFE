@@ -5,8 +5,8 @@ export default function Security() {
   return (
     <section className="py-24">
       <div className="text-center mb-16">
-        <h2 className="font-parisienne text-4xl lg:text-5xl italic text-heading mb-6">
-          Your Life Remains Yours
+        <h2 className="font-italiano text-4xl lg:text-5xl italic text-heading mb-6">
+          Your life remains yours
         </h2>
         <p className="text-sm opacity-70 max-w-xl mx-auto">
           In a world where data is everywhere, Elvār Private is committed to
@@ -32,7 +32,7 @@ export default function Security() {
       </div>
 
       <div className="text-center">
-        <button className="bg-[#D8C6B0] hover:bg-heading text-white px-10 py-4 text-xs tracking-[0.2em] uppercase transition-colors duration-300 shadow-sm">
+        <button className="bg-bright hover:bg-heading text-white px-10 py-4 text-xs tracking-[0.2em] uppercase transition-colors duration-300 shadow-sm">
           Request Invitation
         </button>
       </div>

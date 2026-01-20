@@ -18,8 +18,8 @@ export default function ContactSection() {
     <section className="py-24 px-6">
       {/* FAQ */}
       <div className="max-w-2xl mx-auto mb-32">
-        <h2 className="font-parisienne text-4xl text-center lg:text-5xl italic text-heading mb-6">
-          Frequently Asked Questions
+        <h2 className="font-italiano text-4xl text-center lg:text-5xl italic text-heading mb-6">
+          Frequently asked questions
         </h2>
         <div className="border-t border-[var(--color-ink)]/10">
           {faqs.map((q, i) => (
@@ -50,10 +50,10 @@ export default function ContactSection() {
 
       {/* Form */}
       <div className="max-w-xl mx-auto text-center">
-        <h2 className="font-parisienne text-4xl lg:text-5xl italic text-heading mb-2">
-          Request Invitation
-        </h2>
-        <p className="text-xs mb-12 opacity-60">
+        <h2 className="font-italiano text-4xl lg:text-5xl italic text-heading mb-2">
+          Request invitation
+        </h2> 
+        <p className="mb-12 opacity-60 font-cormorant">
           Complete the form below and our membership team will be in touch
           within 48 hours.
         </p>
@@ -116,7 +116,7 @@ export default function ContactSection() {
           </div>
 
           <div className="text-center pt-8">
-            <button className="bg-[#D8C6B0] hover:bg-heading text-white px-12 py-4 text-xs tracking-[0.2em] uppercase w-full md:w-auto shadow-sm transition-colors">
+            <button className="bg-bright hover:bg-heading text-white px-12 py-4 text-xs tracking-[0.2em] uppercase w-full md:w-auto shadow-sm transition-colors">
               Submit
             </button>
           </div>

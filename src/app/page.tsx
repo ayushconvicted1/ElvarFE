@@ -11,14 +11,9 @@ import OurLocations from "@/components/OurLocations";
 
 export default function Home() {
   return (
-    /* 1. CHANGED: Removed 'overflow-x-hidden' from here. 
-       Background image is now set globally on body. */
     <main className="min-h-screen relative">
       <Navbar />
       <Hero />
-      
-      {/* 2. WRAPPER: We wrap the rest of the content in a relative div with z-index.
-          This ensures it slides OVER the sticky hero at the end. */}
       <div className="relative z-10">
         <MembersAccess />
         <Services />
@@ -30,10 +25,7 @@ export default function Home() {
         
         <ContactSection />
 
-        {/* Footer - NOW acts as the overflow container */}
         <footer className="w-full pt-16 pb-8 px-6 md:px-12 relative overflow-hidden">
-            {/* ... (Keep your footer code exactly as is) ... */}
-            {/* The Sketch Image */}
             <div className="absolute right-[-50px] bottom-0 w-[600px] max-w-[80vw] h-[500px] z-0 pointer-events-none opacity-90 mix-blend-multiply">
                 <Image
                   src="/FooterImg.png"
@@ -43,9 +35,7 @@ export default function Home() {
                   priority
                 />
             </div>
-            {/* ... Rest of footer content ... */}
              <div className="max-w-7xl mx-auto relative z-10">
-              {/* ... Same content as before ... */}
               <div className="mb-10"><svg 
           className="w-28 h-auto" 
           viewBox="0 0 163 41" 
