@@ -7,12 +7,12 @@ const services = [
   {
     id: "cars",
     label: "Luxury & Sports Cars",
-    video: "/Yacht.mp4",
+    video: "/Cars.mp4",
   },
   {
     id: "dining",
     label: "Fine Dining & Omakase Experiences",
-    video: "/Yacht.mp4",
+    video: "/Omakase.mp4",
   },
   {
     id: "aviation",
