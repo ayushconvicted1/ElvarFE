@@ -41,7 +41,7 @@ export default function MembersAccess({ url }: { url?: string }) {
       <div className="relative w-full h-auto">
         <video
           ref={videoRef}
-          src={url || "/door.mp4"}
+          src={url || "/Door.mp4"}
           className="w-full h-auto mix-blend-multiply contrast-100"
           muted
           playsInline
