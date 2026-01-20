@@ -48,7 +48,7 @@ html {
 body {
   background: transparent;
   color: var(--foreground);
-  font-family: var(--font-sans);
+  font-family: var(--font-cormorant), serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   min-height: 100%;

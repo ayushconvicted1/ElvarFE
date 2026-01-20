@@ -12,7 +12,7 @@ export default function OurLocations() {
     <section className="py-24 px-6 max-w-7xl mx-auto">
       {/* FAQ */}
       <div className="max-w-2xl mx-auto mb-32">
-        <h2 className="font-italiano text-4xl text-center lg:text-5xl italic text-heading mb-6">
+        <h2 className="font-italiano text-4xl text-center lg:text-5xl text-heading mb-6">
           Our locations
         </h2>
         <p className="text-sm opacity-70 max-w-xl mx-auto text-center">

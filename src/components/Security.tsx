@@ -5,7 +5,7 @@ export default function Security() {
   return (
     <section className="py-24">
       <div className="text-center mb-16">
-        <h2 className="font-italiano text-4xl lg:text-5xl italic text-heading mb-6">
+        <h2 className="font-italiano text-4xl lg:text-5xl text-heading mb-6">
           Your life remains yours
         </h2>
         <p className="text-sm opacity-70 max-w-xl mx-auto">
@@ -24,7 +24,7 @@ export default function Security() {
             <div className="w-[96px] h-[96px] rounded-full flex items-center justify-center relative">
               <Image src={item.icon} alt={item.label} width={96} height={96} />
             </div>
-            <h3 className="font-(family-name:--font-primary) text-xl text-center whitespace-pre-line text-ink/90">
+            <h3 className="font-cormorant text-xl text-center whitespace-pre-line text-ink/90">
               {item.label}
             </h3>
           </div>

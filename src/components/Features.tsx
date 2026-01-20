@@ -25,7 +25,7 @@ export default function Features() {
   return (
     <section className="py-24 lg:px-20 px-6 max-w-7xl mx-auto">
       <div className="text-center mb-16">
-        <h2 className="font-italiano text-4xl lg:text-5xl italic text-heading mb-4">
+        <h2 className="font-italiano text-4xl lg:text-5xl text-heading mb-4">
           Curated for the few
         </h2>
         <p className="text-sm max-w-2xl mx-auto leading-relaxed opacity-80">
@@ -56,7 +56,7 @@ export default function Features() {
                 className="object-cover mix-blend-multiply md:opacity-0 md:group-hover:opacity-100 transition-all duration-700"
               />
             </div>
-            <h3 className="font-(family-name:--font-primary) text-2xl mb-3 text-ink">
+            <h3 className="font-cormorant text-2xl mb-3 text-ink">
               {f.title}
             </h3>
             <p className="font-light text-sm leading-6 opacity-70">{f.desc}</p>

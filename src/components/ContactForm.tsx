@@ -18,7 +18,7 @@ export default function ContactSection() {
     <section className="py-24 px-6">
       {/* FAQ */}
       <div className="max-w-2xl mx-auto mb-32">
-        <h2 className="font-italiano text-4xl text-center lg:text-5xl italic text-heading mb-6">
+        <h2 className="font-italiano text-4xl text-center lg:text-5xl text-heading mb-6">
           Frequently asked questions
         </h2>
         <div className="border-t border-[var(--color-ink)]/10">
@@ -28,7 +28,7 @@ export default function ContactSection() {
                 onClick={() => setOpen(open === i ? null : i)}
                 className="w-full py-6 flex justify-between items-center text-left hover:bg-black/5 px-2 transition-colors"
               >
-                <span className="font-[family-name:var(--font-primary)] text-lg text-[var(--color-ink)]/80">
+                <span className="font-cormorant text-lg text-[var(--color-ink)]/80">
                   {q}
                 </span>
                 {open === i ? (
@@ -50,7 +50,7 @@ export default function ContactSection() {
 
       {/* Form */}
       <div className="max-w-xl mx-auto text-center">
-        <h2 className="font-italiano text-4xl lg:text-5xl italic text-heading mb-2">
+        <h2 className="font-italiano text-4xl lg:text-5xl text-heading mb-2">
           Request invitation
         </h2> 
         <p className="mb-12 opacity-60 font-cormorant">
@@ -61,7 +61,7 @@ export default function ContactSection() {
         <form className="space-y-8 text-left">
           <div className="grid grid-cols-2 gap-8">
             <div className="group">
-              <label className="block text-xs font-[family-name:var(--font-primary)] text-[var(--color-ink)]/60 mb-2">
+              <label className="block text-xs font-cormorant text-[var(--color-ink)]/60 mb-2">
                 First Name
               </label>
               <input
@@ -71,7 +71,7 @@ export default function ContactSection() {
               />
             </div>
             <div className="group">
-              <label className="block text-xs font-[family-name:var(--font-primary)] text-[var(--color-ink)]/60 mb-2">
+              <label className="block text-xs font-cormorant text-[var(--color-ink)]/60 mb-2">
                 Last Name
               </label>
               <input
@@ -83,7 +83,7 @@ export default function ContactSection() {
           </div>
 
           <div>
-            <label className="block text-xs font-[family-name:var(--font-primary)] text-[var(--color-ink)]/60 mb-2">
+            <label className="block text-xs font-cormorant text-[var(--color-ink)]/60 mb-2">
               Email ID
             </label>
             <input
@@ -94,7 +94,7 @@ export default function ContactSection() {
           </div>
 
           <div>
-            <label className="block text-xs font-[family-name:var(--font-primary)] text-[var(--color-ink)]/60 mb-2">
+            <label className="block text-xs font-cormorant text-[var(--color-ink)]/60 mb-2">
               Phone No.
             </label>
             <input
@@ -105,7 +105,7 @@ export default function ContactSection() {
           </div>
 
           <div>
-            <label className="block text-xs font-[family-name:var(--font-primary)] text-[var(--color-ink)]/60 mb-2">
+            <label className="block text-xs font-cormorant text-[var(--color-ink)]/60 mb-2">
               Tell us about yourself
             </label>
             <textarea
