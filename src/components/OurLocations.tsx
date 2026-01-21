@@ -15,7 +15,7 @@ export default function OurLocations() {
         <h2 className="font-italiano text-4xl text-center lg:text-5xl text-heading mb-6">
           Our locations
         </h2>
-        <p className="text-sm opacity-70 max-w-xl mx-auto text-center">
+        <p className="opacity-70 max-w-xl mx-auto text-center">
         In a world where data is everywhere, Elvar Private is committed to protecting yours.
         We understand that your lifestyle demands the highest levels of confidentiality.
         </p>

@@ -28,7 +28,7 @@ export default function Features() {
         <h2 className="font-italiano text-4xl lg:text-5xl text-heading mb-4">
           Curated for the few
         </h2>
-        <p className="text-sm max-w-2xl mx-auto leading-relaxed opacity-80">
+        <p className="max-w-2xl mx-auto leading-relaxed opacity-80">
           Elvār Private operates on the principles of absolute discretion,
           unparalleled access, and unwavering reliability.
         </p>
@@ -59,7 +59,7 @@ export default function Features() {
             <h3 className="font-cormorant text-2xl mb-3 text-ink">
               {f.title}
             </h3>
-            <p className="font-light text-sm leading-6 opacity-70">{f.desc}</p>
+            <p className="font-light leading-6 opacity-70">{f.desc}</p>
           </div>
         ))}
       </div>

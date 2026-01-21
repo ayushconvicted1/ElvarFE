@@ -38,7 +38,7 @@ export default function ContactSection() {
                 )}
               </button>
               {open === i && (
-                <div className="pb-6 px-2 text-sm font-light leading-relaxed text-[var(--color-ink)]/60">
+                <div className="pb-6 px-2 font-light leading-relaxed text-[var(--color-ink)]/60">
                   Membership applications are reviewed by our committee weekly.
                   Please fill out the form below to begin the vetting process.
                 </div>
