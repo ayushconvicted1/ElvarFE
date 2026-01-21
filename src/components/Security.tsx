@@ -8,7 +8,7 @@ export default function Security() {
         <h2 className="font-italiano text-4xl lg:text-5xl text-heading mb-6">
           Your life remains yours
         </h2>
-        <p className="opacity-70 max-w-xl mx-auto">
+        <p className="opacity-70 text-lg max-w-xl mx-auto">
           In a world where data is everywhere, Elvār Private is committed to
           protecting yours.
         </p>

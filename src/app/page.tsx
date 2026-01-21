@@ -22,10 +22,10 @@ export default function Home() {
         
         <OurLocations />
         
-        
         <ContactSection />
 
         <footer className="w-full pt-16 pb-8 px-6 md:px-12 relative overflow-hidden">
+            {/* Footer Background Sketch */}
             <div className="absolute right-[-50px] bottom-0 w-[600px] max-w-[80vw] h-[500px] z-0 pointer-events-none opacity-90 mix-blend-multiply">
                 <Image
                   src="/FooterImg.png"
@@ -35,8 +35,11 @@ export default function Home() {
                   priority
                 />
             </div>
-             <div className="max-w-7xl mx-auto relative z-10">
-              <div className="mb-10"><svg 
+
+            <div className="max-w-7xl mx-auto relative z-10">
+              {/* Logo */}
+              <div className="mb-10">
+                <svg 
           className="w-28 h-auto" 
           viewBox="0 0 163 41" 
           fill="none" 
@@ -54,23 +57,52 @@ export default function Home() {
               <rect width="163" height="40.8099" fill="white"/>
             </clipPath>
           </defs>
-        </svg></div>
+        </svg>
+              </div>
+
+              {/* Links Columns */}
               <div className="w-full md:max-w-[65%] lg:max-w-[60%] grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-4 mb-16">
-                 {/* ... Columns ... */}
-                 <div className="flex flex-col space-y-3">{['About', 'Philosophy', 'Membership', 'Private Introductions'].map((item) => (<a key={item} href="#" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-sm md:text-base tracking-wide">{item}</a>))}</div>
-                 <div className="flex flex-col space-y-3">{['Aviation', 'Yachts', 'Residences', 'Destinations', 'Experiences', 'Assets', 'Wellness & Longevity'].map((item) => (<a key={item} href="#" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-sm md:text-base tracking-wide">{item}</a>))}</div>
-                 <div className="flex flex-col space-y-3">{['Privacy Framework', 'Security Standards', 'Confidentiality', 'Responsible Systems'].map((item) => (<a key={item} href="#" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-sm md:text-base tracking-wide">{item}</a>))}</div>
-                 <div className="flex flex-col justify-between h-full space-y-8 md:space-y-0">
-                    <div className="flex flex-col space-y-3">{['Terms', 'Privacy Policy', 'NDA', 'Compliance'].map((item) => (<a key={item} href="#" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-sm md:text-base tracking-wide">{item}</a>))}</div>
+                 <div className="flex flex-col space-y-4">
+                   {['About', 'Philosophy', 'Membership', 'Private Introductions'].map((item) => (
+                     <a key={item} href="#" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-lg md:text-xl tracking-wide">
+                       {item}
+                     </a>
+                   ))}
+                 </div>
+                 <div className="flex flex-col space-y-4">
+                   {['Aviation', 'Yachts', 'Residences', 'Destinations', 'Experiences', 'Assets', 'Wellness & Longevity'].map((item) => (
+                     <a key={item} href="#" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-lg md:text-xl tracking-wide">
+                       {item}
+                     </a>
+                   ))}
+                 </div>
+                 <div className="flex flex-col space-y-4">
+                   {['Privacy Framework', 'Security Standards', 'Confidentiality', 'Responsible Systems'].map((item) => (
+                     <a key={item} href="#" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-lg md:text-xl tracking-wide">
+                       {item}
+                     </a>
+                   ))}
+                 </div>
+                 {/* CHANGED: Added 'col-span-2 md:col-span-1' so on mobile this block takes full width.
+                     This forces the content (including icons) to the left edge of the screen, clearing the image on the right. */}
+                 <div className="flex flex-col justify-between h-full space-y-8 md:space-y-0 col-span-2 md:col-span-1">
+                    <div className="flex flex-col space-y-4">
+                      {['Terms', 'Privacy Policy', 'NDA', 'Compliance'].map((item) => (
+                        <a key={item} href="#" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-lg md:text-xl tracking-wide">
+                          {item}
+                        </a>
+                      ))}
+                    </div>
                     <div className="flex gap-4 text-[var(--color-gold)] items-center mt-4 md:mt-auto">
-                        <a href="#" className="hover:text-[var(--color-ink)] transition-colors"><Facebook strokeWidth={1.5} className="w-5 h-5" /></a>
-                        <a href="#" className="hover:text-[var(--color-ink)] transition-colors"><Instagram strokeWidth={1.5} className="w-5 h-5" /></a>
-                        <a href="#" className="hover:text-[var(--color-ink)] transition-colors"><Linkedin strokeWidth={1.5} className="w-5 h-5" /></a>
+                        <a href="#" className="hover:text-[var(--color-ink)] transition-colors"><Facebook strokeWidth={1.5} className="w-6 h-6" /></a>
+                        <a href="#" className="hover:text-[var(--color-ink)] transition-colors"><Instagram strokeWidth={1.5} className="w-6 h-6" /></a>
+                        <a href="#" className="hover:text-[var(--color-ink)] transition-colors"><Linkedin strokeWidth={1.5} className="w-6 h-6" /></a>
                     </div>
                  </div>
               </div>
+
               <div className="w-full md:w-[60%] h-px bg-[var(--color-ink)]/20 mb-6"></div>
-              <p className="font-serif text-[var(--color-ink)]/50 text-xs md:text-sm tracking-widest">All Copyright Reserved @2026</p>
+              <p className="font-serif text-[var(--color-ink)]/50 text-sm md:text-base tracking-widest">All Copyright <br/>Reserved @2026</p>
             </div>
         </footer>
       </div>

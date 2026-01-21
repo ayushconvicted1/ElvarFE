@@ -8,46 +8,55 @@ const services = [
     id: "cars",
     label: "Luxury & Sports Cars",
     video: "/Cars.mp4",
+    mobileVideo: "/CarsMob.mp4",
   },
   {
     id: "dining",
     label: "Fine Dining & Omakase Experiences",
     video: "/Omakase.mp4",
+    mobileVideo: "/OmakaseMob.mp4",
   },
   {
     id: "aviation",
     label: "Private Aviation",
     video: "/PrivateJet.mp4",
+    mobileVideo: "/PrivateJetMob.mp4",
   },
   {
     id: "yachts",
     label: "Yachts & Maritime Access",
     video: "/Yacht.mp4",
+    mobileVideo: "/YachtMob.mp4",
   },
   {
     id: "living",
     label: "Residences & Global Living",
     video: "/Residences.mp4",
+    mobileVideo: "/ResidencesMob.mp4",
   },
   {
     id: "travel",
     label: "Destinations & Travel Design",
     video: "/Destination.mp4",
+    mobileVideo: "/DestinationsMob.mp4",
   },
   {
     id: "curated",
     label: "Experiences & Curated Moments",
     video: "/Experiences.mp4",
+    mobileVideo: "/ExperiencesMob.mp4",
   },
   {
     id: "assets",
     label: "Assets & Acquisition",
     video: "/Assets.mp4",
+    mobileVideo: "/AssetsMob.mp4",
   },
   {
     id: "wellness",
     label: "Wellness & Personal Care",
     video: "/Wellness.mp4",
+    mobileVideo: "/WellnessMob.mp4",
   }
 ];
 
@@ -57,13 +66,8 @@ const VIEWPORT_HEIGHT = 600;
 export default function Services() {
   const [activeIndex, setActiveIndex] = useState(3);
   
-  // 1. Ref for the section container
   const containerRef = useRef<HTMLDivElement>(null);
-  
-  // 2. Detect if the section is visible
   const isInView = useInView(containerRef, { amount: 0.3 });
-
-  // 3. Mutable ref to hold the current video element (for pausing via Scroll Effect)
   const currentVideoRef = useRef<HTMLVideoElement | null>(null);
 
   const getService = (index: number) => {
@@ -74,16 +78,15 @@ export default function Services() {
   const renderRange = Array.from({ length: 9 }, (_, i) => activeIndex - 4 + i);
   const activeService = getService(activeIndex);
 
-  // 4. Callback Ref: Triggers immediately when the NEW video mounts
   const setVideoRef = useCallback((el: HTMLVideoElement | null) => {
     currentVideoRef.current = el;
     if (el && isInView) {
       el.currentTime = 0;
+      el.load(); 
       el.play().catch((e) => console.log("Auto-play blocked", e));
     }
-  }, [isInView]); // Re-run logic if visibility changes while mounting
+  }, [isInView]); 
 
-  // 5. Effect: Handle Play/Pause purely based on Scrolling (Visibility)
   useEffect(() => {
     const video = currentVideoRef.current;
     if (video) {
@@ -95,7 +98,6 @@ export default function Services() {
     }
   }, [isInView]);
 
-  // 6. Handler: Auto-switch to next item when video ends
   const handleVideoEnd = () => {
     setActiveIndex((prev) => prev + 1);
   };
@@ -103,7 +105,8 @@ export default function Services() {
   return (
     <section 
       ref={containerRef}
-      className="w-full py-24 flex flex-col lg:flex-row gap-12 items-center overflow-hidden"
+      // CHANGED: Reduced padding on mobile (py-12) to save space, keeping py-24 on desktop
+      className="w-full py-12 lg:py-24 flex flex-col lg:flex-row gap-12 items-center overflow-hidden"
     >
       
       {/* --- Left Menu --- */}
@@ -139,7 +142,7 @@ export default function Services() {
               return (
                 <div
                   key={index}
-                  className="absolute w-full left-0 flex items-center"
+                  className="absolute font-regular w-full left-0 flex items-center"
                   style={{
                     height: ITEM_HEIGHT,
                     top: index * ITEM_HEIGHT,
@@ -151,7 +154,7 @@ export default function Services() {
                       "group text-left text-lg lg:text-xl tracking-wide transition-all duration-300 flex items-center gap-3 relative w-full",
                       isActive
                         ? "text-gold translate-x-4 scale-105 origin-left"
-                        : "text-ink/40 hover:text-ink/70"
+                        : "text-ink/80 lg:text-ink/40 hover:text-ink/70"
                     )}
                   >
                     <span
@@ -175,7 +178,12 @@ export default function Services() {
       </div>
 
       {/* --- Right Video Display --- */}
-      <div className="w-full lg:w-2/3 relative aspect-video lg:h-[600px] lg:aspect-auto">
+      {/* CHANGED: 
+          1. Removed 'aspect-video' (16:9) from mobile default.
+          2. Added 'aspect-[9/16]' for mobile to match vertical video format.
+          3. Added 'lg:aspect-auto' to reset this on desktop where we use height.
+      */}
+      <div className="w-full lg:w-2/3 relative aspect-[9/16] lg:h-[600px] lg:aspect-auto">
         <AnimatePresence mode="wait">
           <motion.div
             key={activeService.id}
@@ -186,19 +194,21 @@ export default function Services() {
             className="absolute inset-0 w-full h-full"
           >
             <video
-              ref={setVideoRef} // Using Callback Ref to trigger play on mount
-              src={activeService.video}
+              ref={setVideoRef} 
               muted
               playsInline
-              onEnded={handleVideoEnd} // Trigger auto-switch
-              // Removed 'loop' to allow onEnded to fire
+              onEnded={handleVideoEnd} 
               className="w-full h-full object-cover contrast-100 mix-blend-multiply"
               style={{
                 maskImage: "linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%), linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%)",
                 WebkitMaskComposite: "source-in",
                 maskComposite: "intersect"
               }}
-            />
+            >
+              {/* Media query ensures correct video file is loaded */}
+              <source src={activeService.mobileVideo} media="(max-width: 1023px)" />
+              <source src={activeService.video} />
+            </video>
           </motion.div>
         </AnimatePresence>
       </div>
