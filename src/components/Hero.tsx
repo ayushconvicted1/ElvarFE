@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 
@@ -7,6 +7,19 @@ export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile device
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // 1. SCROLL CONFIGURATION
   // We track the scroll progress within this container.
@@ -53,7 +66,7 @@ export default function Hero() {
         <div className="absolute inset-0 z-0 bg-black">
           <video
             ref={videoRef}
-            src="/HeroBanner.mp4"
+            src={isMobile ? "/BannerMob.mp4" : "/HeroBanner.mp4"}
             className="w-full h-full object-cover"
             playsInline
             muted
@@ -68,7 +81,7 @@ export default function Hero() {
           className="absolute inset-0 z-[1] pointer-events-none"
         >
           <Image
-            src="/Banner.png"
+            src={isMobile ? "/BannerMob.png" : "/Banner.png"}
             alt="Hero Banner"
             fill
             className="object-cover object-top"

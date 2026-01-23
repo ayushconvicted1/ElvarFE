@@ -18,7 +18,7 @@ export default function ContactSection() {
     <section className="py-24 px-6">
       {/* FAQ */}
       <div className="max-w-2xl mx-auto mb-32">
-        <h2 className="font-italiano text-4xl text-center lg:text-5xl text-heading mb-6">
+        <h2 className="font-italiano text-5xl text-center lg:text-6xl text-heading mb-6">
           Frequently asked questions
         </h2>
         <div className="border-t border-[var(--color-ink)]/20">
@@ -49,8 +49,8 @@ export default function ContactSection() {
       </div>
 
       {/* Form */}
-      <div className="max-w-xl mx-auto text-center">
-        <h2 className="font-italiano text-4xl lg:text-5xl text-heading mb-3">
+      <div id="contact-form" className="max-w-xl mx-auto text-center">
+        <h2 className="font-italiano text-5xl lg:text-6xl text-heading mb-3">
           Request Invitation
         </h2> 
         <p className="mb-12 opacity-80 font-cormorant text-lg">

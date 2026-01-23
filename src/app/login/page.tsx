@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Eye, EyeOff } from "lucide-react";
+import { Eye, EyeOff, ArrowLeft } from "lucide-react";
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
@@ -11,6 +11,17 @@ export default function LoginPage() {
     // Added overflow-hidden to prevent scrollbars from image scaling
     <main className="min-h-screen w-full relative flex flex-col p-6 overflow-hidden bg-[var(--color-paper)]">
       
+      {/* Back Button - Mobile Only */}
+      <div className="absolute top-6 left-6 z-30 lg:hidden">
+        <Link 
+          href="/" 
+          className="flex items-center gap-2 text-[var(--color-ink)] hover:text-[var(--color-gold)] transition-colors"
+        >
+          <ArrowLeft className="w-5 h-5" strokeWidth={1.5} />
+          <span className="font-serif text-sm">Back</span>
+        </Link>
+      </div>
+
       {/* 1. Centered Logo */}
       <div className="w-full flex justify-center pt-8 pb-4 lg:absolute lg:top-12 lg:py-0 z-20">
         <Link href="/" className="hover:opacity-80 transition-opacity">
@@ -92,7 +103,7 @@ export default function LoginPage() {
               </div>
 
               <div className="flex justify-end pt-2">
-                <Link href="#" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-ink)] text-sm md:text-base">
+                <Link href="#" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-ink)] md:text-base">
                   Forgot password ?
                 </Link>
               </div>
@@ -106,9 +117,9 @@ export default function LoginPage() {
                 </button>
               </div>
 
-              <div className="text-center pt-4 space-y-1">
+              <div className="text-center text-lg pt-4 space-y-1">
                 <p className="font-serif text-[var(--color-ink)] text-sm md:text-base">
-                  Not an <span className="italic font-bold">Elvar</span> private member? <Link href="#" className="underline hover:text-[var(--color-gold)] transition-colors">Request Invitation</Link>
+                  Not an <span className="italic font-bold">Elvar</span> private member? <Link href="/#contact-form" className="underline hover:text-[var(--color-gold)] transition-colors">Request Invitation</Link>
                 </p>
               </div>
             </form>

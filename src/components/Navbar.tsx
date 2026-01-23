@@ -6,13 +6,9 @@ import { clsx } from "clsx";
 import { motion, AnimatePresence } from "framer-motion";
 
 const menuItems = [
-  "Services",
-  "Destinations",
-  "Experiences",
-  "Assets",
-  "Membership",
-  "About",
-  "Privacy",
+  "Terms",
+  "Privacy Policy",
+  "Legal",
 ];
 
 export default function Navbar() {
@@ -106,7 +102,7 @@ export default function Navbar() {
         <Link
           href="/login"
           className={clsx(
-            "text-sm tracking-widest uppercase hover:text-[var(--color-gold)] transition-colors font-light text-[var(--color-ink)] z-40",
+            "text-sm tracking-widest font-bold uppercase hover:text-[var(--color-gold)] transition-colors text-[var(--color-ink)] z-40",
             isMenuOpen ? "opacity-0" : "opacity-100"
           )}
         >

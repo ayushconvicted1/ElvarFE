@@ -1,9 +1,22 @@
 "use client";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 export default function MembersAccess({ url }: { url?: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detect mobile device
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -41,7 +54,7 @@ export default function MembersAccess({ url }: { url?: string }) {
       <div className="relative w-full h-auto">
         <video
           ref={videoRef}
-          src={url || "/Door.mp4"}
+          src={url || (isMobile ? "/DoorMob.mp4" : "/Door.mp4")}
           className="w-full h-auto mix-blend-multiply contrast-100"
           muted
           playsInline
