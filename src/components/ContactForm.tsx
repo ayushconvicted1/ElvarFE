@@ -3,12 +3,22 @@ import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 
 const faqs = [
-  "How do I apply for membership?",
-  "What payment methods do you accept?",
-  "What are the membership tiers?",
-  "How is my privacy protected?",
-  "What is the response time for requests?",
-  "Can I cancel my membership?",
+  {
+    question: "How does ELVAR differ from traditional luxury concierge services?",
+    answer: "ELVAR does not operate as a visible service provider. We function as a private access orchestration layer—quietly aligning trusted partners to deliver outcomes without attribution, exposure, or unnecessary interaction."
+  },
+  {
+    question: "How is membership granted?",
+    answer: "Membership is strictly invitation-only. Prospective members are admitted through private referral and internal alignment processes. ELVAR is not applied to—it is extended."
+  },
+  {
+    question: "How does ELVAR protect member privacy?",
+    answer: "Privacy is embedded at every level of operation. We practice data minimization, compartmentalized execution, and strict confidentiality agreements across our ecosystem. Information exists only where absolutely required."
+  },
+  {
+    question: "What type of individuals does ELVAR serve?",
+    answer: "ELVAR serves individuals whose lives, movements, and decisions require separation from public systems. Our members value control, discretion, and reliability over recognition or display."
+  }
 ];
 
 export default function ContactSection() {
@@ -22,14 +32,14 @@ export default function ContactSection() {
           Frequently asked questions
         </h2>
         <div className="border-t border-[var(--color-ink)]/20">
-          {faqs.map((q, i) => (
+          {faqs.map((faq, i) => (
             <div key={i} className="border-b border-[var(--color-ink)]/20">
               <button
                 onClick={() => setOpen(open === i ? null : i)}
                 className="w-full py-6 flex justify-between items-center text-left hover:bg-black/5 px-2 transition-colors"
               >
                 <span className="font-cormorant text-xl text-[var(--color-ink)]">
-                  {q}
+                  {faq.question}
                 </span>
                 {open === i ? (
                   <Minus className="w-5 h-5 text-[var(--color-gold)]" />
@@ -39,8 +49,7 @@ export default function ContactSection() {
               </button>
               {open === i && (
                 <div className="pb-6 px-2 font-light leading-relaxed text-[var(--color-ink)]/80 text-lg">
-                  Membership applications are reviewed by our committee weekly.
-                  Please fill out the form below to begin the vetting process.
+                  {faq.answer}
                 </div>
               )}
             </div>
@@ -116,7 +125,7 @@ export default function ContactSection() {
           </div>
 
           <div className="text-center pt-8">
-            <button className="bg-bright hover:bg-heading text-white px-12 py-4 text-sm tracking-[0.2em] uppercase w-full md:w-auto shadow-md transition-all active:scale-95">
+            <button className="bg-gold hover:bg-heading text-white px-12 py-4 text-sm tracking-[0.2em] uppercase w-full md:w-auto shadow-md transition-all active:scale-95">
               Submit
             </button>
           </div>

@@ -32,7 +32,7 @@ export default function Security() {
       </div>
 
       <div className="text-center">
-        <button className="bg-bright hover:bg-heading text-white px-10 py-4 text-xs tracking-[0.2em] uppercase transition-colors duration-300 shadow-sm">
+        <button className="bg-gold hover:bg-heading text-white px-10 py-4 text-xs tracking-[0.2em] uppercase transition-colors duration-300 shadow-sm">
           Request Invitation
         </button>
       </div>
