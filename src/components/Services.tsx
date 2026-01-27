@@ -69,6 +69,7 @@ export default function Services() {
   
   const containerRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
+  const videoContainerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { amount: 0.3 });
   const currentVideoRef = useRef<HTMLVideoElement | null>(null);
 
@@ -118,9 +119,17 @@ export default function Services() {
     setActiveIndex((prev) => prev + 1);
   };
 
-  // Touch scroll handler for mobile
+  const handlePrevious = () => {
+    setActiveIndex((prev) => prev - 1);
+  };
+
+  const handleNext = () => {
+    setActiveIndex((prev) => prev + 1);
+  };
+
+  // Touch scroll handler for mobile menu (desktop only now)
   useEffect(() => {
-    if (!isMobile || !menuRef.current) return;
+    if (isMobile || !menuRef.current) return;
 
     let touchStartY = 0;
     let touchStartX = 0;
@@ -129,7 +138,6 @@ export default function Services() {
     let hasMoved = false;
 
     const handleTouchStart = (e: TouchEvent) => {
-      // Don't prevent default on touchstart - allows click events to work
       touchStartY = e.touches[0].clientY;
       touchStartX = e.touches[0].clientX;
       hasMoved = false;
@@ -142,30 +150,24 @@ export default function Services() {
       const deltaY = Math.abs(touchEndY - touchStartY);
       const deltaX = Math.abs(touchEndX - touchStartX);
       
-      // Only prevent default if vertical movement is significant
-      // This prevents page scroll during swipe gestures
       if (deltaY > 10 && deltaY > deltaX) {
-        e.preventDefault(); // Prevent page scroll only when actively swiping vertically
+        e.preventDefault();
         hasMoved = true;
       }
     };
 
     const handleTouchEnd = (e: TouchEvent) => {
-      // Only process swipe if there was actual movement
       if (!hasMoved) {
-        // This was a tap, not a swipe - let the onClick handler deal with it
         return;
       }
 
       const distance = touchStartY - touchEndY;
-      const minSwipeDistance = 50; // Minimum distance for a swipe
+      const minSwipeDistance = 50;
 
       if (Math.abs(distance) > minSwipeDistance) {
         if (distance > 0) {
-          // Swiped up - go to next
           setActiveIndex((prev) => prev + 1);
         } else {
-          // Swiped down - go to previous
           setActiveIndex((prev) => prev - 1);
         }
       }
@@ -185,15 +187,196 @@ export default function Services() {
     };
   }, [isMobile]);
 
+  // Horizontal swipe handler for mobile video
+  useEffect(() => {
+    if (!isMobile || !videoContainerRef.current) return;
+
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchEndX = 0;
+    let touchEndY = 0;
+    let hasMoved = false;
+
+    const handleTouchStart = (e: TouchEvent) => {
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+      hasMoved = false;
+    };
+
+    const handleTouchMove = (e: TouchEvent) => {
+      touchEndX = e.touches[0].clientX;
+      touchEndY = e.touches[0].clientY;
+      
+      const deltaX = Math.abs(touchEndX - touchStartX);
+      const deltaY = Math.abs(touchEndY - touchStartY);
+      
+      // Only prevent default if horizontal movement is significant
+      if (deltaX > 10 && deltaX > deltaY) {
+        e.preventDefault();
+        hasMoved = true;
+      }
+    };
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      if (!hasMoved) {
+        return;
+      }
+
+      const distance = touchStartX - touchEndX;
+      const minSwipeDistance = 50;
+
+      if (Math.abs(distance) > minSwipeDistance) {
+        if (distance > 0) {
+          // Swiped left - go to next
+          setActiveIndex((prev) => prev + 1);
+        } else {
+          // Swiped right - go to previous
+          setActiveIndex((prev) => prev - 1);
+        }
+      }
+
+      hasMoved = false;
+    };
+
+    const videoContainer = videoContainerRef.current;
+    videoContainer.addEventListener('touchstart', handleTouchStart, { passive: true });
+    videoContainer.addEventListener('touchmove', handleTouchMove, { passive: false });
+    videoContainer.addEventListener('touchend', handleTouchEnd, { passive: true });
+
+    return () => {
+      videoContainer.removeEventListener('touchstart', handleTouchStart);
+      videoContainer.removeEventListener('touchmove', handleTouchMove);
+      videoContainer.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [isMobile]);
+
   return (
     <section 
       ref={containerRef}
-      // CHANGED: Using flex-col-reverse on mobile to put selector below video
-      className="w-full py-12 lg:py-24 flex flex-col-reverse lg:flex-row items-center overflow-hidden"
+      className="w-full py-12 lg:py-24 flex flex-col lg:flex-row items-center overflow-hidden"
     >
       
-      {/* --- Left Menu --- */}
-      <div className="w-full lg:w-1/3 px-6 pt-0 lg:px-0 lg:pl-[max(1.5rem,calc((100vw-80rem)/2))]">
+      {/* --- Mobile Header (Horizontal Carousel) --- */}
+      {isMobile && (
+        <div className="w-full py-6 px-4">
+          {/* Header with Arrows and Carousel */}
+          <div 
+            ref={(el) => {
+              if (!el) return;
+              
+              let touchStartX = 0;
+              let touchStartY = 0;
+              let touchEndX = 0;
+              let touchEndY = 0;
+              let hasMoved = false;
+
+              const handleTouchStart = (e: TouchEvent) => {
+                touchStartX = e.touches[0].clientX;
+                touchStartY = e.touches[0].clientY;
+                hasMoved = false;
+              };
+
+              const handleTouchMove = (e: TouchEvent) => {
+                touchEndX = e.touches[0].clientX;
+                touchEndY = e.touches[0].clientY;
+                
+                const deltaX = Math.abs(touchEndX - touchStartX);
+                const deltaY = Math.abs(touchEndY - touchStartY);
+                
+                if (deltaX > 10 && deltaX > deltaY) {
+                  e.preventDefault();
+                  hasMoved = true;
+                }
+              };
+
+              const handleTouchEnd = (e: TouchEvent) => {
+                if (!hasMoved) return;
+
+                const distance = touchStartX - touchEndX;
+                const minSwipeDistance = 50;
+
+                if (Math.abs(distance) > minSwipeDistance) {
+                  if (distance > 0) {
+                    handleNext();
+                  } else {
+                    handlePrevious();
+                  }
+                }
+
+                hasMoved = false;
+              };
+
+              el.addEventListener('touchstart', handleTouchStart, { passive: true });
+              el.addEventListener('touchmove', handleTouchMove, { passive: false });
+              el.addEventListener('touchend', handleTouchEnd, { passive: true });
+            }}
+            className="flex items-center justify-between gap-2"
+          >
+            {/* Left Arrow */}
+            <button
+              onClick={handlePrevious}
+              className="flex-shrink-0 w-8 h-8 flex items-center justify-center text-gold hover:text-gold/80 transition-colors active:scale-95"
+              aria-label="Previous service"
+            >
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                strokeWidth={2.5} 
+                stroke="currentColor" 
+                className="w-5 h-5"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
+              </svg>
+            </button>
+
+            {/* Horizontal Carousel */}
+            <div className="relative flex-1 h-16 overflow-hidden">
+              <AnimatePresence mode="popLayout" initial={false}>
+                <motion.div
+                  key={activeIndex}
+                  initial={{ x: 100, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ x: -100, opacity: 0 }}
+                  transition={{ 
+                    duration: 0.5, 
+                    ease: [0.4, 0, 0.2, 1]
+                  }}
+                  className="absolute inset-0 flex items-center justify-center"
+                >
+                  {/* Current Service - Center (Prominent) */}
+                  <div className="flex justify-center items-center px-4">
+                    <div className="text-xl font-medium text-gold italic text-center">
+                      {activeService.label}
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+
+            {/* Right Arrow */}
+            <button
+              onClick={handleNext}
+              className="flex-shrink-0 w-8 h-8 flex items-center justify-center text-gold hover:text-gold/80 transition-colors active:scale-95"
+              aria-label="Next service"
+            >
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                fill="none" 
+                viewBox="0 0 24 24" 
+                strokeWidth={2.5} 
+                stroke="currentColor" 
+                className="w-5 h-5"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* --- Desktop Menu (Hidden on Mobile) --- */}
+      <div className="hidden lg:block w-full lg:w-1/3 px-6 pt-0 lg:px-0 lg:pl-[max(1.5rem,calc((100vw-80rem)/2))]">
         <div
           ref={menuRef}
           className="relative overflow-hidden"
@@ -226,7 +409,7 @@ export default function Services() {
               return (
                 <div
                   key={index}
-                  className="absolute w-full left-0 flex items-center justify-center lg:justify-start"
+                  className="absolute w-full left-0 flex items-center justify-start"
                   style={{
                     height: itemHeight,
                     top: index * itemHeight,
@@ -235,15 +418,15 @@ export default function Services() {
                   <button
                     onClick={() => setActiveIndex(index)}
                     className={clsx(
-                      "group text-center lg:text-left text-lg lg:text-xl tracking-wide transition-all duration-300 flex items-center gap-3 relative cursor-pointer touch-manipulation active:scale-95",
+                      "group text-left text-xl tracking-wide transition-all duration-300 flex items-center gap-3 relative cursor-pointer",
                       isActive
-                        ? "text-gold translate-x-0 lg:translate-x-4 scale-105 origin-center lg:origin-left"
-                        : "text-ink/80 lg:text-ink/40 hover:text-ink/70"
+                        ? "text-gold translate-x-4 scale-105 origin-left"
+                        : "text-ink/40 hover:text-ink/70"
                     )}
                   >
                     <span
                       className={clsx(
-                        "transition-all duration-300 absolute -left-4 lg:block",
+                        "transition-all duration-300 absolute -left-4",
                         isActive ? "opacity-100 scale-100" : "opacity-0 scale-0"
                       )}
                     >
@@ -261,13 +444,11 @@ export default function Services() {
         </div>
       </div>
 
-      {/* --- Right Video Display --- */}
-      {/* CHANGED: 
-          1. Changed mobile aspect from [9/16] to [3/4] to reduce height and crop excess vertical space
-          2. object-cover will automatically crop top and bottom portions
-          3. Desktop maintains lg:h-[600px] lg:aspect-auto
-      */}
-      <div className="w-full lg:w-2/3 relative aspect-[3/4] lg:h-[600px] lg:aspect-auto">
+      {/* --- Video Display --- */}
+      <div 
+        ref={videoContainerRef}
+        className="w-full lg:w-2/3 relative aspect-[3/4] lg:h-[600px] lg:aspect-auto"
+      >
         <AnimatePresence mode="wait">
           <motion.div
             key={activeService.id}

@@ -15,10 +15,10 @@ export default function LoginPage() {
       <div className="absolute top-6 left-6 z-30 lg:hidden">
         <Link 
           href="/" 
-          className="flex items-center gap-2 text-[var(--color-ink)] hover:text-[var(--color-gold)] transition-colors"
+          className="flex items-center justify-center w-10 h-10 text-[var(--color-ink)] hover:text-[var(--color-gold)] transition-colors"
+          aria-label="Go back to home"
         >
-          <ArrowLeft className="w-5 h-5" strokeWidth={1.5} />
-          <span className="font-serif text-sm">Back</span>
+          <ArrowLeft className="w-6 h-6" strokeWidth={1.5} />
         </Link>
       </div>
 
@@ -48,25 +48,23 @@ export default function LoginPage() {
       </div>
 
       {/* 2. Main Layout Container */}
-      {/* Centered vertically, with padding to prevent edge touches */}
       <div className="flex-grow flex flex-col lg:flex-row items-center justify-center w-full max-w-[1920px] mx-auto mt-0 lg:mt-20 lg:h-[calc(100vh-100px)] gap-4">
         
-        {/* Left Side Image */}
-        {/* CHANGED: Increased width from w-1/2 to w-[60%] to make the image bigger */}
-        <div className="hidden lg:block relative w-[50%] h-full">
-           <Image 
-             src="/LoginImg.png" 
-             alt="Login Visual" 
-             fill
-             // Kept object-contain and object-center. 
-             // The larger container width allows it to scale up significantly.
-             className="object-contain object-center mix-blend-multiply opacity-90"
-             priority
-           />
+        {/* Building Image - Visible on Mobile and Desktop */}
+        <div className="w-full lg:w-[50%] flex justify-center items-center px-6 lg:px-0 lg:h-full">
+          <div className="relative w-full max-w-[400px] lg:max-w-none lg:w-full lg:h-full">
+            <Image 
+              src="/LoginImg.png" 
+              alt="Login Visual" 
+              width={400}
+              height={400}
+              className="w-full h-auto lg:w-auto lg:h-full object-contain object-center mix-blend-multiply opacity-90"
+              priority
+            />
+          </div>
         </div>
 
         {/* Right Side Form */}
-        {/* CHANGED: Decreased width from w-1/2 to w-[40%] to balance the layout */}
         <div className="w-full lg:w-[40%] flex justify-center items-center p-0 lg:p-8">
           <div className="w-full max-w-[480px] bg-[var(--color-paper)] border border-[var(--color-ink)]/20 p-6 md:p-12 shadow-[0_4px_20px_-2px_rgba(0,0,0,0.05)] relative">
             <form className="space-y-10">
@@ -103,7 +101,7 @@ export default function LoginPage() {
               </div>
 
               <div className="flex justify-end pt-2">
-                <Link href="#" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-ink)] md:text-base">
+                <Link href="#" className="font-serif text-lg text-[var(--color-ink)]/80 hover:text-[var(--color-ink)]">
                   Forgot password ?
                 </Link>
               </div>
@@ -111,14 +109,14 @@ export default function LoginPage() {
               <div className="flex justify-center pt-4">
                 <button 
                   type="button"
-                  className="bg-[#0D236D] text-white px-12 py-3.5 text-xs tracking-[0.2em] uppercase font-sans hover:bg-[#0D236D]/90 transition-colors w-40"
+                  className="font-brilliant-cut bg-[#0D236D] text-white px-12 py-3.5 text-xs tracking-[0.2em] uppercase hover:bg-[#0D236D]/90 transition-colors w-40"
                 >
                   Log In
                 </button>
               </div>
 
               <div className="text-center text-lg pt-4 space-y-1">
-                <p className="font-serif text-[var(--color-ink)] text-sm md:text-base">
+                <p className="font-serif text-[var(--color-ink)] text-md">
                   Not an <span className="italic font-bold">Elvar</span> private member? <Link href="/#contact-form" className="underline hover:text-[var(--color-gold)] transition-colors">Request Invitation</Link>
                 </p>
               </div>

@@ -27,8 +27,8 @@ const features = [
 
 function FeatureCard({ feature }: { feature: typeof features[0] }) {
   const containerRef = useRef<HTMLDivElement>(null);
-  // Detect if card is in view (trigger slightly earlier with margin)
-  const isInView = useInView(containerRef, { margin: "-20% 0px -20% 0px", once: false });
+  // Detect if card is in view (triggers when element reaches center of screen)
+  const isInView = useInView(containerRef, { margin: "-50% 0px -50% 0px", once: false });
 
   return (
     <div
@@ -45,7 +45,7 @@ function FeatureCard({ feature }: { feature: typeof features[0] }) {
           alt={feature.title}
           fill
           className={clsx(
-            "object-cover grayscale mix-blend-multiply transition-all duration-700",
+            "object-cover grayscale mix-blend-multiply transition-all duration-1000",
             // Mobile: If in view -> fade out. Else -> visible.
             // Desktop (md): Force visibility (ignore scroll), let hover handle it.
             isInView ? "opacity-0 md:opacity-100" : "opacity-100",
@@ -61,7 +61,7 @@ function FeatureCard({ feature }: { feature: typeof features[0] }) {
           alt={feature.title}
           fill
           className={clsx(
-            "object-cover mix-blend-multiply transition-all duration-700",
+            "object-cover mix-blend-multiply transition-all duration-1000",
             // Mobile: If in view -> fade in. Else -> hidden.
             // Desktop (md): Force hidden (ignore scroll), let hover handle it.
             isInView ? "opacity-100 md:opacity-0" : "opacity-0",
