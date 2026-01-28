@@ -477,25 +477,6 @@ export default function Services() {
           </motion.div>
         </AnimatePresence>
       </div>
-
-      {/* --- Pagination Dots (Mobile Only) --- */}
-      {isMobile && (
-        <div className="w-full flex justify-center items-center gap-2 py-6">
-          {services.map((service, index) => (
-            <button
-              key={service.id}
-              onClick={() => setActiveIndex(index)}
-              className={clsx(
-                "w-2 h-2 rounded-full transition-all duration-300",
-                index === activeIndex % services.length
-                  ? "bg-[#966F47]"
-                  : "bg-ink/30 hover:bg-ink/50"
-              )}
-              aria-label={`Go to ${service.label}`}
-            />
-          ))}
-        </div>
-      )}
     </section>
   );
 }

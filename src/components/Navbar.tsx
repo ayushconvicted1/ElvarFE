@@ -46,7 +46,7 @@ export default function Navbar() {
     <>
       <nav
         className={clsx(
-          "fixed top-0 w-full z-50 px-6 flex justify-between items-center transition-all duration-500 ease-in-out",
+          "fixed top-0 w-full z-50 px-6 flex justify-center items-center transition-all duration-500 ease-in-out",
           isScrolled && !isMenuOpen
             ? "py-4 bg-[var(--color-paper)]/85 backdrop-blur-md shadow-sm border-b border-[var(--color-ink)]/5"
             : "py-6 bg-transparent mix-blend-multiply"
@@ -56,7 +56,7 @@ export default function Navbar() {
         <button
           onClick={() => setIsMenuOpen(true)}
           className={clsx(
-            "p-2 hover:opacity-70 transition-opacity z-50",
+            "p-2 hover:opacity-70 transition-opacity z-50 absolute left-6",
             isMenuOpen ? "opacity-0 pointer-events-none" : "opacity-100"
           )}
         >
@@ -95,8 +95,8 @@ export default function Navbar() {
         </svg>
         </Link>
 
-        {/* Spacer to maintain layout balance - replaces login button */}
-        <div className="w-[60px]"></div>
+        {/* Spacer to balance hamburger button for perfect centering */}
+        <div className="p-2 w-6 h-6 absolute right-6"></div>
       </nav>
 
       {/* --- SIDE MENU DRAWER & BACKDROP --- */}

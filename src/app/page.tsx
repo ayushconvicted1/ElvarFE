@@ -64,13 +64,13 @@ export default function Home() {
                 {/* Social Icons */}
                 <div className="flex gap-6 text-[var(--color-gold)] items-center justify-center mb-8">
                   <a href="#" className="hover:text-[var(--color-ink)] transition-colors">
-                    <Facebook strokeWidth={1.5} className="w-7 h-7" />
+                    <Facebook strokeWidth={1.5} className="w-5 h-5" />
                   </a>
                   <a href="#" className="hover:text-[var(--color-ink)] transition-colors">
-                    <Instagram strokeWidth={1.5} className="w-7 h-7" />
+                    <Instagram strokeWidth={1.5} className="w-5 h-5" />
                   </a>
                   <a href="#" className="hover:text-[var(--color-ink)] transition-colors">
-                    <Linkedin strokeWidth={1.5} className="w-7 h-7" />
+                    <Linkedin strokeWidth={1.5} className="w-5 h-5" />
                   </a>
                 </div>
 
@@ -134,13 +134,13 @@ export default function Home() {
                 {/* Social Icons */}
                 <div className="flex gap-4 text-[var(--color-gold)] items-center mb-16">
                   <a href="#" className="hover:text-[var(--color-ink)] transition-colors">
-                    <Facebook strokeWidth={1.5} className="w-5 h-5" />
+                    <Facebook strokeWidth={1.5} className="w-4 h-4" />
                   </a>
                   <a href="#" className="hover:text-[var(--color-ink)] transition-colors">
-                    <Instagram strokeWidth={1.5} className="w-5 h-5" />
+                    <Instagram strokeWidth={1.5} className="w-4 h-4" />
                   </a>
                   <a href="#" className="hover:text-[var(--color-ink)] transition-colors">
-                    <Linkedin strokeWidth={1.5} className="w-5 h-5" />
+                    <Linkedin strokeWidth={1.5} className="w-4 h-4" />
                   </a>
                 </div>
 

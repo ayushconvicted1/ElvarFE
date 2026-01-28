@@ -79,7 +79,7 @@ function ServiceCard({ service, index }: ServiceCardProps) {
         mb-16 lg:mb-24
       `}
     >
-      {/* Image Section - Increased size */}
+      {/* Image Section - No horizontal padding */}
       <div className="w-full lg:w-[68%] flex justify-center">
         <div className="relative w-full aspect-[4/3]">
           <Image
@@ -91,9 +91,9 @@ function ServiceCard({ service, index }: ServiceCardProps) {
         </div>
       </div>
 
-      {/* Content Section */}
-      <div className={`w-full lg:w-1/2 flex flex-col ${isLeft ? 'lg:pl-12' : 'lg:pr-12'} px-6 lg:px-0`}>
-        <h3 className="font-cormorant text-2xl lg:text-3xl mb-4 lg:mb-6">
+      {/* Content Section - Only text has padding */}
+      <div className={`w-full lg:w-1/2 flex flex-col px-6 text-center lg:text-left ${isLeft ? 'lg:pl-12 lg:pr-0' : 'lg:pr-12 lg:pl-0'}`}>
+        <h3 className="font-cormorant text-gold text-2xl lg:text-3xl mb-4 lg:mb-6">
           {service.title}
         </h3>
         <p className="font-cormorant text-lg lg:text-xl text-ink/80 leading-relaxed">
@@ -106,10 +106,10 @@ function ServiceCard({ service, index }: ServiceCardProps) {
 
 export default function ServicesPage() {
   return (
-    <section className="w-full py-16 lg:py-24 px-6 lg:px-12 max-w-7xl mx-auto">
+    <section className="w-full py-16 lg:py-24 max-w-7xl mx-auto">
       {/* Header */}
-      <div className="text-center mb-16 lg:mb-24">
-        <h2 className="font-parisienne text-3xl lg:text-4xl text-gold mb-6">
+      <div className="text-center mb-16 px-5 lg:mb-24">
+        <h2 className="font-italiano text-5xl text-heading mb-6">
           Our Services
         </h2>
         <p className="font-cormorant text-xl lg:text-2xl text-ink/70 max-w-3xl mx-auto leading-relaxed">

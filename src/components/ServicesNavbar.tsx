@@ -58,12 +58,12 @@ export default function ServicesNavbar() {
             : "py-6 bg-[var(--color-paper)]"
         )}
       >
-        <div className="max-w-7xl mx-auto flex justify-center items-center relative">
+        <div className="max-w-7xl mx-auto flex justify-center items-center">
           {/* Mobile: Hamburger on Left */}
           <button
             onClick={() => setIsMenuOpen(true)}
             className={clsx(
-              "p-2 hover:opacity-70 transition-opacity z-50 lg:hidden absolute left-0",
+              "p-2 hover:opacity-70 transition-opacity z-50 lg:hidden absolute left-6",
               isMenuOpen ? "opacity-0 pointer-events-none" : "opacity-100"
             )}
           >
@@ -73,7 +73,7 @@ export default function ServicesNavbar() {
             />
           </button>
 
-          {/* Logo - Absolute positioned on left for desktop */}
+          {/* Logo - Centered on mobile, absolute positioned on left for desktop */}
           <Link
             href="/"
             className="hover:opacity-80 transition-opacity z-40 lg:absolute lg:left-0"
@@ -112,8 +112,8 @@ export default function ServicesNavbar() {
             ))}
           </div>
 
-          {/* Spacer for Mobile to Center Logo */}
-          <div className="w-6 lg:hidden" />
+          {/* Spacer for Mobile to Center Logo - matches hamburger button */}
+          <div className="p-2 w-6 h-6 lg:hidden absolute right-6" />
         </div>
       </nav>
 

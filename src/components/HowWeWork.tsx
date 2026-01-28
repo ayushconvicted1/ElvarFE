@@ -50,7 +50,7 @@ export default function HowWeWork() {
               className="flex gap-6 mb-12 lg:mb-16 last:mb-0 items-center"
             >
               {/* Icon/Seal - vertically centered with text */}
-              <div className="flex-shrink-0">
+              <div className="flex-shrink-0 relative">
                 <div className="w-14 h-14 lg:w-16 lg:h-16 rounded-full flex items-center justify-center bg-paper">
                   {/* Detailed seal SVG */}
                   <Image
@@ -61,21 +61,21 @@ export default function HowWeWork() {
                     className="w-full h-full text-ink/60"
                   />
                 </div>
+                
+                {/* Vertical Line - centered vertically between icons with equal spacing */}
+                {index < steps.length - 1 && (
+                  <div className="absolute left-1/2 top-full w-[1.5px] h-12 lg:h-14 bg-ink/25 -translate-x-1/2 translate-y-[18px] lg:translate-y-[26px]" />
+                )}
               </div>
 
-              {/* Content with Vertical Line on the Left */}
-              <div className="flex-1 relative">
+              {/* Content */}
+              <div className="flex-1">
                 <h3 className="font-cormorant text-2xl lg:text-3xl text-ink font-medium mb-2">
                   {step.title}
                 </h3>
                 <p className="font-cormorant text-base lg:text-lg text-ink/70 leading-relaxed">
                   {step.description}
                 </p>
-                
-                {/* Vertical Line - starts from BOTTOM-left of text content and extends down */}
-                {index < steps.length - 1 && (
-                  <div className="absolute left-0 bottom-0 w-[1.5px] h-12 lg:h-14 bg-ink/25 translate-y-full" />
-                )}
               </div>
             </motion.div>
           ))}
@@ -86,7 +86,7 @@ export default function HowWeWork() {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="w-full lg:w-1/2 h-[100%] relative"
+          className="w-full hidden sm:block lg:w-1/2 h-[100%] relative"
         >
           <div className="relative w-full h-[100%] aspect-[4/3] lg:aspect-[3/2]">
             <Image

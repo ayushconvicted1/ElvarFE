@@ -7,7 +7,7 @@ export default function Services() {
   return (
     <main className="min-h-screen relative">
       <ServicesNavbar />
-      <div className="relative z-10">
+      <div className="relative pt-5 z-10">
         <ServicesPage />
 
         <footer className="w-full pt-16 pb-8 px-6 md:px-12 relative overflow-hidden">
