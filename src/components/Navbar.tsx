@@ -6,9 +6,12 @@ import { clsx } from "clsx";
 import { motion, AnimatePresence } from "framer-motion";
 
 const menuItems = [
-  "Terms",
-  "Privacy Policy",
-  "Legal",
+  { label: "Home", href: "/" },
+  { label: "About", href: "/#about" },
+  { label: "Services", href: "/services" },
+  { label: "Membership", href: "/#membership" },
+  { label: "News and Media", href: "/#news" },
+  { label: "Login", href: "/login" },
 ];
 
 export default function Navbar() {
@@ -44,15 +47,12 @@ export default function Navbar() {
       <nav
         className={clsx(
           "fixed top-0 w-full z-50 px-6 flex justify-between items-center transition-all duration-500 ease-in-out",
-          // When menu is open, we can hide the navbar background or keep it. 
-          // Usually, for a side drawer, we keep the navbar transparent or let the drawer cover it.
           isScrolled && !isMenuOpen
             ? "py-4 bg-[var(--color-paper)]/85 backdrop-blur-md shadow-sm border-b border-[var(--color-ink)]/5"
             : "py-6 bg-transparent mix-blend-multiply"
         )}
       >
         {/* Hamburger Trigger */}
-        {/* We hide the hamburger when the menu is open, because the drawer has its own close button */}
         <button
           onClick={() => setIsMenuOpen(true)}
           className={clsx(
@@ -71,9 +71,6 @@ export default function Navbar() {
           href="/"
           className={clsx(
             "hover:opacity-80 transition-opacity z-40",
-            // You can choose to hide the logo or keep it visible. 
-            // Often with side drawers, keeping the main logo visible is fine unless the drawer covers it.
-            // Based on your previous request, I'll keep it visible but z-index lower than drawer.
             isMenuOpen ? "opacity-0 md:opacity-100" : "opacity-100" 
           )}
         >
@@ -98,16 +95,8 @@ export default function Navbar() {
         </svg>
         </Link>
 
-        {/* Log In Link */}
-        <Link
-          href="/login"
-          className={clsx(
-            "text-sm tracking-widest font-bold uppercase hover:text-[var(--color-gold)] transition-colors text-[var(--color-ink)] z-40",
-            isMenuOpen ? "opacity-0" : "opacity-100"
-          )}
-        >
-          Log in
-        </Link>
+        {/* Spacer to maintain layout balance - replaces login button */}
+        <div className="w-[60px]"></div>
       </nav>
 
       {/* --- SIDE MENU DRAWER & BACKDROP --- */}
@@ -130,10 +119,9 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
               transition={{ type: "spring", stiffness: 300, damping: 30 }}
-              // Dimensions: Fixed width on desktop (approx 350px/25%), full width on tiny screens if needed
-              className="fixed top-0 left-0 bottom-0 z-[70] w-full max-w-sm bg-[#966F47] flex flex-col justify-center items-start pl-12 shadow-2xl"
+              className="fixed top-0 left-0 bottom-0 z-[70] w-full max-w-sm bg-[#966F47]/85 flex flex-col justify-center items-start pl-12 shadow-2xl"
             >
-              {/* Close Button (Top Left - Matching Group 94.png position) */}
+              {/* Close Button */}
               <button
                 onClick={() => setIsMenuOpen(false)}
                 className="absolute top-8 left-8 p-1 rounded-full border border-white/30 hover:bg-white/10 hover:border-white transition-all group"
@@ -145,17 +133,17 @@ export default function Navbar() {
               <div className="flex flex-col gap-8 text-left mt-12">
                 {menuItems.map((item, i) => (
                   <motion.div
-                    key={item}
+                    key={item.label}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.05 + 0.1, duration: 0.4 }}
                   >
                     <Link
-                      href={`#${item.toLowerCase()}`}
+                      href={item.href}
                       onClick={() => setIsMenuOpen(false)}
-                      className="font-serif text-3xl text-white font-light tracking-wide hover:translate-x-2 transition-transform inline-block"
+                      className="font-brilliant-cut text-2xl text-white tracking-wide hover:translate-x-2 transition-transform inline-block uppercase"
                     >
-                      {item}
+                      {item.label}
                     </Link>
                   </motion.div>
                 ))}
