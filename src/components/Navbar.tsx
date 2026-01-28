@@ -141,7 +141,7 @@ export default function Navbar() {
                     <Link
                       href={item.href}
                       onClick={() => setIsMenuOpen(false)}
-                      className="font-brilliant-cut text-2xl text-white tracking-wide hover:translate-x-2 transition-transform inline-block uppercase"
+                      className="font-brilliant-cut text-xl text-white tracking-wide hover:translate-x-2 transition-transform inline-block uppercase"
                     >
                       {item.label}
                     </Link>

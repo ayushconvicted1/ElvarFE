@@ -54,16 +54,16 @@ export default function ServicesNavbar() {
         className={clsx(
           "fixed top-0 w-full z-50 px-6 lg:px-12 transition-all duration-500 ease-in-out",
           isScrolled
-            ? "py-4 bg-[var(--color-paper)]/95 backdrop-blur-md shadow-sm border-b border-[var(--color-ink)]/5"
+            ? "py-4 backdrop-blur-md shadow-sm border-b border-[var(--color-ink)]/5"
             : "py-6 bg-[var(--color-paper)]"
         )}
       >
-        <div className="max-w-7xl mx-auto flex justify-center items-center">
+        <div className="max-w-7xl mx-auto flex justify-center items-center relative">
           {/* Mobile: Hamburger on Left */}
           <button
             onClick={() => setIsMenuOpen(true)}
             className={clsx(
-              "p-2 hover:opacity-70 transition-opacity z-50 lg:hidden absolute left-6",
+              "p-2 hover:opacity-70 transition-opacity z-50 lg:hidden absolute left-2",
               isMenuOpen ? "opacity-0 pointer-events-none" : "opacity-100"
             )}
           >
@@ -113,7 +113,7 @@ export default function ServicesNavbar() {
           </div>
 
           {/* Spacer for Mobile to Center Logo - matches hamburger button */}
-          <div className="p-2 w-6 h-6 lg:hidden absolute right-6" />
+          <div className="p-2 w-6 h-6 lg:hidden absolute right-2" />
         </div>
       </nav>
 
@@ -121,46 +121,50 @@ export default function ServicesNavbar() {
       <AnimatePresence>
         {isMenuOpen && (
           <>
-            {/* Overlay */}
+            {/* Backdrop Overlay (Click to close) */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="fixed inset-0 bg-[var(--color-ink)]/20 backdrop-blur-sm z-40"
               onClick={() => setIsMenuOpen(false)}
+              className="fixed inset-0 z-[60] bg-black/40 backdrop-blur-sm"
             />
 
-            {/* Side Drawer */}
+            {/* Side Drawer (Slides from Left) */}
             <motion.div
               initial={{ x: "-100%" }}
               animate={{ x: 0 }}
               exit={{ x: "-100%" }}
-              transition={{ duration: 0.4, ease: "easeInOut" }}
-              className="fixed left-0 top-0 bottom-0 w-[280px] bg-[var(--color-paper)] shadow-2xl z-50 overflow-y-auto"
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              className="fixed top-0 left-0 bottom-0 z-[70] w-full max-w-sm bg-[#966F47]/85 flex flex-col justify-center items-start pl-12 shadow-2xl"
             >
               {/* Close Button */}
               <button
                 onClick={() => setIsMenuOpen(false)}
-                className="absolute top-6 right-6 p-2 hover:opacity-70 transition-opacity"
+                className="absolute top-8 left-8 p-1 rounded-full border border-white/30 hover:bg-white/10 hover:border-white transition-all group"
               >
-                <X className="w-6 h-6 text-[var(--color-ink)]" strokeWidth={1.5} />
+                <X className="w-6 h-6 text-white group-hover:scale-90 transition-transform" strokeWidth={1} />
               </button>
 
-              {/* Menu Content */}
-              <div className="pt-24 px-8 pb-12">
-                <nav className="flex flex-col gap-6">
-                  {mobileMenuItems.map((item) => (
+              {/* Menu Links */}
+              <div className="flex flex-col gap-8 text-left mt-12">
+                {mobileMenuItems.map((item, i) => (
+                  <motion.div
+                    key={item.label}
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: i * 0.05 + 0.1, duration: 0.4 }}
+                  >
                     <Link
-                      key={item.label}
                       href={item.href}
                       onClick={() => setIsMenuOpen(false)}
-                      className="font-serif text-lg text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors tracking-wide"
+                      className="font-brilliant-cut text-xl text-white tracking-wide hover:translate-x-2 transition-transform inline-block uppercase"
                     >
                       {item.label}
                     </Link>
-                  ))}
-                </nav>
+                  </motion.div>
+                ))}
               </div>
             </motion.div>
           </>

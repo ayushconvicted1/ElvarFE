@@ -315,7 +315,7 @@ export default function Services() {
             {/* Left Arrow */}
             <button
               onClick={handlePrevious}
-              className="flex-shrink-0 w-8 h-8 flex items-center justify-center text-gold hover:text-gold/80 transition-colors active:scale-95"
+              className="flex-shrink-0 w-8 h-8 flex items-center justify-center text-heading hover:text-gold/80 transition-colors active:scale-95"
               aria-label="Previous service"
             >
               <svg 
@@ -346,7 +346,7 @@ export default function Services() {
                 >
                   {/* Current Service - Center (Prominent) */}
                   <div className="flex justify-center items-center px-4">
-                    <div className="text-xl font-medium text-gold italic text-center">
+                    <div className="text-2xl font-medium text-heading italic text-center">
                       {activeService.label}
                     </div>
                   </div>
@@ -357,7 +357,7 @@ export default function Services() {
             {/* Right Arrow */}
             <button
               onClick={handleNext}
-              className="flex-shrink-0 w-8 h-8 flex items-center justify-center text-gold hover:text-gold/80 transition-colors active:scale-95"
+              className="flex-shrink-0 w-8 h-8 flex items-center justify-center text-heading hover:text-gold/80 transition-colors active:scale-95"
               aria-label="Next service"
             >
               <svg 
@@ -477,6 +477,30 @@ export default function Services() {
           </motion.div>
         </AnimatePresence>
       </div>
+
+      {/* Pagination Dots - Mobile Only, Below Video */}
+      {isMobile && (
+        <div className="flex justify-center items-center gap-2 mt-6 w-full">
+          {services.map((service, index) => {
+            const normalizedActiveIndex = ((activeIndex % services.length) + services.length) % services.length;
+            const isActive = index === normalizedActiveIndex;
+            
+            return (
+              <button
+                key={service.id}
+                onClick={() => setActiveIndex(index)}
+                className={clsx(
+                  "w-2 h-2 rounded-full transition-all duration-300",
+                  isActive 
+                    ? "bg-[var(--color-gold)]" 
+                    : "bg-ink/30 hover:bg-ink/50"
+                )}
+                aria-label={`Go to ${service.label}`}
+              />
+            );
+          })}
+        </div>
+      )}
     </section>
   );
 }

@@ -69,7 +69,7 @@ function FeatureCard({ feature }: { feature: typeof features[0] }) {
           )}
         />
       </div>
-      <h3 className="font-cormorant text-2xl mb-3 text-ink">
+      <h3 className="font-cormorant text-gold text-2xl mb-3 text-ink">
         {feature.title}
       </h3>
       <p className="font-light leading-6 opacity-70">{feature.desc}</p>

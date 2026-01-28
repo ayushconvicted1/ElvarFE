@@ -109,8 +109,8 @@ export default function ServicesPage() {
     <section className="w-full py-16 lg:py-24 max-w-7xl mx-auto">
       {/* Header */}
       <div className="text-center mb-16 px-5 lg:mb-24">
-        <h2 className="font-italiano text-5xl text-heading mb-6">
-          Our Services
+        <h2 className="font-italiano text-5xl text-[#0D236D] mb-6">
+          Seven Pillars of Service
         </h2>
         <p className="font-cormorant text-xl lg:text-2xl text-ink/70 max-w-3xl mx-auto leading-relaxed">
           Discover a world of exclusive experiences, curated just for you. From luxury travel to bespoke acquisitions, we bring your vision to life.
@@ -125,7 +125,7 @@ export default function ServicesPage() {
       </div>
 
       {/* How We Work Section */}
-      <div className="mt-20 lg:mt-32">
+      <div>
         <HowWeWork />
       </div>
 

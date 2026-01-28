@@ -32,7 +32,7 @@ export default function HowWeWork() {
     <section ref={ref} className="w-full py-16 lg:py-24 px-6 lg:px-12 max-w-7xl mx-auto">
       {/* Header */}
       <div className="text-center mb-16 lg:mb-20">
-        <h2 className="font-parisienne text-3xl lg:text-4xl text-gold">
+        <h2 className="font-parisienne text-3xl lg:text-4xl text-heading">
           How we work
         </h2>
       </div>
