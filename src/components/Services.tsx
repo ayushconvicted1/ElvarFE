@@ -63,7 +63,7 @@ const services = [
 const VIEWPORT_HEIGHT = 600;
 
 export default function Services() {
-  const [activeIndex, setActiveIndex] = useState(3);
+  const [[activeIndex, direction], setActiveIndex] = useState([3, 0]);
   const [isMobile, setIsMobile] = useState(false);
   const [itemHeight, setItemHeight] = useState(80);
   
@@ -116,15 +116,15 @@ export default function Services() {
   }, [isInView]);
 
   const handleVideoEnd = () => {
-    setActiveIndex((prev) => prev + 1);
+    setActiveIndex(([prev]) => [prev + 1, 1]);
   };
 
   const handlePrevious = () => {
-    setActiveIndex((prev) => prev - 1);
+    setActiveIndex(([prev]) => [prev - 1, -1]);
   };
 
   const handleNext = () => {
-    setActiveIndex((prev) => prev + 1);
+    setActiveIndex(([prev]) => [prev + 1, 1]);
   };
 
   // Touch scroll handler for mobile menu (desktop only now)
@@ -166,9 +166,9 @@ export default function Services() {
 
       if (Math.abs(distance) > minSwipeDistance) {
         if (distance > 0) {
-          setActiveIndex((prev) => prev + 1);
+          setActiveIndex(([prev]) => [prev + 1, 1]);
         } else {
-          setActiveIndex((prev) => prev - 1);
+          setActiveIndex(([prev]) => [prev - 1, -1]);
         }
       }
 
@@ -228,10 +228,10 @@ export default function Services() {
       if (Math.abs(distance) > minSwipeDistance) {
         if (distance > 0) {
           // Swiped left - go to next
-          setActiveIndex((prev) => prev + 1);
+          setActiveIndex(([prev]) => [prev + 1, 1]);
         } else {
           // Swiped right - go to previous
-          setActiveIndex((prev) => prev - 1);
+          setActiveIndex(([prev]) => [prev - 1, -1]);
         }
       }
 
@@ -310,34 +310,31 @@ export default function Services() {
               el.addEventListener('touchmove', handleTouchMove, { passive: false });
               el.addEventListener('touchend', handleTouchEnd, { passive: true });
             }}
-            className="flex items-center justify-between gap-2"
+            className="flex items-center justify-center gap-2"
           >
-            {/* Left Arrow */}
-            <button
-              onClick={handlePrevious}
-              className="flex-shrink-0 w-8 h-8 flex items-center justify-center text-heading hover:text-gold/80 transition-colors active:scale-95"
-              aria-label="Previous service"
-            >
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                fill="none" 
-                viewBox="0 0 24 24" 
-                strokeWidth={2.5} 
-                stroke="currentColor" 
-                className="w-5 h-5"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" />
-              </svg>
-            </button>
-
             {/* Horizontal Carousel */}
             <div className="relative flex-1 h-16 overflow-hidden">
-              <AnimatePresence mode="popLayout" initial={false}>
+              <AnimatePresence mode="popLayout" initial={false} custom={direction}>
                 <motion.div
                   key={activeIndex}
-                  initial={{ x: 100, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: -100, opacity: 0 }}
+                  custom={direction}
+                  variants={{
+                    enter: (direction: number) => ({
+                      x: direction > 0 ? 100 : -100,
+                      opacity: 0
+                    }),
+                    center: {
+                      x: 0,
+                      opacity: 1
+                    },
+                    exit: (direction: number) => ({
+                      x: direction < 0 ? 100 : -100,
+                      opacity: 0
+                    })
+                  }}
+                  initial="enter"
+                  animate="center"
+                  exit="exit"
                   transition={{ 
                     duration: 0.5, 
                     ease: [0.4, 0, 0.2, 1]
@@ -353,24 +350,6 @@ export default function Services() {
                 </motion.div>
               </AnimatePresence>
             </div>
-
-            {/* Right Arrow */}
-            <button
-              onClick={handleNext}
-              className="flex-shrink-0 w-8 h-8 flex items-center justify-center text-heading hover:text-gold/80 transition-colors active:scale-95"
-              aria-label="Next service"
-            >
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                fill="none" 
-                viewBox="0 0 24 24" 
-                strokeWidth={2.5} 
-                stroke="currentColor" 
-                className="w-5 h-5"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />
-              </svg>
-            </button>
           </div>
         </div>
       )}
@@ -416,7 +395,7 @@ export default function Services() {
                   }}
                 >
                   <button
-                    onClick={() => setActiveIndex(index)}
+                    onClick={() => setActiveIndex(([prev]) => [index, index > prev ? 1 : -1])}
                     className={clsx(
                       "group text-left text-xl tracking-wide transition-all duration-300 flex items-center gap-3 relative cursor-pointer",
                       isActive
@@ -488,7 +467,7 @@ export default function Services() {
             return (
               <button
                 key={service.id}
-                onClick={() => setActiveIndex(index)}
+                onClick={() => setActiveIndex(([prev]) => [index, index > (prev % services.length) ? 1 : -1])}
                 className={clsx(
                   "w-2 h-2 rounded-full transition-all duration-300",
                   isActive 

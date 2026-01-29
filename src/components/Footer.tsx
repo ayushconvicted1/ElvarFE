@@ -1,88 +1,82 @@
-"use client";
-import { useState, useEffect } from "react";
-import Link from "next/link";
-import { Menu } from "lucide-react";
-import { clsx } from "clsx";
-import SideMenu from "./SideMenu";
 
-const desktopNavItems = [
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Destinations", href: "#destinations" },
-  { label: "Experiences", href: "#experiences" },
-  { label: "Assets", href: "#assets" },
-  { label: "Membership", href: "#membership" },
-  { label: "Privacy", href: "#privacy" },
-];
+import Image from "next/image";
+import { Facebook, Instagram, Linkedin } from "lucide-react";
 
-const mobileMenuItems = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Membership", href: "/#membership" },
-  { label: "News & Media", href: "/news-media" },
-  { label: "Log In", href: "/login" },
-];
-
-export default function ServicesNavbar() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  // Handle Scroll Effect
-  useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
-    };
-    handleScroll();
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Lock Body Scroll when Menu is Open
-  useEffect(() => {
-    if (isMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-  }, [isMenuOpen]);
-
+export default function Footer() {
   return (
-    <>
-      <nav
-        className={clsx(
-          "fixed top-0 w-full z-50 px-6 lg:px-12 transition-all duration-500 ease-in-out",
-          isScrolled
-            ? "py-4 backdrop-blur-md shadow-sm border-b border-[var(--color-ink)]/5"
-            : "py-6 bg-[var(--color-paper)]"
-        )}
-      >
-        <div className="max-w-7xl mx-auto flex justify-center items-center relative">
-          {/* Mobile: Hamburger on Left */}
-          <button
-            onClick={() => setIsMenuOpen(true)}
-            className={clsx(
-              "p-2 hover:opacity-70 transition-opacity z-50 lg:hidden absolute left-2",
-              isMenuOpen ? "opacity-0 pointer-events-none" : "opacity-100"
-            )}
-          >
-            <Menu
-              className="w-6 h-6 text-[var(--color-ink)]"
-              strokeWidth={1.5}
-            />
-          </button>
+    <footer className="w-full pb-8 px-6 md:px-12 relative z-10">
+      {/* Footer Background Sketch - Desktop Only */}
+      <div className="hidden md:block absolute right-0 bottom-0 w-[500px] h-[400px] z-0 pointer-events-none opacity-90 mix-blend-multiply">
+        <Image
+          src="/FooterImg.png"
+          alt="Social Sketch"
+          fill
+          className="object-contain object-right-bottom"
+          priority
+        />
+      </div>
 
-          {/* Logo - Centered on mobile, absolute positioned on left for desktop */}
-          <Link
-            href="/"
-            className="hover:opacity-80 transition-opacity z-40 lg:absolute lg:left-0"
-          >
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* MOBILE LAYOUT */}
+        <div className="block md:hidden">
+          {/* Top Horizontal Line */}
+          <div className="w-full h-px bg-[var(--color-ink)]/20 mb-12"></div>
+
+          {/* Links in one row with separators */}
+          <div className="flex items-center justify-center gap-4 mb-12 flex-wrap">
+            <a href="#" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-lg tracking-wide">
+              Terms
+            </a>
+            <span className="text-[var(--color-ink)]/40 text-lg">|</span>
+            <a href="#" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-lg tracking-wide">
+              Privacy Policy
+            </a>
+            <span className="text-[var(--color-ink)]/40 text-lg">|</span>
+            <a href="#" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-lg tracking-wide">
+              NDA
+            </a>
+            <span className="text-[var(--color-ink)]/40 text-lg">|</span>
+            <a href="#" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-lg tracking-wide">
+              Compliance
+            </a>
+          </div>
+
+          {/* Social Icons */}
+          <div className="flex gap-6 text-[var(--color-gold)] items-center justify-center mb-8">
+            <a href="#" className="hover:text-[var(--color-ink)] transition-colors">
+              <Facebook strokeWidth={1.5} className="w-5 h-5" />
+            </a>
+            <a href="#" className="hover:text-[var(--color-ink)] transition-colors">
+              <Instagram strokeWidth={1.5} className="w-5 h-5" />
+            </a>
+            <a href="#" className="hover:text-[var(--color-ink)] transition-colors">
+              <Linkedin strokeWidth={1.5} className="w-5 h-5" />
+            </a>
+          </div>
+
+          {/* Footer Image Mobile */}
+          <div className="relative w-full max-w-[600px] h-[200px] mx-auto mb-8 pointer-events-none opacity-90 mix-blend-multiply">
+            <Image
+              src="/FooterImg.png"
+              alt="Social Sketch"
+              fill
+              className="object-contain object-center"
+              priority
+            />
+          </div>
+
+          {/* Copyright Mobile */}
+          <p className="font-serif text-[var(--color-ink)]/50 text-sm tracking-widest text-center">
+            All Copyright Reserved @2026
+          </p>
+        </div>
+
+        {/* DESKTOP LAYOUT */}
+        <div className="hidden md:block">
+          {/* Logo */}
+          <div className="mb-12">
             <svg 
-              className="w-20 h-auto lg:w-24" 
+              className="w-28 h-auto" 
               viewBox="0 0 163 41" 
               fill="none" 
               xmlns="http://www.w3.org/2000/svg"
@@ -100,32 +94,42 @@ export default function ServicesNavbar() {
                 </clipPath>
               </defs>
             </svg>
-          </Link>
-
-          {/* Desktop Navigation - Hidden on Mobile, Centered */}
-          <div className="hidden lg:flex items-center gap-8">
-            {desktopNavItems.map((item) => (
-              <Link
-                key={item.label}
-                href={item.href}
-                className="font-cormorant text-base text-ink/70 hover:text-ink transition-colors"
-              >
-                {item.label}
-              </Link>
-            ))}
           </div>
 
-          {/* Spacer for Mobile to Center Logo - matches hamburger button */}
-          <div className="p-2 w-6 h-6 lg:hidden absolute right-2" />
-        </div>
-      </nav>
+          {/* Links in horizontal row */}
+          <div className="flex items-center gap-4 mb-12">
+            <a href="#" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-sm tracking-wide">
+              Terms
+            </a>
+            <span className="text-[var(--color-ink)]/40 text-sm">|</span>
+            <a href="#" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-sm tracking-wide">
+              Privacy Policy
+            </a>
+            <span className="text-[var(--color-ink)]/40 text-sm">|</span>
+            <a href="#" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-sm tracking-wide">
+              Legal
+            </a>
+          </div>
 
-      {/* Reusable Side Menu */}
-      <SideMenu 
-        isOpen={isMenuOpen} 
-        onClose={() => setIsMenuOpen(false)} 
-        menuItems={mobileMenuItems} 
-      />
-    </>
+          {/* Social Icons */}
+          <div className="flex gap-4 text-[var(--color-gold)] items-center mb-16">
+            <a href="#" className="hover:text-[var(--color-ink)] transition-colors">
+              <Facebook strokeWidth={1.5} className="w-4 h-4" />
+            </a>
+            <a href="#" className="hover:text-[var(--color-ink)] transition-colors">
+              <Instagram strokeWidth={1.5} className="w-4 h-4" />
+            </a>
+            <a href="#" className="hover:text-[var(--color-ink)] transition-colors">
+              <Linkedin strokeWidth={1.5} className="w-4 h-4" />
+            </a>
+          </div>
+
+          {/* Copyright Desktop */}
+          <p className="font-serif text-[var(--color-ink)]/50 text-xs tracking-widest">
+            All Copyright Reserved @2026
+          </p>
+        </div>
+      </div>
+    </footer>
   );
 }

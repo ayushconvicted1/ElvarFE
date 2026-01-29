@@ -7,22 +7,28 @@ import SideMenu from "./SideMenu";
 
 const menuItems = [
   { label: "Home", href: "/" },
-  { label: "About", href: "/#about" },
+  { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Membership", href: "/#membership" },
-  { label: "News & Media", href: "/#news" },
+  { label: "News & Media", href: "/news-media" },
   { label: "Log In", href: "/login" },
 ];
 
-export default function Navbar() {
+interface NavbarProps {
+  variant?: "home" | "standard";
+}
+
+export default function Navbar({ variant = "home" }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   // Handle Scroll Effect
   useEffect(() => {
     const handleScroll = () => {
-      const heroHeight = window.innerHeight * 1.4;
-      if (window.scrollY > heroHeight - 80) {
+      // Different threshold based on variant
+      const threshold = variant === "home" ? window.innerHeight * 1.4 - 80 : 50;
+      
+      if (window.scrollY > threshold) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -31,7 +37,7 @@ export default function Navbar() {
     handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [variant]);
 
   // Lock Body Scroll when Menu is Open
   useEffect(() => {
@@ -49,7 +55,9 @@ export default function Navbar() {
           "fixed top-0 w-full z-50 px-6 flex justify-center items-center transition-all duration-500 ease-in-out",
           isScrolled && !isMenuOpen
             ? "py-4 bg-[var(--color-paper)]/85 backdrop-blur-md shadow-sm border-b border-[var(--color-ink)]/5"
-            : "py-6 bg-transparent mix-blend-multiply"
+            : variant === "standard"
+              ? "py-6 bg-[var(--color-paper)]"
+              : "py-6 bg-transparent mix-blend-multiply"
         )}
       >
         {/* Hamburger Trigger */}

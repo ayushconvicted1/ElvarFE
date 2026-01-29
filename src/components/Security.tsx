@@ -5,7 +5,7 @@ export default function Security() {
   return (
     <section className="py-24">
       <div className="text-center mb-16">
-        <h2 className="font-italiano text-4xl lg:text-5xl text-heading mb-6">
+        <h2 className="font-italiano text-[35px] text-heading mb-6">
           Your life remains yours
         </h2>
         <p className="opacity-70 text-lg max-w-xl mx-auto">
