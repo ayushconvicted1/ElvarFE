@@ -307,7 +307,7 @@ export default function Services() {
                 >
                   {/* Current Service - Center (Prominent) */}
                   <div className="flex justify-center items-center">
-                    <div className="text-[35px] font-medium text-heading font-italiano text-center">
+                    <div className="text-[32px] font-medium text-heading font-italiano text-center">
                       {getText(activeService.label, language)}
                     </div>
                   </div>
