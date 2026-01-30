@@ -1,13 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
-import { Plus, Minus } from "lucide-react";
-import Image from "next/image";
-
-
+import { useLanguage, getText } from "@/context/LanguageContext";
 
 export default function OurLocations() {
   const [open, setOpen] = useState<number | null>(null);
   const [isMobile, setIsMobile] = useState(false);
+  const { language, t } = useLanguage();
 
   // Detect mobile device
   useEffect(() => {
@@ -26,11 +24,10 @@ export default function OurLocations() {
       {/* FAQ */}
       <div className="mx-auto">
         <h2 className="font-italiano text-[35px] text-center text-heading mb-6">
-          Our locations
+          {getText(t.ourLocations.heading, language)}
         </h2>
         <p className="opacity-70 text-lg max-w-xl mx-auto text-center">
-        In a world where data is everywhere, Elvār Private is committed to protecting yours.
-        We understand that your lifestyle demands the highest levels of confidentiality.
+          {getText(t.ourLocations.description, language)}
         </p>
         <div className="w-full h-full flex justify-center mt-12">
           <div className="w-full max-w-5xl aspect-video md:aspect-auto">

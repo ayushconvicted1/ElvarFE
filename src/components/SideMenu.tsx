@@ -2,6 +2,7 @@
 import Link from "next/link";
 import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 interface MenuItem {
   label: string;
@@ -35,18 +36,19 @@ export default function SideMenu({ isOpen, onClose, menuItems }: SideMenuProps) 
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
-            className="fixed top-0 left-0 bottom-0 z-[70] w-full max-w-sm bg-[#966F47]/85 flex flex-col justify-center items-start pl-12 shadow-2xl"
+            className="fixed top-0 left-0 bottom-0 z-[70] w-[280px] max-w-[75vw] flex flex-col justify-start items-start pl-8 pt-24 shadow-2xl"
+            style={{ backgroundColor: '#CC9B76F0' }}
           >
             {/* Close Button */}
             <button
               onClick={onClose}
-              className="absolute top-8 left-8 p-1 rounded-full border border-white/30 hover:bg-white/10 hover:border-white transition-all group"
+              className="absolute top-6 left-6 p-1 rounded-full border border-white/30 hover:bg-white/10 hover:border-white transition-all group"
             >
-              <X className="w-6 h-6 text-white group-hover:scale-90 transition-transform" strokeWidth={1} />
+              <X className="w-5 h-5 text-white group-hover:scale-90 transition-transform" strokeWidth={1} />
             </button>
 
             {/* Menu Links */}
-            <div className="flex flex-col gap-8 text-left mt-12">
+            <div className="flex flex-col gap-6 text-left mt-8">
               {menuItems.map((item, i) => (
                 <motion.div
                   key={item.label}
@@ -57,13 +59,23 @@ export default function SideMenu({ isOpen, onClose, menuItems }: SideMenuProps) 
                   <Link
                     href={item.href}
                     onClick={onClose}
-                    className="font-brilliant-cut text-xl text-white tracking-wide hover:translate-x-2 transition-transform inline-block uppercase"
+                    className="font-brilliant-cut text-base text-white tracking-wide hover:translate-x-2 transition-transform inline-block uppercase"
                   >
                     {item.label}
                   </Link>
                 </motion.div>
               ))}
             </div>
+
+            {/* Language Switcher at Bottom */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.4, duration: 0.4 }}
+              className="absolute bottom-10 left-8"
+            >
+              <LanguageSwitcher variant="sidemenu" />
+            </motion.div>
           </motion.div>
         </>
       )}

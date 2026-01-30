@@ -1,85 +1,33 @@
 "use client";
+import { useState } from "react";
+import Link from "next/link";
 import Image from "next/image";
-import { Facebook, Instagram, Linkedin } from "lucide-react";
+import { Eye, EyeOff, ArrowLeft } from "lucide-react";
 import { useLanguage, getText } from "@/context/LanguageContext";
 
-export default function Footer() {
+export default function LoginContent() {
+  const [showPassword, setShowPassword] = useState(false);
   const { language, t } = useLanguage();
 
   return (
-    <footer className="w-full pb-8 px-6 md:px-12 relative z-10">
-      {/* Footer Background Sketch - Desktop Only */}
-      <div className="hidden md:block absolute right-0 bottom-0 w-[500px] h-[400px] z-0 pointer-events-none opacity-90 mix-blend-multiply">
-        <Image
-          src="/FooterImg.png"
-          alt="Social Sketch"
-          fill
-          className="object-contain object-right-bottom"
-          priority
-        />
+    <main className="min-h-screen w-full relative flex flex-col p-6 overflow-hidden bg-[var(--color-paper)]">
+      
+      {/* Back Button - Mobile Only */}
+      <div className="absolute top-6 left-6 z-30">
+        <Link 
+          href="/" 
+          className="flex items-center justify-center w-10 h-10 text-[var(--color-ink)] hover:text-[var(--color-gold)] transition-colors"
+          aria-label="Go back to home"
+        >
+          <ArrowLeft className="w-6 h-6" strokeWidth={1.5} />
+        </Link>
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
-        {/* MOBILE LAYOUT */}
-        <div className="block md:hidden">
-          {/* Top Horizontal Line */}
-          <div className="w-full h-px bg-[var(--color-ink)]/20 mb-12"></div>
-
-          {/* Links in one row with separators */}
-          <div className="flex items-center justify-center gap-4 mb-12 flex-wrap">
-            <a href="/terms" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-lg tracking-wide">
-              {getText(t.footer.terms, language)}
-            </a>
-            <span className="text-[var(--color-ink)]/40 text-lg">|</span>
-            <a href="/privacy" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-lg tracking-wide">
-              {getText(t.footer.privacyPolicy, language)}
-            </a>
-            <span className="text-[var(--color-ink)]/40 text-lg">|</span>
-            <a href="/nda" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-lg tracking-wide">
-              {getText(t.footer.nda, language)}
-            </a>
-            <span className="text-[var(--color-ink)]/40 text-lg">|</span>
-            <a href="/compliance" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-lg tracking-wide">
-              {getText(t.footer.compliance, language)}
-            </a>
-          </div>
-
-          {/* Social Icons */}
-          <div className="flex gap-6 text-[var(--color-gold)] items-center justify-center mb-8">
-            <a href="#" className="hover:text-[var(--color-ink)] transition-colors">
-              <Facebook strokeWidth={1} className="w-5 h-5" />
-            </a>
-            <a href="#" className="hover:text-[var(--color-ink)] transition-colors">
-              <Instagram strokeWidth={1} className="w-5 h-5" />
-            </a>
-            <a href="#" className="hover:text-[var(--color-ink)] transition-colors">
-              <Linkedin strokeWidth={1} className="w-5 h-5" />
-            </a>
-          </div>
-
-          {/* Footer Image Mobile */}
-          <div className="relative w-full max-w-[600px] h-[200px] mx-auto mb-8 pointer-events-none opacity-90 mix-blend-multiply">
-            <Image
-              src="/FooterImg.png"
-              alt="Social Sketch"
-              fill
-              className="object-contain object-center"
-              priority
-            />
-          </div>
-
-          {/* Copyright Mobile */}
-          <p className="font-serif text-[var(--color-ink)]/50 text-sm tracking-widest text-center">
-            {getText(t.footer.copyright, language)}
-          </p>
-        </div>
-
-        {/* DESKTOP LAYOUT */}
-        <div className="hidden md:block">
-          {/* Logo */}
-          <div className="mb-12">
-            <svg 
-              className="w-28 h-auto" 
+      {/* 1. Centered Logo */}
+      <div className="w-full flex justify-center pt-8 pb-4 lg:absolute lg:top-12 lg:py-0 z-20">
+        <Link href="/" className="hover:opacity-80 transition-opacity">
+           <svg 
+              className="w-24 md:w-28 h-auto" 
               viewBox="0 0 163 41" 
               fill="none" 
               xmlns="http://www.w3.org/2000/svg"
@@ -97,46 +45,87 @@ export default function Footer() {
                 </clipPath>
               </defs>
             </svg>
-          </div>
-
-          {/* Links in horizontal row */}
-          <div className="flex items-center gap-4 mb-12">
-            <a href="/terms" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-sm tracking-wide">
-              {getText(t.footer.terms, language)}
-            </a>
-            <span className="text-[var(--color-ink)]/40 text-sm">|</span>
-            <a href="/privacy" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-sm tracking-wide">
-              {getText(t.footer.privacyPolicy, language)}
-            </a>
-            <span className="text-[var(--color-ink)]/40 text-sm">|</span>
-            <a href="/nda" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-sm tracking-wide">
-              {getText(t.footer.nda, language)}
-            </a>
-            <span className="text-[var(--color-ink)]/40 text-sm">|</span>
-            <a href="/compliance" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-sm tracking-wide">
-              {getText(t.footer.compliance, language)}
-            </a>
-          </div>
-
-          {/* Social Icons */}
-          <div className="flex gap-4 text-[var(--color-gold)] items-center mb-16">
-            <a href="#" className="hover:text-[var(--color-ink)] transition-colors">
-              <Facebook strokeWidth={1} className="w-4 h-4" />
-            </a>
-            <a href="#" className="hover:text-[var(--color-ink)] transition-colors">
-              <Instagram strokeWidth={1} className="w-4 h-4" />
-            </a>
-            <a href="#" className="hover:text-[var(--color-ink)] transition-colors">
-              <Linkedin strokeWidth={1} className="w-4 h-4" />
-            </a>
-          </div>
-
-          {/* Copyright Desktop */}
-          <p className="font-serif text-[var(--color-ink)]/50 text-xs tracking-widest">
-            {getText(t.footer.copyright, language)}
-          </p>
-        </div>
+        </Link>
       </div>
-    </footer>
+
+      {/* 2. Main Layout Container */}
+      <div className="flex-grow flex flex-col lg:flex-row items-center justify-center w-full max-w-[1920px] mx-auto mt-0 lg:mt-20 lg:h-[calc(100vh-100px)] gap-4">
+        
+        {/* Building Image - Visible on Mobile and Desktop */}
+        <div className="w-full lg:w-[50%] flex justify-center items-center px-6 lg:px-0 lg:h-full">
+          <div className="relative w-full max-w-[400px] lg:max-w-none lg:w-full lg:h-full">
+            <Image 
+              src="/LoginImg.png" 
+              alt="Login Visual" 
+              width={400}
+              height={400}
+              className="w-full h-auto lg:w-auto lg:h-full object-contain object-center mix-blend-multiply opacity-90"
+              priority
+            />
+          </div>
+        </div>
+
+        {/* Right Side Form */}
+        <div className="w-full lg:w-[40%] flex justify-center items-center p-0 lg:p-8">
+          <div className="w-full max-w-[480px] bg-[var(--color-paper)] border border-[var(--color-ink)]/20 p-6 md:p-12 shadow-[0_4px_20px_-2px_rgba(0,0,0,0.05)] relative">
+            <form className="space-y-10">
+              {/* Form Content (Same as before) */}
+              <div className="space-y-2">
+                <label className="block font-serif text-xl text-[var(--color-ink)]">
+                  {getText(t.login.emailId, language)}<span className="text-[var(--color-ink)]/60">*</span>
+                </label>
+                <input 
+                  type="email" 
+                  placeholder="demo@gmail.com" 
+                  className="w-full bg-transparent border-b border-[var(--color-gold)] py-3 text-[var(--color-gold)] placeholder:text-[var(--color-gold)]/60 font-serif text-lg focus:outline-none focus:border-[var(--color-ink)] transition-colors"
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label className="block font-serif text-xl text-[var(--color-ink)]">
+                  {getText(t.login.password, language)}<span className="text-[var(--color-ink)]/60">*</span>
+                </label>
+                <div className="relative">
+                  <input 
+                    type={showPassword ? "text" : "password"}
+                    placeholder="***********" 
+                    className="w-full bg-transparent border-b border-[var(--color-gold)] py-3 text-[var(--color-gold)] placeholder:text-[var(--color-gold)]/60 font-serif text-lg focus:outline-none focus:border-[var(--color-ink)] transition-colors pr-10"
+                  />
+                  <button 
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 text-[var(--color-gold)] hover:text-[var(--color-ink)] transition-colors"
+                  >
+                    {showPassword ? <Eye size={20} strokeWidth={1.5} /> : <EyeOff size={20} strokeWidth={1.5} />}
+                  </button>
+                </div>
+              </div>
+
+              <div className="flex justify-end pt-2">
+                <Link href="#" className="font-serif text-lg text-[var(--color-ink)]/80 hover:text-[var(--color-ink)]">
+                  {getText(t.login.forgotPassword, language)}
+                </Link>
+              </div>
+
+              <div className="flex justify-center pt-4">
+                <button 
+                  type="button"
+                  className="font-brilliant-cut bg-[#0D236D] text-white px-12 py-3.5 text-xs tracking-[0.2em] uppercase hover:bg-[#0D236D]/90 transition-colors w-40"
+                >
+                  {getText(t.login.logIn, language)}
+                </button>
+              </div>
+
+              <div className="text-center text-lg pt-4 space-y-1">
+                <p className="font-serif text-[var(--color-ink)] text-md">
+                  {getText(t.login.notAMember, language)} <span className="italic font-bold">Elvar</span> {getText(t.login.privateMember, language)} <Link href="/#contact-form" className="underline hover:text-[var(--color-gold)] transition-colors">{getText(t.login.requestInvitation, language)}</Link>
+                </p>
+              </div>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </main>
   );
 }

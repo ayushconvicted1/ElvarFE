@@ -3,30 +3,11 @@ import { useRef } from "react";
 import Image from "next/image";
 import { useInView } from "framer-motion";
 import { clsx } from "clsx";
+import { useLanguage, getText } from "@/context/LanguageContext";
 
-const features = [
-  {
-    title: "Unrivaled Access",
-    desc: "Gain entry to exclusive events, private clubs, and sought-after destinations.",
-    img: "/Curated1.png",
-    hoverImg: "/Curated1Hover.png",
-  },
-  {
-    title: "Curated Access",
-    desc: "Every request is met with tailored solutions, anticipating your needs.",
-    img: "/Curated2.png",
-    hoverImg: "/Curated2Hover.png",
-  },
-  {
-    title: "Discreet & Private",
-    desc: "Your privacy is paramount. We operate with the utmost confidentiality.",
-    img: "/Curated3.png",
-    hoverImg: "/Curated3Hover.png",
-  },
-];
-
-function FeatureCard({ feature }: { feature: typeof features[0] }) {
+function FeatureCard({ feature, index }: { feature: { title: { en: string; fr: string }; desc: { en: string; fr: string }; img: string; hoverImg: string }; index: number }) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const { language } = useLanguage();
   // Detect if card is in view (triggers when element reaches center of screen)
   const isInView = useInView(containerRef, { margin: "-50% 0px -50% 0px", once: false });
 
@@ -42,7 +23,7 @@ function FeatureCard({ feature }: { feature: typeof features[0] }) {
             Desktop Logic (md:): Always stays visible (opacity-100) initially. Fades OUT only on HOVER. */}
         <Image
           src={feature.img}
-          alt={feature.title}
+          alt={getText(feature.title, language)}
           fill
           className={clsx(
             "object-cover grayscale mix-blend-multiply transition-all duration-1000",
@@ -58,7 +39,7 @@ function FeatureCard({ feature }: { feature: typeof features[0] }) {
             Desktop Logic (md:): Always starts hidden (opacity-0). Fades IN only on HOVER. */}
         <Image
           src={feature.hoverImg}
-          alt={feature.title}
+          alt={getText(feature.title, language)}
           fill
           className={clsx(
             "object-cover mix-blend-multiply transition-all duration-1000",
@@ -70,29 +51,37 @@ function FeatureCard({ feature }: { feature: typeof features[0] }) {
         />
       </div>
       <h3 className="font-cormorant text-gold text-2xl mb-3 text-ink">
-        {feature.title}
+        {getText(feature.title, language)}
       </h3>
-      <p className="font-light leading-6 opacity-70">{feature.desc}</p>
+      <p className="font-light leading-6 opacity-70">{getText(feature.desc, language)}</p>
     </div>
   );
 }
 
 export default function Features() {
+  const { language, t } = useLanguage();
+
+  const features = t.features.items.map((item, index) => ({
+    title: item.title,
+    desc: item.desc,
+    img: `/Curated${index + 1}.png`,
+    hoverImg: `/Curated${index + 1}Hover.png`,
+  }));
+
   return (
     <section className="pb-24 lg:py-24 lg:px-20 px-6 max-w-7xl mx-auto">
       <div className="text-center mb-16">
         <h2 className="font-italiano text-[35px] text-heading mb-4">
-          Curated for the few
+          {getText(t.features.heading, language)}
         </h2>
         <p className="max-w-2xl text-lg mx-auto leading-relaxed opacity-80">
-          Elvār Private operates on the principles of absolute discretion,
-          unparalleled access, and unwavering reliability.
+          {getText(t.features.description, language)}
         </p>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {features.map((f, i) => (
-          <FeatureCard key={i} feature={f} />
+          <FeatureCard key={i} feature={f} index={i} />
         ))}
       </div>
     </section>

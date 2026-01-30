@@ -1,45 +1,28 @@
 "use client";
 import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
-
-const faqs = [
-  {
-    question: "How does ELVAR differ from traditional luxury concierge services?",
-    answer: "ELVAR does not operate as a visible service provider. We function as a private access orchestration layer—quietly aligning trusted partners to deliver outcomes without attribution, exposure, or unnecessary interaction."
-  },
-  {
-    question: "How is membership granted?",
-    answer: "Membership is strictly invitation-only. Prospective members are admitted through private referral and internal alignment processes. ELVAR is not applied to—it is extended."
-  },
-  {
-    question: "How does ELVAR protect member privacy?",
-    answer: "Privacy is embedded at every level of operation. We practice data minimization, compartmentalized execution, and strict confidentiality agreements across our ecosystem. Information exists only where absolutely required."
-  },
-  {
-    question: "What type of individuals does ELVAR serve?",
-    answer: "ELVAR serves individuals whose lives, movements, and decisions require separation from public systems. Our members value control, discretion, and reliability over recognition or display."
-  }
-];
+import { useLanguage, getText } from "@/context/LanguageContext";
 
 export default function ContactSection() {
   const [open, setOpen] = useState<number | null>(null);
+  const { language, t } = useLanguage();
 
   return (
     <section className="py-24 px-6">
       {/* FAQ */}
       <div className="max-w-2xl mx-auto mb-32">
         <h2 className="font-italiano text-[35px] text-center text-heading mb-6">
-          Frequently asked questions
+          {getText(t.contact.faqHeading, language)}
         </h2>
         <div className="border-t border-[var(--color-ink)]/20">
-          {faqs.map((faq, i) => (
+          {t.contact.faqs.map((faq, i) => (
             <div key={i} className="border-b border-[var(--color-ink)]/20">
               <button
                 onClick={() => setOpen(open === i ? null : i)}
                 className="w-full py-6 flex justify-between items-center text-left hover:bg-black/5 px-2 transition-colors"
               >
                 <span className="font-cormorant text-xl text-[var(--color-ink)]">
-                  {faq.question}
+                  {getText(faq.question, language)}
                 </span>
                 {open === i ? (
                   <Minus className="w-5 h-5 text-[var(--color-gold)]" />
@@ -49,7 +32,7 @@ export default function ContactSection() {
               </button>
               {open === i && (
                 <div className="pb-6 px-2 font-light leading-relaxed text-[var(--color-ink)]/80 text-lg">
-                  {faq.answer}
+                  {getText(faq.answer, language)}
                 </div>
               )}
             </div>
@@ -60,18 +43,17 @@ export default function ContactSection() {
       {/* Form */}
       <div id="contact-form" className="max-w-xl mx-auto text-center">
         <h2 className="font-italiano text-[35px] text-heading mb-3">
-          Request Invitation
+          {getText(t.contact.formHeading, language)}
         </h2> 
         <p className="mb-12 opacity-80 font-cormorant text-lg">
-          Complete the form below and our membership team will be in touch
-          within 48 hours.
+          {getText(t.contact.formDescription, language)}
         </p>
 
         <form className="space-y-10 text-left">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="group">
               <label className="block text-base md:text-lg font-cormorant text-[var(--color-ink)] mb-2">
-                First Name
+                {getText(t.contact.firstName, language)}
               </label>
               <input
                 type="text"
@@ -80,7 +62,7 @@ export default function ContactSection() {
             </div>
             <div className="group">
               <label className="block text-base md:text-lg font-cormorant text-[var(--color-ink)] mb-2">
-                Last Name
+                {getText(t.contact.lastName, language)}
               </label>
               <input
                 type="text"
@@ -91,7 +73,7 @@ export default function ContactSection() {
 
           <div>
             <label className="block text-base md:text-lg font-cormorant text-[var(--color-ink)] mb-2">
-              Email ID
+              {getText(t.contact.emailId, language)}
             </label>
             <input
               type="email"
@@ -101,7 +83,7 @@ export default function ContactSection() {
 
           <div>
             <label className="block text-base md:text-lg font-cormorant text-[var(--color-ink)] mb-2">
-              Phone No.
+              {getText(t.contact.phoneNo, language)}
             </label>
             <input
               type="tel"
@@ -111,7 +93,7 @@ export default function ContactSection() {
 
           <div>
             <label className="block text-base md:text-lg font-cormorant text-[var(--color-ink)] mb-2">
-              Tell us about yourself
+              {getText(t.contact.tellUsAbout, language)}
             </label>
             <textarea
               rows={4}
@@ -121,7 +103,7 @@ export default function ContactSection() {
 
           <div className="text-center pt-8">
             <button className="font-brilliant-cut bg-gold hover:bg-heading text-white px-12 py-4 text-sm tracking-[0.2em] uppercase w-full md:w-auto shadow-md transition-all active:scale-95">
-              Submit
+              {getText(t.contact.submit, language)}
             </button>
           </div>
         </form>

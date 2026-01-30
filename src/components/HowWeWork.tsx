@@ -2,38 +2,28 @@
 import { useRef } from "react";
 import Image from "next/image";
 import { useInView, motion } from "framer-motion";
+import { useLanguage, getText } from "@/context/LanguageContext";
 
-const steps = [
-  {
-    id: 1,
-    title: "You brief us",
-    description: "Share your requirements via secure channels. We confirm scope, timeline, and any special considerations.",
-    icon: "/BriefUs.svg"
-  },
-  {
-    id: 2,
-    title: "We execute",
-    description: "Our team coordinates all logistics, vetting, and preparation—keeping you informed at key milestones.",
-    icon: "/Execute.svg"
-  },
-  {
-    id: 3,
-    title: "You experience",
-    description: "Everything is ready when you arrive. If something changes, we adapt in real-time—no friction, no delays.",
-    icon: "/Experience.svg"
-  },
-];
+const stepIcons = ["/BriefUs.svg", "/Execute.svg", "/Experience.svg"];
 
 export default function HowWeWork() {
   const ref = useRef<HTMLDivElement>(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const { language, t } = useLanguage();
+
+  const steps = t.howWeWork.steps.map((step, index) => ({
+    id: index + 1,
+    title: step.title,
+    description: step.description,
+    icon: stepIcons[index],
+  }));
 
   return (
     <section ref={ref} className="w-full py-16 lg:py-24 px-6 lg:px-12 max-w-7xl mx-auto">
       {/* Header */}
       <div className="text-center mb-16 lg:mb-20">
         <h2 className="font-italiano text-[35px] text-heading">
-          How we work
+          {getText(t.howWeWork.heading, language)}
         </h2>
       </div>
 
@@ -55,7 +45,7 @@ export default function HowWeWork() {
                   {/* Detailed seal SVG */}
                   <Image
                     src={step.icon}
-                    alt={step.title}
+                    alt={getText(step.title, language)}
                     width={100}
                     height={100}
                     className="w-full h-full text-ink/60"
@@ -71,10 +61,10 @@ export default function HowWeWork() {
               {/* Content */}
               <div className="flex-1">
                 <h3 className="font-cormorant text-2xl lg:text-3xl text-ink font-medium mb-2">
-                  {step.title}
+                  {getText(step.title, language)}
                 </h3>
                 <p className="font-cormorant text-base lg:text-lg text-ink/70 leading-relaxed">
-                  {step.description}
+                  {getText(step.description, language)}
                 </p>
               </div>
             </motion.div>

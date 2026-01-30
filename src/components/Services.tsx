@@ -2,62 +2,18 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { clsx } from "clsx";
+import { useLanguage, getText } from "@/context/LanguageContext";
 
-const services = [
-  {
-    id: "cars",
-    label: "Luxury & Sports Cars",
-    video: "/Cars.mp4",
-    mobileVideo: "/CarsMob.mp4",
-  },
-  {
-    id: "dining",
-    label: "Fine Dining & Omakase Experiences",
-    video: "/Omakase.mp4",
-    mobileVideo: "/OmakaseMob.mp4",
-  },
-  {
-    id: "aviation",
-    label: "Private Aviation",
-    video: "/PrivateJet.mp4",
-    mobileVideo: "/PrivateJetMob.mp4",
-  },
-  {
-    id: "yachts",
-    label: "Yachts & Maritime Access",
-    video: "/Yacht.mp4",
-    mobileVideo: "/YachtMob.mp4",
-  },
-  {
-    id: "living",
-    label: "Residences & Global Living",
-    video: "/Residences.mp4",
-    mobileVideo: "/ResidencesMob.mp4",
-  },
-  {
-    id: "travel",
-    label: "Destinations & Travel Design",
-    video: "/Destination.mp4",
-    mobileVideo: "/DestinationsMob.mp4",
-  },
-  {
-    id: "curated",
-    label: "Experiences & Curated Moments",
-    video: "/Experiences.mp4",
-    mobileVideo: "/ExperiencesMob.mp4",
-  },
-  {
-    id: "assets",
-    label: "Assets & Acquisition",
-    video: "/Assets.mp4",
-    mobileVideo: "/AssetsMob.mp4",
-  },
-  {
-    id: "wellness",
-    label: "Wellness & Personal Care",
-    video: "/Wellness.mp4",
-    mobileVideo: "/WellnessMob.mp4",
-  }
+const serviceVideos = [
+  { video: "/Cars.mp4", mobileVideo: "/CarsMob.mp4" },
+  { video: "/Omakase.mp4", mobileVideo: "/OmakaseMob.mp4" },
+  { video: "/PrivateJet.mp4", mobileVideo: "/PrivateJetMob.mp4" },
+  { video: "/Yacht.mp4", mobileVideo: "/YachtMob.mp4" },
+  { video: "/Residences.mp4", mobileVideo: "/ResidencesMob.mp4" },
+  { video: "/Destination.mp4", mobileVideo: "/DestinationsMob.mp4" },
+  { video: "/Experiences.mp4", mobileVideo: "/ExperiencesMob.mp4" },
+  { video: "/Assets.mp4", mobileVideo: "/AssetsMob.mp4" },
+  { video: "/Wellness.mp4", mobileVideo: "/WellnessMob.mp4" },
 ];
 
 const VIEWPORT_HEIGHT = 600;
@@ -66,12 +22,20 @@ export default function Services() {
   const [[activeIndex, direction], setActiveIndex] = useState([3, 0]);
   const [isMobile, setIsMobile] = useState(false);
   const [itemHeight, setItemHeight] = useState(80);
+  const { language, t } = useLanguage();
   
   const containerRef = useRef<HTMLDivElement>(null);
   const menuRef = useRef<HTMLDivElement>(null);
   const videoContainerRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(containerRef, { amount: 0.3 });
   const currentVideoRef = useRef<HTMLVideoElement | null>(null);
+
+  // Get services with translations
+  const services = t.services.items.map((label, index) => ({
+    id: `service-${index}`,
+    label,
+    ...serviceVideos[index],
+  }));
 
   // Detect mobile device
   useEffect(() => {
@@ -342,9 +306,9 @@ export default function Services() {
                   className="absolute inset-0 flex items-center justify-center"
                 >
                   {/* Current Service - Center (Prominent) */}
-                  <div className="flex justify-center items-center px-4">
-                    <div className="text-2xl font-medium text-heading italic text-center">
-                      {activeService.label}
+                  <div className="flex justify-center items-center">
+                    <div className="text-[35px] font-medium text-heading font-italiano text-center">
+                      {getText(activeService.label, language)}
                     </div>
                   </div>
                 </motion.div>
@@ -413,7 +377,7 @@ export default function Services() {
                     </span>
 
                     <span className="text-2xl italic font-medium">
-                      {service.label}
+                      {getText(service.label, language)}
                     </span>
                   </button>
                 </div>
@@ -474,7 +438,7 @@ export default function Services() {
                     ? "bg-[var(--color-gold)]" 
                     : "bg-ink/30 hover:bg-ink/50"
                 )}
-                aria-label={`Go to ${service.label}`}
+                aria-label={`Go to ${getText(service.label, language)}`}
               />
             );
           })}

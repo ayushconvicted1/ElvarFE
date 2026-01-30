@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Lato, Parisienne, Italianno } from "next/font/google";
 import localFont from "next/font/local";
+import { LanguageProvider } from "@/context/LanguageContext";
 import "./globals.css";
 
 const cormorant = localFont({
@@ -86,7 +87,7 @@ const brilliantCut = localFont({
 });
 export const metadata: Metadata = {
   title: "ELVĀR | Private Access",
-  description: "Curated for the few.",
+  description: "Curated for the few. Exclusive luxury concierge services with unparalleled access and absolute discretion.",
 };
 
 export default function RootLayout({
@@ -98,8 +99,11 @@ export default function RootLayout({
     <html lang="en" className={`${cormorant.variable} ${lato.variable} ${parisienne.variable} ${italianno.variable} ${brilliantCut.variable}`}>
       {/* We add the variables here so Tailwind can see them */}
       <body className="antialiased">
-        {children}
+        <LanguageProvider>
+          {children}
+        </LanguageProvider>
       </body>
     </html>
   );
 }
+

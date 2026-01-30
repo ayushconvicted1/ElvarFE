@@ -4,15 +4,8 @@ import Link from "next/link";
 import { Menu } from "lucide-react";
 import { clsx } from "clsx";
 import SideMenu from "./SideMenu";
-
-const menuItems = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Membership", href: "/#membership" },
-  { label: "News & Media", href: "/news-media" },
-  { label: "Log In", href: "/login" },
-];
+import LanguageSwitcher from "./LanguageSwitcher";
+import { useLanguage, getText } from "@/context/LanguageContext";
 
 interface NavbarProps {
   variant?: "home" | "standard";
@@ -21,6 +14,16 @@ interface NavbarProps {
 export default function Navbar({ variant = "home" }: NavbarProps) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { language, t } = useLanguage();
+
+  const menuItems = [
+    { label: getText(t.nav.home, language), href: "/" },
+    { label: getText(t.nav.about, language), href: "/about" },
+    { label: getText(t.nav.services, language), href: "/services" },
+    { label: getText(t.nav.membership, language), href: "/membership" },
+    { label: getText(t.nav.newsMedia, language), href: "/news-media" },
+    { label: getText(t.nav.login, language), href: "/login" },
+  ];
 
   // Handle Scroll Effect
   useEffect(() => {
@@ -103,8 +106,10 @@ export default function Navbar({ variant = "home" }: NavbarProps) {
         </svg>
         </Link>
 
-        {/* Spacer to balance hamburger button for perfect centering */}
-        <div className="p-2 w-6 h-6 absolute right-6"></div>
+        {/* Language Switcher - Right side */}
+        <div className="absolute right-6 z-40">
+          <LanguageSwitcher variant="navbar" />
+        </div>
       </nav>
 
       {/* Reusable Side Menu */}

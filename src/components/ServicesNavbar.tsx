@@ -4,29 +4,32 @@ import Link from "next/link";
 import { Menu } from "lucide-react";
 import { clsx } from "clsx";
 import SideMenu from "./SideMenu";
-
-const desktopNavItems = [
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Destinations", href: "#destinations" },
-  { label: "Experiences", href: "#experiences" },
-  { label: "Assets", href: "#assets" },
-  { label: "Membership", href: "#membership" },
-  { label: "Privacy", href: "#privacy" },
-];
-
-const mobileMenuItems = [
-  { label: "Home", href: "/" },
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Membership", href: "/#membership" },
-  { label: "News & Media", href: "/news-media" },
-  { label: "Log In", href: "/login" },
-];
+import LanguageSwitcher from "./LanguageSwitcher";
+import { useLanguage, getText } from "@/context/LanguageContext";
 
 export default function ServicesNavbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { language, t } = useLanguage();
+
+  const desktopNavItems = [
+    { label: getText(t.nav.about, language), href: "/about" },
+    { label: getText(t.nav.services, language), href: "/services" },
+    { label: getText(t.nav.destinations, language), href: "#destinations" },
+    { label: getText(t.nav.experiences, language), href: "#experiences" },
+    { label: getText(t.nav.assets, language), href: "#assets" },
+    { label: getText(t.nav.membership, language), href: "#membership" },
+    { label: getText(t.nav.privacy, language), href: "#privacy" },
+  ];
+
+  const mobileMenuItems = [
+    { label: getText(t.nav.home, language), href: "/" },
+    { label: getText(t.nav.about, language), href: "/about" },
+    { label: getText(t.nav.services, language), href: "/services" },
+    { label: getText(t.nav.membership, language), href: "/membership" },
+    { label: getText(t.nav.newsMedia, language), href: "/news-media" },
+    { label: getText(t.nav.login, language), href: "/login" },
+  ];
 
   // Handle Scroll Effect
   useEffect(() => {
@@ -113,6 +116,11 @@ export default function ServicesNavbar() {
                 {item.label}
               </Link>
             ))}
+          </div>
+
+          {/* Language Switcher - Desktop */}
+          <div className="hidden lg:block absolute right-0">
+            <LanguageSwitcher variant="navbar" />
           </div>
 
           {/* Spacer for Mobile to Center Logo - matches hamburger button */}

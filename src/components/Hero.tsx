@@ -2,12 +2,14 @@
 import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
+import { useLanguage, getText } from "@/context/LanguageContext";
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const { language, t } = useLanguage();
 
   // Detect mobile device
   useEffect(() => {
@@ -101,7 +103,7 @@ export default function Hero() {
         >
            <div className="text-center">
               <p className="text-[var(--color-paper)] text-xs tracking-[0.2em] uppercase opacity-80 mix-blend-overlay">
-                Scroll to Explore
+                {getText(t.hero.scrollToExplore, language)}
               </p>
            </div>
         </motion.div>
