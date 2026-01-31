@@ -13,7 +13,7 @@ export default function Security() {
   ];
 
   return (
-    <section className="py-24">
+    <section className="py-12">
       <div className="text-center mb-16">
         <h2 className="font-italiano text-[35px] text-heading mb-6">
           {getText(t.security.heading, language)}

@@ -49,7 +49,7 @@ export default function MembersAccess({ url }: { url?: string }) {
   return (
     <section 
       ref={containerRef} 
-      className="w-full py-24 flex justify-center items-center px-4"
+      className="w-full flex justify-center items-center px-4"
     >
       <div className="relative w-full h-auto">
         <video

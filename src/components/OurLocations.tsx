@@ -20,7 +20,7 @@ export default function OurLocations() {
   }, []);
 
   return (
-    <section className="py-24 px-6 mx-auto">
+    <section className="py-12 px-6 mx-auto">
       {/* FAQ */}
       <div className="mx-auto">
         <h2 className="font-italiano text-[35px] text-center text-heading mb-6">

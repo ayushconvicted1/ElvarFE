@@ -8,9 +8,9 @@ export default function ContactSection() {
   const { language, t } = useLanguage();
 
   return (
-    <section className="py-24 px-6">
+    <section className="py-12 px-6">
       {/* FAQ */}
-      <div className="max-w-2xl mx-auto mb-32">
+      <div className="max-w-2xl mx-auto mb-16">
         <h2 className="font-italiano text-[35px] text-center text-heading mb-6">
           {getText(t.contact.faqHeading, language)}
         </h2>
