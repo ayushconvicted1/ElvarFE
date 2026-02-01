@@ -22,28 +22,53 @@ export default function MembersAccess({ url }: { url?: string }) {
     const video = videoRef.current;
     if (!video) return;
 
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        // 1. Is the element visible?
-        if (entry.isIntersecting) {
-          // Play video if it's paused
-          video.play().catch(() => {}); 
-        } else {
-          // 2. Element is NOT visible. Where did it go?
-          if (entry.boundingClientRect.top > 0) {
-            video.pause();
-            video.currentTime = 0; // RESET: Door closes so it can open again next time
+    // Calculate rootMargin to create a narrow observation zone at the center of the viewport
+    // This makes the video start playing when the element reaches the center of the screen
+    const updateObserver = () => {
+      const viewportHeight = window.innerHeight;
+      // Create a margin that leaves only the center 10% of the viewport as the observation zone
+      const topBottomMargin = -Math.floor(viewportHeight * 0.45);
+      
+      const observer = new IntersectionObserver(
+        ([entry]) => {
+          // 1. Is the element in the center of the viewport?
+          if (entry.isIntersecting) {
+            // Play video when it reaches the center
+            video.play().catch(() => {}); 
+          } else {
+            // 2. Element is NOT in the center. Where did it go?
+            if (entry.boundingClientRect.top > 0) {
+              video.pause();
+              video.currentTime = 0; // RESET: Door closes so it can open again next time
+            }
           }
+        },
+        { 
+          threshold: 0,
+          rootMargin: `${topBottomMargin}px 0px ${topBottomMargin}px 0px`
         }
-      },
-      { threshold: 0.3 }
-    );
+      );
 
-    if (containerRef.current) {
-      observer.observe(containerRef.current);
-    }
+      if (containerRef.current) {
+        observer.observe(containerRef.current);
+      }
 
-    return () => observer.disconnect();
+      return observer;
+    };
+
+    let observer = updateObserver();
+
+    const handleResize = () => {
+      observer?.disconnect();
+      observer = updateObserver();
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      observer?.disconnect();
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
   return (
