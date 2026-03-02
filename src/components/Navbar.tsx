@@ -22,6 +22,7 @@ export default function Navbar({ variant = "home" }: NavbarProps) {
     { label: getText(t.nav.services, language), href: "/services" },
     { label: getText(t.nav.membership, language), href: "/membership" },
     { label: getText(t.nav.newsMedia, language), href: "/news-media" },
+    { label: getText(t.nav.becomeAVendor, language), href: "/become-vendor" },
     { label: getText(t.nav.login, language), href: "/login" },
   ];
 

@@ -3,9 +3,65 @@ import { useState } from "react";
 import { Plus, Minus } from "lucide-react";
 import { useLanguage, getText } from "@/context/LanguageContext";
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL ?? "";
+
 export default function ContactSection() {
   const [open, setOpen] = useState<number | null>(null);
   const { language, t } = useLanguage();
+
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    message: "",
+  });
+  const [submitStatus, setSubmitStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [submitMessage, setSubmitMessage] = useState("");
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (!API_BASE_URL) {
+      setSubmitStatus("error");
+      setSubmitMessage("API URL is not configured.");
+      return;
+    }
+    setSubmitStatus("loading");
+    setSubmitMessage("");
+    try {
+      const res = await fetch(`${API_BASE_URL}/api/contact`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          firstName: formData.firstName.trim(),
+          lastName: formData.lastName.trim(),
+          email: formData.email.trim().toLowerCase(),
+          phone: formData.phone.trim() || undefined,
+          message: formData.message.trim() || undefined,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setSubmitStatus("success");
+        setSubmitMessage(
+          language === "en"
+            ? "Your invitation request has been submitted successfully."
+            : "Votre demande d'invitation a été envoyée avec succès."
+        );
+        setFormData({ firstName: "", lastName: "", email: "", phone: "", message: "" });
+      } else {
+        setSubmitStatus("error");
+        setSubmitMessage(data.error || (language === "en" ? "Something went wrong." : "Une erreur s'est produite."));
+      }
+    } catch {
+      setSubmitStatus("error");
+      setSubmitMessage(
+        language === "en"
+          ? "Unable to submit. Please check your connection and try again."
+          : "Impossible d'envoyer. Vérifiez votre connexion et réessayez."
+      );
+    }
+  }
 
   return (
     <section className="py-12 px-6">
@@ -49,7 +105,7 @@ export default function ContactSection() {
           {getText(t.contact.formDescription, language)}
         </p>
 
-        <form className="space-y-10 text-left">
+        <form className="space-y-10 text-left" onSubmit={handleSubmit}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="group">
               <label className="block text-base md:text-lg font-cormorant text-[var(--color-ink)] mb-2">
@@ -57,6 +113,12 @@ export default function ContactSection() {
               </label>
               <input
                 type="text"
+                name="firstName"
+                value={formData.firstName}
+                onChange={(e) =>
+                  setFormData((prev) => ({ ...prev, firstName: e.target.value }))
+                }
+                required
                 className="w-full bg-transparent border-b border-[var(--color-ink)]/40 py-3 text-lg focus:outline-none focus:border-[var(--color-gold)] transition-colors placeholder:text-[var(--color-ink)]/40 font-light text-[var(--color-ink)]"
               />
             </div>
@@ -66,6 +128,12 @@ export default function ContactSection() {
               </label>
               <input
                 type="text"
+                name="lastName"
+                value={formData.lastName}
+                onChange={(e) =>
+                  setFormData((prev) => ({ ...prev, lastName: e.target.value }))
+                }
+                required
                 className="w-full bg-transparent border-b border-[var(--color-ink)]/40 py-3 text-lg focus:outline-none focus:border-[var(--color-gold)] transition-colors placeholder:text-[var(--color-ink)]/40 font-light text-[var(--color-ink)]"
               />
             </div>
@@ -77,6 +145,12 @@ export default function ContactSection() {
             </label>
             <input
               type="email"
+              name="email"
+              value={formData.email}
+              onChange={(e) =>
+                setFormData((prev) => ({ ...prev, email: e.target.value }))
+              }
+              required
               className="w-full bg-transparent border-b border-[var(--color-ink)]/40 py-3 text-lg focus:outline-none focus:border-[var(--color-gold)] transition-colors placeholder:text-[var(--color-ink)]/40 font-light text-[var(--color-ink)]"
             />
           </div>
@@ -87,6 +161,11 @@ export default function ContactSection() {
             </label>
             <input
               type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={(e) =>
+                setFormData((prev) => ({ ...prev, phone: e.target.value }))
+              }
               className="w-full bg-transparent border-b border-[var(--color-ink)]/40 py-3 text-lg focus:outline-none focus:border-[var(--color-gold)] transition-colors placeholder:text-[var(--color-ink)]/40 font-light text-[var(--color-ink)]"
             />
           </div>
@@ -96,14 +175,39 @@ export default function ContactSection() {
               {getText(t.contact.tellUsAbout, language)}
             </label>
             <textarea
+              name="message"
               rows={4}
+              value={formData.message}
+              onChange={(e) =>
+                setFormData((prev) => ({ ...prev, message: e.target.value }))
+              }
               className="w-full bg-transparent border border-[var(--color-ink)]/40 p-4 text-lg focus:outline-none focus:border-[var(--color-gold)] transition-colors placeholder:text-[var(--color-ink)]/40 font-light text-[var(--color-ink)] resize-none"
-            ></textarea>
+            />
           </div>
 
+          {submitMessage && (
+            <p
+              className={`text-center font-cormorant text-lg ${
+                submitStatus === "success"
+                  ? "text-emerald-700"
+                  : "text-rose-600"
+              }`}
+            >
+              {submitMessage}
+            </p>
+          )}
+
           <div className="text-center pt-8">
-            <button className="font-brilliant-cut bg-gold hover:bg-heading text-white px-12 py-4 text-sm tracking-[0.2em] uppercase w-full md:w-auto shadow-md transition-all active:scale-95">
-              {getText(t.contact.submit, language)}
+            <button
+              type="submit"
+              disabled={submitStatus === "loading"}
+              className="font-brilliant-cut bg-gold hover:bg-heading text-white px-12 py-4 text-sm tracking-[0.2em] uppercase w-full md:w-auto shadow-md transition-all active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed"
+            >
+              {submitStatus === "loading"
+                ? language === "en"
+                  ? "Submitting…"
+                  : "Envoi…"
+                : getText(t.contact.submit, language)}
             </button>
           </div>
         </form>
