@@ -66,6 +66,7 @@ export const translations = {
     membership: { en: "Membership", fr: "Adhésion" },
     newsMedia: { en: "News & Media", fr: "Actualités & Médias" },
     login: { en: "Log In", fr: "Connexion" },
+    becomeAVendor: { en: "Become a Vendor", fr: "Devenir Partenaire" },
     destinations: { en: "Destinations", fr: "Destinations" },
     experiences: { en: "Experiences", fr: "Expériences" },
     assets: { en: "Assets", fr: "Actifs" },
@@ -221,6 +222,38 @@ export const translations = {
     phoneNo: { en: "Phone No.", fr: "N° de Téléphone" },
     tellUsAbout: { en: "Tell us about yourself", fr: "Parlez-nous de vous" },
     submit: { en: "Submit", fr: "Envoyer" }
+  },
+
+  // ===================
+  // BECOME A VENDOR FORM (single-step registration)
+  // ===================
+  vendorContact: {
+    formHeading: { en: "Become a Vendor", fr: "Devenir Partenaire" },
+    formDescription: {
+      en: "Complete the form below to create your vendor account. Your account will be pending admin approval; you will receive an email once approved.",
+      fr: "Remplissez le formulaire ci-dessous pour créer votre compte partenaire. Votre compte sera en attente d'approbation ; vous recevrez un email une fois approuvé."
+    },
+    firstName: { en: "First Name", fr: "Prénom" },
+    lastName: { en: "Last Name", fr: "Nom" },
+    emailId: { en: "Email ID", fr: "Adresse Email" },
+    phoneNo: { en: "Phone No.", fr: "N° de Téléphone" },
+    message: { en: "Tell us about your business or services", fr: "Parlez-nous de votre entreprise ou de vos services" },
+    password: { en: "Password", fr: "Mot de passe" },
+    confirmPassword: { en: "Confirm Password", fr: "Confirmer le mot de passe" },
+    companyName: { en: "Company / Business Name", fr: "Nom de l'entreprise" },
+    commissionRate: { en: "Commission Rate (%)", fr: "Taux de commission (%)" },
+    services: { en: "Service categories", fr: "Catégories de services" },
+    servicesHint: { en: "Select at least one category you offer (max 20).", fr: "Sélectionnez au moins une catégorie que vous proposez (max 20)." },
+    submit: { en: "Create vendor account", fr: "Créer le compte partenaire" },
+    submitSuccess: {
+      en: "Your vendor account has been created successfully. It is pending admin verification. You will receive an email once approved.",
+      fr: "Votre compte partenaire a été créé avec succès. Il est en attente de vérification. Vous recevrez un email une fois approuvé."
+    },
+    submitError: {
+      en: "Something went wrong. Please try again.",
+      fr: "Une erreur s'est produite. Veuillez réessayer."
+    },
+    backToHome: { en: "Back to Home", fr: "Retour à l'accueil" }
   },
 
   // ===================
