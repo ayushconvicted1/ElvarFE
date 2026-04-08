@@ -1,6 +1,5 @@
 "use client";
 import Image from "next/image";
-import { Facebook, Instagram, Linkedin } from "lucide-react";
 import { useLanguage, getText } from "@/context/LanguageContext";
 
 export default function Footer() {
@@ -44,17 +43,14 @@ export default function Footer() {
             </a>
           </div>
 
-          {/* Social Icons */}
-          <div className="flex gap-6 text-[var(--color-gold)] items-center justify-center mb-8">
-            <a href="#" className="hover:text-[var(--color-ink)] transition-colors">
-              <Facebook strokeWidth={1} className="w-5 h-5" />
-            </a>
-            <a href="#" className="hover:text-[var(--color-ink)] transition-colors">
-              <Instagram strokeWidth={1} className="w-5 h-5" />
-            </a>
-            <a href="#" className="hover:text-[var(--color-ink)] transition-colors">
-              <Linkedin strokeWidth={1} className="w-5 h-5" />
-            </a>
+          {/* No Social Media Message */}
+          <div className="text-center mb-8 px-4">
+            <p className="font-serif text-[var(--color-ink)]/60 text-sm leading-relaxed italic">
+              Enclaire is built on trusted relationships and operates through an exclusive private referral network.
+            </p>
+            <p className="font-serif text-[var(--color-ink)]/60 text-sm leading-relaxed italic mt-1">
+              As part of this philosophy, we are not present on social media.
+            </p>
           </div>
 
           {/* Footer Image Mobile */}
@@ -117,17 +113,12 @@ export default function Footer() {
             </a>
           </div>
 
-          {/* Social Icons */}
-          <div className="flex gap-4 text-[var(--color-gold)] items-center mb-16">
-            <a href="#" className="hover:text-[var(--color-ink)] transition-colors">
-              <Facebook strokeWidth={1} className="w-4 h-4" />
-            </a>
-            <a href="#" className="hover:text-[var(--color-ink)] transition-colors">
-              <Instagram strokeWidth={1} className="w-4 h-4" />
-            </a>
-            <a href="#" className="hover:text-[var(--color-ink)] transition-colors">
-              <Linkedin strokeWidth={1} className="w-4 h-4" />
-            </a>
+          {/* No Social Media Message */}
+          <div className="mb-16 max-w-md">
+            <p className="font-serif text-[var(--color-ink)]/50 text-xs leading-relaxed italic">
+              Enclaire is built on trusted relationships and operates through an exclusive private referral network.
+              As part of this philosophy, we are not present on social media.
+            </p>
           </div>
 
           {/* Copyright Desktop */}
