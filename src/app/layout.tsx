@@ -91,7 +91,7 @@ const brilliantCut = localFont({
   display: "swap",
 });
 export const metadata: Metadata = {
-  title: "ELVĀR | Private Access",
+  title: "ENCLAIRE | Private Access",
   description: "Curated for the few. Exclusive luxury concierge services with unparalleled access and absolute discretion.",
 };
 

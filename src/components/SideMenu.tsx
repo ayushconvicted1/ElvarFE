@@ -37,7 +37,7 @@ export default function SideMenu({ isOpen, onClose, menuItems }: SideMenuProps) 
             exit={{ x: "-100%" }}
             transition={{ type: "spring", stiffness: 300, damping: 30 }}
             className="fixed top-0 left-0 bottom-0 z-[70] w-[280px] max-w-[75vw] flex flex-col justify-start items-start pl-8 pt-24 shadow-2xl"
-            style={{ backgroundColor: '#CC9B76F0' }}
+            style={{ backgroundColor: '#14403AF0' }}
           >
             {/* Close Button */}
             <button
