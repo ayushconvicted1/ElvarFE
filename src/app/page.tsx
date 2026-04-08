@@ -10,16 +10,16 @@ import OurLocations from "@/components/OurLocations";
 import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "ELVĀR | Private Access",
+  title: "ENCLAIRE | Private Access",
   description: "Curated for the few. Exclusive luxury concierge services with unparalleled access and absolute discretion.",
   openGraph: {
-    title: "ELVĀR | Private Access",
+    title: "ENCLAIRE | Private Access",
     description: "Curated for the few. Exclusive luxury concierge services with unparalleled access and absolute discretion.",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "ELVĀR | Private Access",
+    title: "ENCLAIRE | Private Access",
     description: "Curated for the few. Exclusive luxury concierge services with unparalleled access and absolute discretion.",
   },
 };
