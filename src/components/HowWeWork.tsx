@@ -22,7 +22,7 @@ export default function HowWeWork() {
     <section ref={ref} className="w-full py-16 lg:py-24 px-6 lg:px-12 max-w-7xl mx-auto">
       {/* Header */}
       <div className="text-center mb-16 lg:mb-20">
-        <h2 className="font-italiano text-[35px] text-heading">
+        <h2 className="font-omega text-[35px] text-[#14403A]">
           {getText(t.howWeWork.heading, language)}
         </h2>
       </div>

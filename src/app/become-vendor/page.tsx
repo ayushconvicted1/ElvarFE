@@ -152,7 +152,7 @@ export default function BecomeVendorPage() {
       <Navbar variant="standard" />
       <section className="pt-28 pb-16 px-6">
         <div className="max-w-xl mx-auto text-center">
-          <h1 className="font-italiano text-[35px] text-heading mb-3">
+          <h1 className="font-omega text-[35px] text-[#14403A] mb-3">
             {getText(t.vendorContact.formHeading, language)}
           </h1>
           <p className="mb-12 opacity-80 font-cormorant text-lg">
@@ -334,7 +334,7 @@ export default function BecomeVendorPage() {
               <button
                 type="submit"
                 disabled={submitStatus === "loading"}
-                className="font-brilliant-cut bg-gold hover:bg-heading text-white px-12 py-4 text-sm tracking-[0.2em] uppercase w-full md:w-auto shadow-md transition-all active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed"
+                className="font-brilliant-cut bg-[#14403A] hover:bg-[#14403A]/90 text-[#C49A4E] px-12 py-4 text-sm tracking-[0.2em] uppercase w-full md:w-auto shadow-md transition-all active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {submitStatus === "loading"
                   ? language === "en"

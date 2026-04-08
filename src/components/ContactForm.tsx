@@ -67,7 +67,7 @@ export default function ContactSection() {
     <section className="py-12 px-6">
       {/* FAQ */}
       <div className="max-w-2xl mx-auto mb-16">
-        <h2 className="font-italiano text-[35px] text-center text-heading mb-6">
+        <h2 className="font-omega text-[35px] text-center text-[#14403A] mb-6">
           {getText(t.contact.faqHeading, language)}
         </h2>
         <div className="border-t border-[var(--color-ink)]/20">
@@ -98,7 +98,7 @@ export default function ContactSection() {
 
       {/* Form */}
       <div id="contact-form" className="max-w-xl mx-auto text-center">
-        <h2 className="font-italiano text-[35px] text-heading mb-3">
+        <h2 className="font-omega text-[35px] text-[#14403A] mb-3">
           {getText(t.contact.formHeading, language)}
         </h2> 
         <p className="mb-12 opacity-80 font-cormorant text-lg">
@@ -201,7 +201,7 @@ export default function ContactSection() {
             <button
               type="submit"
               disabled={submitStatus === "loading"}
-              className="font-brilliant-cut bg-gold hover:bg-heading text-white px-12 py-4 text-sm tracking-[0.2em] uppercase w-full md:w-auto shadow-md transition-all active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed"
+              className="font-brilliant-cut bg-[#14403A] hover:bg-[#14403A]/90 text-[#C49A4E] px-12 py-4 text-sm tracking-[0.2em] uppercase w-full md:w-auto shadow-md transition-all active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed"
             >
               {submitStatus === "loading"
                 ? language === "en"

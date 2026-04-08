@@ -7,7 +7,7 @@ export default function NewsMediaContent() {
   return (
     <main className="flex-grow flex flex-col items-center justify-center pt-20 md:pt-0 -mt-20 px-6">
       <div className="text-center max-w-2xl mx-auto space-y-6">
-        <h1 className="font-italiano text-[35px] text-[#0D236D]">
+        <h1 className="font-omega text-[35px] text-[#14403A]">
           {getText(t.newsMedia.heading, language)}
         </h1>
         <p className="font-serif text-lg text-[var(--color-ink)]/80">

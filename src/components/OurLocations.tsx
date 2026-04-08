@@ -23,7 +23,7 @@ export default function OurLocations() {
     <section className="py-12 px-6 mx-auto">
       {/* FAQ */}
       <div className="mx-auto">
-        <h2 className="font-italiano text-[35px] text-center text-heading mb-6">
+        <h2 className="font-omega text-[35px] text-center text-[#14403A] mb-6">
           {getText(t.ourLocations.heading, language)}
         </h2>
         <p className="opacity-70 text-lg max-w-xl mx-auto text-center">

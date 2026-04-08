@@ -88,7 +88,7 @@ export default function ServicesPage() {
     <section className="w-full py-16 lg:py-24 max-w-7xl mx-auto">
       {/* Header */}
       <div className="text-center mb-16 px-5 lg:mb-24">
-        <h2 className="font-italiano text-[35px] text-[#0D236D] mb-6">
+        <h2 className="font-omega text-[35px] text-[#14403A] mb-6">
           {getText(t.servicesPage.heading, language)}
         </h2>
         <p className="font-cormorant text-xl lg:text-2xl text-ink/70 max-w-3xl mx-auto leading-relaxed">
@@ -110,7 +110,7 @@ export default function ServicesPage() {
 
       {/* Single Request Service Button */}
       <div className="text-center pt-12">
-        <Link href="/#contact-form" className="font-brilliant-cut bg-[#0D236D] text-white px-12 py-4 text-sm tracking-[0.2em] uppercase hover:bg-[#0D236D]/90 transition-colors duration-300 inline-block">
+        <Link href="/#contact-form" className="font-brilliant-cut bg-[#14403A] text-[#C49A4E] px-12 py-4 text-sm tracking-[0.2em] uppercase hover:bg-[#14403A]/90 transition-colors duration-300 inline-block">
           {getText(t.servicesPage.requestService, language)}
         </Link>
       </div>

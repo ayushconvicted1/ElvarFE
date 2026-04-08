@@ -71,7 +71,7 @@ export default function Features() {
   return (
     <section className="pb-12 lg:py-12 lg:px-20 px-6 max-w-7xl mx-auto">
       <div className="text-center mb-16">
-        <h2 className="font-italiano text-[35px] text-heading mb-4">
+        <h2 className="font-omega text-[35px] text-[#14403A] mb-4">
           {getText(t.features.heading, language)}
         </h2>
         <p className="max-w-2xl text-lg mx-auto leading-relaxed opacity-80">

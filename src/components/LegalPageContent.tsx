@@ -17,7 +17,7 @@ export default function LegalPageContent({ pageKey }: LegalPageContentProps) {
   return (
     <div className="pt-24 pb-16 px-6 md:px-12 max-w-4xl mx-auto">
       {/* Heading */}
-      <h1 className="font-italiano text-heading text-[35px] md:text-5xl text-center mb-4">
+      <h1 className="font-omega text-[#14403A] text-[35px] md:text-5xl text-center mb-4">
         {getText(legalContent.heading, language)}
       </h1>
 

@@ -17,7 +17,7 @@ export default function MembershipContent() {
   return (
     <div className="pt-24 pb-16 px-6 max-w-2xl mx-auto">
       {/* Heading */}
-      <h1 className="font-italiano text-heading text-[35px] md:text-5xl text-center mb-8">
+      <h1 className="font-omega text-[#14403A] text-[35px] md:text-5xl text-center mb-8">
         {getText(t.membership.heading, language)}
       </h1>
 
@@ -107,7 +107,7 @@ export default function MembershipContent() {
       <div className="flex justify-center">
         <Link 
           href="/#contact-form"
-          className="font-brilliant-cut bg-[#0D236D] text-white px-10 py-4 text-xs tracking-[0.2em] uppercase hover:bg-[#0D236D]/90 transition-colors inline-block"
+          className="font-brilliant-cut bg-[#14403A] text-[#C49A4E] px-10 py-4 text-xs tracking-[0.2em] uppercase hover:bg-[#14403A]/90 transition-colors inline-block"
         >
           {getText(t.membership.requestInvitation, language)}
         </Link>

@@ -67,6 +67,11 @@ const parisienne = Parisienne({
   variable: "--font-parisienne",
   display: "swap",
 });
+const omega = localFont({
+  src: "../../fonts/omega.ttf",
+  variable: "--font-omega",
+  display: "swap",
+});
 const lato = Lato({
   subsets: ["latin"],
   weight: ["300", "400", "700"],
@@ -96,7 +101,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${lato.variable} ${parisienne.variable} ${italianno.variable} ${brilliantCut.variable}`}>
+    <html lang="en" className={`${cormorant.variable} ${lato.variable} ${parisienne.variable} ${italianno.variable} ${brilliantCut.variable} ${omega.variable}`}>
       {/* We add the variables here so Tailwind can see them */}
       <body className="antialiased">
         <LanguageProvider>

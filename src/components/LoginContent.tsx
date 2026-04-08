@@ -110,7 +110,7 @@ export default function LoginContent() {
               <div className="flex justify-center pt-4">
                 <button 
                   type="button"
-                  className="font-brilliant-cut bg-[#0D236D] text-white px-12 py-3.5 text-xs tracking-[0.2em] uppercase hover:bg-[#0D236D]/90 transition-colors w-40"
+                  className="font-brilliant-cut bg-[#14403A] text-[#C49A4E] px-12 py-3.5 text-xs tracking-[0.2em] uppercase hover:bg-[#14403A]/90 transition-colors w-40"
                 >
                   {getText(t.login.logIn, language)}
                 </button>

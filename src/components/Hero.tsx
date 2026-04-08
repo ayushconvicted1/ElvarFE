@@ -1,64 +1,45 @@
 "use client";
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
+import { useScroll, useMotionValueEvent } from "framer-motion";
 import { useLanguage, getText } from "@/context/LanguageContext";
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const desktopVideoRef = useRef<HTMLVideoElement>(null);
+  const mobileVideoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
   const { language, t } = useLanguage();
 
-  // Detect mobile device
-  useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-    
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
-
   // 1. SCROLL CONFIGURATION
-  // We track the scroll progress within this container.
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
 
-  // 2. FADE LOGIC
-  // Since the container is shorter now, we fade the image out very quickly (0 to 15% of the scroll track)
-  const imageOpacity = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
-  
+
   // 3. PLAYBACK & RESET LOGIC
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    // If user scrolls down past 1%
+    const isMobile = window.innerWidth < 768;
+    const activeVideo = isMobile ? mobileVideoRef.current : desktopVideoRef.current;
+    
     if (latest > 0.01) {
       if (!isPlaying) {
         setIsPlaying(true);
-        videoRef.current?.play().catch(() => {});
+        activeVideo?.play().catch(() => {});
       }
-    } 
-    // If user scrolls back to the very top (<= 1%)
-    else {
-      if (isPlaying || (videoRef.current && videoRef.current.currentTime > 0)) {
+    } else {
+      if (isPlaying || (activeVideo && activeVideo.currentTime > 0)) {
         setIsPlaying(false);
-        if (videoRef.current) {
-          videoRef.current.pause();
-          videoRef.current.currentTime = 0; // RESET VIDEO TO START
+        if (activeVideo) {
+          activeVideo.pause();
+          activeVideo.currentTime = 0;
         }
       }
     }
   });
 
   return (
-    // HEIGHT CHANGE:
-    // Reduced from h-[400vh] to h-[140vh]. 
-    // This creates a much shorter "sticky" duration (approx 5-10% feel) before the page moves on.
     <div ref={containerRef} className="relative h-[140vh] w-full">
       
       {/* STICKY VIEWPORT */}
@@ -66,47 +47,65 @@ export default function Hero() {
         
         {/* --- VIDEO LAYER --- */}
         <div className="absolute inset-0 z-0 bg-black">
+          {/* Desktop video */}
           <video
-            ref={videoRef}
-            src={isMobile ? "/BannerMob.mp4" : "/HeroBanner.mp4"}
-            className="w-full h-full object-cover"
+            ref={desktopVideoRef}
+            src="/HeroBanner.mp4"
+            className="hidden md:block w-full h-full object-cover"
             playsInline
             muted
-            // loop={false} // Default is false, but explicitly removed 'loop' attribute here
+            preload="auto"
+          />
+          {/* Mobile video */}
+          <video
+            ref={mobileVideoRef}
+            src="/BannerMob.mp4"
+            className="block md:hidden w-full h-full object-cover"
+            playsInline
+            muted
             preload="auto"
           />
         </div>
 
-        {/* --- IMAGE LAYER (Fades out) --- */}
-        <motion.div 
-          style={{ opacity: imageOpacity }}
-          className="absolute inset-0 z-[1] pointer-events-none"
-        >
-          <Image
-            src={isMobile ? "/BannerMob.png" : "/Banner.png"}
-            alt="Hero Banner"
-            fill
-            className="object-cover object-top"
-            priority
-            quality={90}
-            sizes="100vw"
-          />
-        </motion.div>
+        {/* --- IMAGE LAYER (Hidden when video plays) --- */}
+        {!isPlaying && (
+          <div className="absolute inset-0 z-[1] pointer-events-none">
+            {/* Desktop placeholder */}
+            <Image
+              src="/Banner.png"
+              alt="Hero Banner"
+              fill
+              className="hidden md:block object-cover object-top"
+              priority
+              quality={90}
+              sizes="100vw"
+            />
+            {/* Mobile placeholder */}
+            <Image
+              src="/BannerMob.png"
+              alt="Hero Banner"
+              fill
+              className="block md:hidden object-cover object-top"
+              priority
+              quality={90}
+              sizes="100vw"
+            />
+          </div>
+        )}
 
         {/* --- GRADIENT OVERLAY --- */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-transparent pointer-events-none z-[2]" />
 
         {/* --- CONTENT --- */}
-        <motion.div 
-           style={{ opacity: imageOpacity }} // Text fades out with image so video is clear
-           className="relative z-10 w-full max-w-7xl h-full flex flex-col justify-end pb-32 pointer-events-none"
-        >
-           <div className="text-center">
+        {!isPlaying && (
+          <div className="relative z-10 w-full max-w-7xl h-full flex flex-col justify-end pb-32 pointer-events-none">
+            <div className="text-center">
               <p className="text-[var(--color-paper)] text-xs tracking-[0.2em] uppercase opacity-80 mix-blend-overlay">
                 {getText(t.hero.scrollToExplore, language)}
               </p>
-           </div>
-        </motion.div>
+            </div>
+          </div>
+        )}
         
       </div>
     </div>

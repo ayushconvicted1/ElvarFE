@@ -15,7 +15,7 @@ export default function Security() {
   return (
     <section className="py-12">
       <div className="text-center mb-16">
-        <h2 className="font-italiano text-[35px] text-heading mb-6">
+        <h2 className="font-omega text-[35px] text-[#14403A] mb-6">
           {getText(t.security.heading, language)}
         </h2>
         <p className="opacity-70 text-lg max-w-xl mx-auto">
@@ -37,7 +37,7 @@ export default function Security() {
       </div>
 
       <div className="text-center">
-        <Link href="/#contact-form" className="font-brilliant-cut bg-gold hover:bg-heading text-white px-10 py-4 text-xs tracking-[0.2em] uppercase transition-colors duration-300 shadow-sm inline-block">
+        <Link href="/#contact-form" className="font-brilliant-cut bg-[#14403A] hover:bg-[#14403A]/90 text-[#C49A4E] px-10 py-4 text-xs tracking-[0.2em] uppercase transition-colors duration-300 shadow-sm inline-block">
           {getText(t.security.requestInvitation, language)}
         </Link>
       </div>
