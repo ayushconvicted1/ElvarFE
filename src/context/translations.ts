@@ -84,8 +84,8 @@ export const translations = {
   },
   features: {
     heading: {
-      en: "Curated for the few",
-      fr: "Réservé à quelques privilégiés"
+      en: "CURATED FOR THE FEW",
+      fr: "RÉSERVÉ À QUELQUES PRIVILÉGIÉS"
     },
     description: {
       en: "Enclaire Private operates on the principles of absolute discretion, unparalleled access, and unwavering reliability.",
