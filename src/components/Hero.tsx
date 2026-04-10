@@ -1,5 +1,5 @@
 "use client";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { useScroll, useMotionValueEvent } from "framer-motion";
 import { useLanguage, getText } from "@/context/LanguageContext";
@@ -16,6 +16,15 @@ export default function Hero() {
     target: containerRef,
     offset: ["start start", "end end"],
   });
+
+  // 2. DEFERRED VIDEO PRELOAD — load videos after initial paint for fast page load
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (desktopVideoRef.current) desktopVideoRef.current.preload = 'auto';
+      if (mobileVideoRef.current) mobileVideoRef.current.preload = 'auto';
+    }, 1500);
+    return () => clearTimeout(timer);
+  }, []);
 
 
   // 3. PLAYBACK & RESET LOGIC
@@ -46,7 +55,7 @@ export default function Hero() {
       <div className="sticky top-0 h-screen w-full overflow-hidden flex flex-col items-center pt-32 pb-20 px-4">
         
         {/* --- VIDEO LAYER --- */}
-        <div className="absolute inset-0 z-0 bg-black">
+        <div className={`absolute inset-0 z-0 ${isPlaying ? 'bg-black' : ''}`}>
           {/* Desktop video */}
           <video
             ref={desktopVideoRef}
@@ -54,7 +63,7 @@ export default function Hero() {
             className="hidden md:block w-full h-full object-cover"
             playsInline
             muted
-            preload="auto"
+            preload="none"
           />
           {/* Mobile video */}
           <video
@@ -63,49 +72,45 @@ export default function Hero() {
             className="block md:hidden w-full h-full object-cover"
             playsInline
             muted
-            preload="auto"
+            preload="none"
           />
         </div>
 
         {/* --- IMAGE LAYER (Hidden when video plays) --- */}
-        {!isPlaying && (
-          <div className="absolute inset-0 z-[1] pointer-events-none">
-            {/* Desktop placeholder */}
-            <Image
-              src="/Banner.png"
-              alt="Hero Banner"
-              fill
-              className="hidden md:block object-cover object-top"
-              priority
-              quality={90}
-              sizes="100vw"
-            />
-            {/* Mobile placeholder */}
-            <Image
-              src="/BannerMob.png"
-              alt="Hero Banner"
-              fill
-              className="block md:hidden object-cover object-top"
-              priority
-              quality={90}
-              sizes="100vw"
-            />
-          </div>
-        )}
+        <div className={`absolute inset-0 z-[1] pointer-events-none transition-opacity duration-300 ${isPlaying ? 'opacity-0' : 'opacity-100'}`}>
+          {/* Desktop placeholder */}
+          <Image
+            src="/Banner.png"
+            alt="Hero Banner"
+            fill
+            className="hidden md:block object-cover object-top"
+            priority
+            quality={90}
+            sizes="100vw"
+          />
+          {/* Mobile placeholder */}
+          <Image
+            src="/BannerMob.png"
+            alt="Hero Banner"
+            fill
+            className="block md:hidden object-cover object-top"
+            priority
+            quality={90}
+            sizes="100vw"
+          />
+        </div>
 
         {/* --- GRADIENT OVERLAY --- */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-transparent pointer-events-none z-[2]" />
 
         {/* --- CONTENT --- */}
-        {!isPlaying && (
-          <div className="relative z-10 w-full max-w-7xl h-full flex flex-col justify-end pb-32 pointer-events-none">
-            <div className="text-center">
-              <p className="text-[var(--color-paper)] text-xs tracking-[0.2em] uppercase opacity-80 mix-blend-overlay">
-                {getText(t.hero.scrollToExplore, language)}
-              </p>
-            </div>
+        <div className={`relative z-10 w-full max-w-7xl h-full flex flex-col justify-end pb-32 pointer-events-none transition-opacity duration-300 ${isPlaying ? 'opacity-0' : 'opacity-100'}`}>
+          <div className="text-center">
+            <p className="text-[var(--color-paper)] text-xs tracking-[0.2em] uppercase opacity-80">
+              {getText(t.hero.scrollToExplore, language)}
+            </p>
           </div>
-        )}
+        </div>
         
       </div>
     </div>

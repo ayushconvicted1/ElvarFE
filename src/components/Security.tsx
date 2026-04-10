@@ -15,7 +15,7 @@ export default function Security() {
   return (
     <section className="py-12">
       <div className="text-center mb-16">
-        <h2 className="font-omega text-[35px] text-[#14403A] mb-6">
+        <h2 className="font-omega text-[35px] text-[#14403A] mb-6 uppercase">
           {getText(t.security.heading, language)}
         </h2>
         <p className="opacity-70 text-lg max-w-xl mx-auto">

@@ -6,9 +6,9 @@ export default function Footer() {
   const { language, t } = useLanguage();
 
   return (
-    <footer className="w-full pb-8 px-6 md:px-12 relative z-10">
+    <footer className="w-full pt-12 pb-0 md:pt-32 relative z-10 overflow-hidden">
       {/* Footer Background Sketch - Desktop Only */}
-      <div className="hidden md:block absolute right-0 bottom-0 w-[500px] h-[400px] z-0 pointer-events-none opacity-90 mix-blend-multiply">
+      <div className="hidden md:block absolute right-0 bottom-[72px] w-[800px] h-[650px] z-0 pointer-events-none opacity-90 mix-blend-multiply flex items-end">
         <Image
           src="/FooterImg.png"
           alt="Social Sketch"
@@ -18,43 +18,43 @@ export default function Footer() {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10 px-6 md:px-12">
         {/* MOBILE LAYOUT */}
         <div className="block md:hidden">
           {/* Top Horizontal Line */}
           <div className="w-full h-px bg-[var(--color-ink)]/20 mb-12"></div>
 
           {/* Links in one row with separators */}
-          <div className="flex items-center justify-center gap-4 mb-12 flex-wrap">
-            <a href="/terms" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-lg tracking-wide">
+          <div className="flex items-center justify-center gap-4 mb-16 flex-wrap">
+            <a href="/terms" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-xl tracking-wide">
               {getText(t.footer.terms, language)}
             </a>
-            <span className="text-[var(--color-ink)]/40 text-lg">|</span>
-            <a href="/privacy" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-lg tracking-wide">
+            <span className="text-[var(--color-ink)]/40 text-xl">|</span>
+            <a href="/privacy" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-xl tracking-wide">
               {getText(t.footer.privacyPolicy, language)}
             </a>
-            <span className="text-[var(--color-ink)]/40 text-lg">|</span>
-            <a href="/nda" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-lg tracking-wide">
+            <span className="text-[var(--color-ink)]/40 text-xl">|</span>
+            <a href="/nda" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-xl tracking-wide">
               {getText(t.footer.nda, language)}
             </a>
-            <span className="text-[var(--color-ink)]/40 text-lg">|</span>
-            <a href="/compliance" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-lg tracking-wide">
+            <span className="text-[var(--color-ink)]/40 text-xl">|</span>
+            <a href="/compliance" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-xl tracking-wide">
               {getText(t.footer.compliance, language)}
             </a>
           </div>
 
           {/* No Social Media Message */}
-          <div className="text-center mb-8 px-4">
-            <p className="font-serif text-[var(--color-ink)]/60 text-sm leading-relaxed italic">
+          <div className="text-center mb-0 px-4 relative z-10">
+            <p className="font-serif text-[var(--color-ink)]/60 text-base leading-relaxed italic">
               Enclaire is built on trusted relationships and operates through an exclusive private referral network.
             </p>
-            <p className="font-serif text-[var(--color-ink)]/60 text-sm leading-relaxed italic mt-1">
+            <p className="font-serif text-[var(--color-ink)]/60 text-base leading-relaxed italic mt-1">
               As part of this philosophy, we are not present on social media.
             </p>
           </div>
 
           {/* Footer Image Mobile */}
-          <div className="relative w-full max-w-[600px] h-[200px] mx-auto mb-8 pointer-events-none opacity-90 mix-blend-multiply">
+          <div className="relative w-full max-w-[600px] h-[350px] mx-auto -mt-16 mb-0 pointer-events-none opacity-90 mix-blend-multiply z-0 flex items-end">
             <Image
               src="/FooterImg.png"
               alt="Social Sketch"
@@ -63,11 +63,6 @@ export default function Footer() {
               priority
             />
           </div>
-
-          {/* Copyright Mobile */}
-          <p className="font-serif text-[var(--color-ink)]/50 text-sm tracking-widest text-center">
-            {getText(t.footer.copyright, language)}
-          </p>
         </div>
 
         {/* DESKTOP LAYOUT */}
@@ -75,7 +70,7 @@ export default function Footer() {
           {/* Logo */}
           <div className="mb-12">
             <svg
-    className="w-28 h-auto"
+    className="w-40 h-auto"
     id="Layer_1"
     data-name="Layer 1"
     viewBox="0 0 290.96 247.77"
@@ -95,37 +90,39 @@ export default function Footer() {
           </div>
 
           {/* Links in horizontal row */}
-          <div className="flex items-center gap-4 mb-12">
-            <a href="/terms" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-sm tracking-wide">
+          <div className="flex items-center gap-4 mb-16">
+            <a href="/terms" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-base tracking-wide">
               {getText(t.footer.terms, language)}
             </a>
-            <span className="text-[var(--color-ink)]/40 text-sm">|</span>
-            <a href="/privacy" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-sm tracking-wide">
+            <span className="text-[var(--color-ink)]/40 text-base">|</span>
+            <a href="/privacy" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-base tracking-wide">
               {getText(t.footer.privacyPolicy, language)}
             </a>
-            <span className="text-[var(--color-ink)]/40 text-sm">|</span>
-            <a href="/nda" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-sm tracking-wide">
+            <span className="text-[var(--color-ink)]/40 text-base">|</span>
+            <a href="/nda" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-base tracking-wide">
               {getText(t.footer.nda, language)}
             </a>
-            <span className="text-[var(--color-ink)]/40 text-sm">|</span>
-            <a href="/compliance" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-sm tracking-wide">
+            <span className="text-[var(--color-ink)]/40 text-base">|</span>
+            <a href="/compliance" className="font-serif text-[var(--color-ink)]/80 hover:text-[var(--color-gold)] transition-colors text-base tracking-wide">
               {getText(t.footer.compliance, language)}
             </a>
           </div>
 
           {/* No Social Media Message */}
-          <div className="mb-16 max-w-md">
-            <p className="font-serif text-[var(--color-ink)]/50 text-xs leading-relaxed italic">
+          <div className="mb-24 max-w-md">
+            <p className="font-serif text-[var(--color-ink)]/70 text-sm leading-relaxed italic">
               Enclaire is built on trusted relationships and operates through an exclusive private referral network.
               As part of this philosophy, we are not present on social media.
             </p>
           </div>
-
-          {/* Copyright Desktop */}
-          <p className="font-serif text-[var(--color-ink)]/50 text-xs tracking-widest">
-            {getText(t.footer.copyright, language)}
-          </p>
         </div>
+      </div>
+
+      {/* Copyright Bar */}
+      <div className="w-full bg-[#14403A] py-6 z-20">
+        <p className="max-w-7xl mx-auto px-6 md:px-12 font-serif text-white text-sm md:text-base tracking-widest text-center md:text-left">
+          {getText(t.footer.copyright, language)}
+        </p>
       </div>
     </footer>
   );

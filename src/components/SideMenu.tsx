@@ -59,7 +59,7 @@ export default function SideMenu({ isOpen, onClose, menuItems }: SideMenuProps) 
                   <Link
                     href={item.href}
                     onClick={onClose}
-                    className="font-brilliant-cut text-base text-white tracking-wide hover:translate-x-2 transition-transform inline-block uppercase"
+                    className="font-omega text-base text-white tracking-wide hover:translate-x-2 transition-transform inline-block uppercase"
                   >
                     {item.label}
                   </Link>

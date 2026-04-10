@@ -307,7 +307,7 @@ export default function Services() {
                 >
                   {/* Current Service - Center (Prominent) */}
                   <div className="flex justify-center items-center">
-                    <div className="text-[31px] font-medium text-[#14403A] font-omega text-center">
+                    <div className="text-[20px] md:text-[24px] font-medium text-[#14403A] font-omega text-center uppercase tracking-wide">
                       {getText(activeService.label, language)}
                     </div>
                   </div>
@@ -325,8 +325,10 @@ export default function Services() {
           className="relative overflow-hidden"
           style={{ 
             height: VIEWPORT_HEIGHT,
-            maskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
-            WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%)",
+            maskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to right, black 85%, transparent 100%)",
+            WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, black 15%, black 85%, transparent 100%), linear-gradient(to right, black 85%, transparent 100%)",
+            WebkitMaskComposite: "source-in",
+            maskComposite: "intersect"
           }}
         >
           <motion.div
@@ -361,7 +363,7 @@ export default function Services() {
                   <button
                     onClick={() => setActiveIndex(([prev]) => [index, index > prev ? 1 : -1])}
                     className={clsx(
-                      "group text-left text-xl tracking-wide transition-all duration-300 flex items-center gap-3 relative cursor-pointer",
+                      "group text-left text-xl tracking-wide transition-all duration-300 flex items-center gap-3 relative cursor-pointer whitespace-nowrap",
                       isActive
                         ? "text-gold translate-x-4 scale-105 origin-left"
                         : "text-ink/40 hover:text-ink/70"
@@ -376,7 +378,7 @@ export default function Services() {
                       <span className="block w-0 h-0 border-t-[5px] border-t-transparent border-l-8 border-l-gold border-b-[5px] border-b-transparent" />
                     </span>
 
-                    <span className="text-2xl italic font-medium">
+                    <span className="text-lg md:text-xl font-omega uppercase tracking-wide">
                       {getText(service.label, language)}
                     </span>
                   </button>
@@ -405,6 +407,7 @@ export default function Services() {
               ref={setVideoRef} 
               muted
               playsInline
+              preload="none"
               onEnded={handleVideoEnd} 
               className="w-full h-full object-cover object-top aspect-[4/3] lg:object-center contrast-100 mix-blend-multiply"
               style={{

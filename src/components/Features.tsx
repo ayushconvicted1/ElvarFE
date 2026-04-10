@@ -16,7 +16,7 @@ function FeatureCard({ feature, index }: { feature: { title: { en: string; fr: s
       ref={containerRef}
       className="flex flex-col items-center text-center p-6 border border-ink/20"
     >
-      <div className="relative w-full aspect-square mb-6 border border-[#96663A] overflow-hidden group">
+      <div className="relative w-full aspect-[4/5] mb-6 border border-[#96663A] overflow-hidden group">
         
         {/* --- BASE IMAGE --- */}
         {/* Mobile Logic: Starts visible (opacity-100). Fades OUT (opacity-0) when scrolled into view.
@@ -26,7 +26,7 @@ function FeatureCard({ feature, index }: { feature: { title: { en: string; fr: s
           alt={getText(feature.title, language)}
           fill
           className={clsx(
-            "object-cover grayscale mix-blend-multiply transition-all duration-1000",
+            "object-contain grayscale mix-blend-multiply transition-opacity duration-1000",
             // Mobile: If in view -> fade out. Else -> visible.
             // Desktop (md): Force visibility (ignore scroll), let hover handle it.
             isInView ? "opacity-0 md:opacity-100" : "opacity-100",
@@ -42,7 +42,7 @@ function FeatureCard({ feature, index }: { feature: { title: { en: string; fr: s
           alt={getText(feature.title, language)}
           fill
           className={clsx(
-            "object-cover mix-blend-multiply transition-all duration-1000",
+            "object-contain mix-blend-multiply transition-opacity duration-1000",
             // Mobile: If in view -> fade in. Else -> hidden.
             // Desktop (md): Force hidden (ignore scroll), let hover handle it.
             isInView ? "opacity-100 md:opacity-0" : "opacity-0",

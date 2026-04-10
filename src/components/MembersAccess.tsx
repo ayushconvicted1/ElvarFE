@@ -18,6 +18,14 @@ export default function MembersAccess({ url }: { url?: string }) {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  // Deferred preload — start loading video after initial page paint
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (videoRef.current) videoRef.current.preload = 'auto';
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
+
   useEffect(() => {
     const video = videoRef.current;
     if (!video) return;
@@ -83,6 +91,7 @@ export default function MembersAccess({ url }: { url?: string }) {
           className="w-full h-auto mix-blend-multiply contrast-100"
           muted
           playsInline
+          preload="none"
           style={{
             // This creates the fade on all 4 sides (Top, Bottom, Left, Right)
             // matching the Services component style
