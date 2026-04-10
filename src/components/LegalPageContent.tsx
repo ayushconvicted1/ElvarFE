@@ -17,7 +17,7 @@ export default function LegalPageContent({ pageKey }: LegalPageContentProps) {
   return (
     <div className="pt-24 pb-16 px-6 md:px-12 max-w-4xl mx-auto">
       {/* Heading */}
-      <h1 className="font-omega text-[#14403A] text-[35px] md:text-5xl text-center mb-4">
+      <h1 className="font-omega text-[#14403A] text-[24px] md:text-[28px] md:text-5xl text-center mb-4">
         {getText(legalContent.heading, language)}
       </h1>
 
@@ -35,7 +35,7 @@ export default function LegalPageContent({ pageKey }: LegalPageContentProps) {
       <div className="space-y-10">
         {legalContent.sections.map((section: LegalSection, index: number) => (
           <div key={index} className="space-y-4">
-            <h2 className="font-brilliant-cut text-lg md:text-xl tracking-wide text-[var(--color-ink)]">
+            <h2 className="font-omega text-lg md:text-xl tracking-wide text-[#14403A]">
               {getText(section.title, language)}
             </h2>
             <p className="font-serif text-[var(--color-ink)]/70 leading-relaxed text-base">

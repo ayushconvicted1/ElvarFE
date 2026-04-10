@@ -152,7 +152,7 @@ export default function BecomeVendorPage() {
       <Navbar variant="standard" />
       <section className="pt-28 pb-16 px-6">
         <div className="max-w-xl mx-auto text-center">
-          <h1 className="font-omega text-[35px] text-[#14403A] mb-3">
+          <h1 className="font-omega text-[24px] md:text-[28px] text-[#14403A] mb-3">
             {getText(t.vendorContact.formHeading, language)}
           </h1>
           <p className="mb-12 opacity-80 font-cormorant text-lg">

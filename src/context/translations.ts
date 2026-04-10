@@ -6,8 +6,8 @@ export const translations = {
   meta: {
     home: {
       title: {
-        en: "ENCLAIRE | Private Access",
-        fr: "ENCLAIRE | Accès Privé"
+        en: "Enclaire | Private Access",
+        fr: "Enclaire | Accès Privé"
       },
       description: {
         en: "Curated for the few. Exclusive luxury concierge services with unparalleled access and absolute discretion.",
@@ -16,18 +16,18 @@ export const translations = {
     },
     about: {
       title: {
-        en: "About Us | ENCLAIRE Private",
-        fr: "À Propos | ENCLAIRE Privé"
+        en: "About Us | Enclaire Private",
+        fr: "À Propos | Enclaire Privé"
       },
       description: {
-        en: "Discover ENCLAIRE Private - redefining modern luxury with seamless access to exceptional services and privileges.",
-        fr: "Découvrez ENCLAIRE Privé - redéfinir le luxe moderne avec un accès fluide à des services et privilèges exceptionnels."
+        en: "Discover Enclaire Private - redefining modern luxury with seamless access to exceptional services and privileges.",
+        fr: "Découvrez Enclaire Privé - redéfinir le luxe moderne avec un accès fluide à des services et privilèges exceptionnels."
       }
     },
     services: {
       title: {
-        en: "Services | ENCLAIRE Private",
-        fr: "Services | ENCLAIRE Privé"
+        en: "Services | Enclaire Private",
+        fr: "Services | Enclaire Privé"
       },
       description: {
         en: "Explore our seven pillars of service - from private aviation to luxury assets, curated exclusively for you.",
@@ -36,22 +36,22 @@ export const translations = {
     },
     login: {
       title: {
-        en: "Login | ENCLAIRE Private",
-        fr: "Connexion | ENCLAIRE Privé"
+        en: "Login | Enclaire Private",
+        fr: "Connexion | Enclaire Privé"
       },
       description: {
-        en: "Access your ENCLAIRE Private member account.",
-        fr: "Accédez à votre compte membre ENCLAIRE Privé."
+        en: "Access your Enclaire Private member account.",
+        fr: "Accédez à votre compte membre Enclaire Privé."
       }
     },
     newsMedia: {
       title: {
-        en: "News & Media | ENCLAIRE Private",
-        fr: "Actualités & Médias | ENCLAIRE Privé"
+        en: "News & Media | Enclaire Private",
+        fr: "Actualités & Médias | Enclaire Privé"
       },
       description: {
-        en: "Stay updated with the latest news and updates from ENCLAIRE Private.",
-        fr: "Restez informé des dernières nouvelles et mises à jour d'ENCLAIRE Privé."
+        en: "Stay updated with the latest news and updates from Enclaire Private.",
+        fr: "Restez informé des dernières nouvelles et mises à jour d'Enclaire Privé."
       }
     }
   },
@@ -172,12 +172,12 @@ export const translations = {
     faqs: [
       {
         question: {
-          en: "How does ENCLAIRE differ from traditional luxury concierge services?",
-          fr: "En quoi ENCLAIRE diffère-t-il des services de conciergerie de luxe traditionnels ?"
+          en: "How does Enclaire differ from traditional luxury concierge services?",
+          fr: "En quoi Enclaire diffère-t-il des services de conciergerie de luxe traditionnels ?"
         },
         answer: {
-          en: "ENCLAIRE does not operate as a visible service provider. We function as a private access orchestration layer—quietly aligning trusted partners to deliver outcomes without attribution, exposure, or unnecessary interaction.",
-          fr: "ENCLAIRE ne fonctionne pas comme un prestataire de services visible. Nous agissons comme une couche d'orchestration d'accès privé—alignant discrètement des partenaires de confiance pour obtenir des résultats sans attribution, exposition ou interaction inutile."
+          en: "Enclaire does not operate as a visible service provider. We function as a private access orchestration layer—quietly aligning trusted partners to deliver outcomes without attribution, exposure, or unnecessary interaction.",
+          fr: "Enclaire ne fonctionne pas comme un prestataire de services visible. Nous agissons comme une couche d'orchestration d'accès privé—alignant discrètement des partenaires de confiance pour obtenir des résultats sans attribution, exposition ou interaction inutile."
         }
       },
       {
@@ -186,14 +186,14 @@ export const translations = {
           fr: "Comment l'adhésion est-elle accordée ?"
         },
         answer: {
-          en: "Membership is strictly invitation-only. Prospective members are admitted through private referral and internal alignment processes. ENCLAIRE is not applied to—it is extended.",
-          fr: "L'adhésion se fait strictement sur invitation. Les membres potentiels sont admis par parrainage privé et processus d'alignement interne. On ne postule pas à ENCLAIRE—on y est convié."
+          en: "Membership is strictly invitation-only. Prospective members are admitted through private referral and internal alignment processes. Enclaire is not applied to—it is extended.",
+          fr: "L'adhésion se fait strictement sur invitation. Les membres potentiels sont admis par parrainage privé et processus d'alignement interne. On ne postule pas à Enclaire—on y est convié."
         }
       },
       {
         question: {
-          en: "How does ENCLAIRE protect member privacy?",
-          fr: "Comment ENCLAIRE protège-t-il la vie privée des membres ?"
+          en: "How does Enclaire protect member privacy?",
+          fr: "Comment Enclaire protège-t-il la vie privée des membres ?"
         },
         answer: {
           en: "Privacy is embedded at every level of operation. We practice data minimization, compartmentalized execution, and strict confidentiality agreements across our ecosystem. Information exists only where absolutely required.",
@@ -202,12 +202,12 @@ export const translations = {
       },
       {
         question: {
-          en: "What type of individuals does ENCLAIRE serve?",
-          fr: "Quel type de personnes ENCLAIRE sert-il ?"
+          en: "What type of individuals does Enclaire serve?",
+          fr: "Quel type de personnes Enclaire sert-il ?"
         },
         answer: {
-          en: "ENCLAIRE serves individuals whose lives, movements, and decisions require separation from public systems. Our members value control, discretion, and reliability over recognition or display.",
-          fr: "ENCLAIRE sert des individus dont les vies, les déplacements et les décisions nécessitent une séparation des systèmes publics. Nos membres valorisent le contrôle, la discrétion et la fiabilité plutôt que la reconnaissance ou l'ostentation."
+          en: "Enclaire serves individuals whose lives, movements, and decisions require separation from public systems. Our members value control, discretion, and reliability over recognition or display.",
+          fr: "Enclaire sert des individus dont les vies, les déplacements et les décisions nécessitent une séparation des systèmes publics. Nos membres valorisent le contrôle, la discrétion et la fiabilité plutôt que la reconnaissance ou l'ostentation."
         }
       }
     ],
@@ -487,8 +487,8 @@ export const translations = {
             fr: "Architecture de confidentialité de plus haut niveau"
           },
           {
-            en: "Access to ENCLAIRE's most restricted partner network",
-            fr: "Accès au réseau de partenaires le plus restreint d'ENCLAIRE"
+            en: "Access to Enclaire's most restricted partner network",
+            fr: "Accès au réseau de partenaires le plus restreint d'Enclaire"
           }
         ]
       }
@@ -503,29 +503,29 @@ export const translations = {
     terms: {
       heading: { en: "Terms of Service", fr: "Conditions d'Utilisation" },
       intro: {
-        en: "Welcome to ENCLAIRE Private. By accessing or using our services, you agree to be bound by these Terms of Service. Please read them carefully before proceeding.",
-        fr: "Bienvenue chez ENCLAIRE Privé. En accédant ou en utilisant nos services, vous acceptez d'être lié par ces Conditions d'Utilisation. Veuillez les lire attentivement avant de continuer."
+        en: "Welcome to Enclaire Private. By accessing or using our services, you agree to be bound by these Terms of Service. Please read them carefully before proceeding.",
+        fr: "Bienvenue chez Enclaire Privé. En accédant ou en utilisant nos services, vous acceptez d'être lié par ces Conditions d'Utilisation. Veuillez les lire attentivement avant de continuer."
       },
       sections: [
         {
           title: { en: "1. Acceptance of Terms", fr: "1. Acceptation des Conditions" },
           content: {
-            en: "By accessing and using ENCLAIRE Private services, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service. If you do not agree to these terms, you may not access or use our services.",
-            fr: "En accédant et en utilisant les services d'ENCLAIRE Privé, vous reconnaissez avoir lu, compris et accepté d'être lié par ces Conditions d'Utilisation. Si vous n'acceptez pas ces conditions, vous ne pouvez pas accéder ou utiliser nos services."
+            en: "By accessing and using Enclaire Private services, you acknowledge that you have read, understood, and agree to be bound by these Terms of Service. If you do not agree to these terms, you may not access or use our services.",
+            fr: "En accédant et en utilisant les services d'Enclaire Privé, vous reconnaissez avoir lu, compris et accepté d'être lié par ces Conditions d'Utilisation. Si vous n'acceptez pas ces conditions, vous ne pouvez pas accéder ou utiliser nos services."
           }
         },
         {
           title: { en: "2. Membership Eligibility", fr: "2. Éligibilité à l'Adhésion" },
           content: {
-            en: "ENCLAIRE Private membership is strictly invitation-only. Prospective members must be at least 18 years of age and meet our internal eligibility criteria. We reserve the right to accept or decline any membership application at our sole discretion.",
-            fr: "L'adhésion à ENCLAIRE Privé se fait strictement sur invitation. Les membres potentiels doivent avoir au moins 18 ans et répondre à nos critères d'éligibilité internes. Nous nous réservons le droit d'accepter ou de refuser toute demande d'adhésion à notre seule discrétion."
+            en: "Enclaire Private membership is strictly invitation-only. Prospective members must be at least 18 years of age and meet our internal eligibility criteria. We reserve the right to accept or decline any membership application at our sole discretion.",
+            fr: "L'adhésion à Enclaire Privé se fait strictement sur invitation. Les membres potentiels doivent avoir au moins 18 ans et répondre à nos critères d'éligibilité internes. Nous nous réservons le droit d'accepter ou de refuser toute demande d'adhésion à notre seule discrétion."
           }
         },
         {
           title: { en: "3. Services Description", fr: "3. Description des Services" },
           content: {
-            en: "ENCLAIRE Private provides luxury concierge services including but not limited to: private aviation coordination, yacht and maritime access, luxury residence management, travel design, curated experiences, and asset acquisition assistance. Service availability may vary based on membership tier.",
-            fr: "ENCLAIRE Privé fournit des services de conciergerie de luxe incluant mais non limités à : coordination d'aviation privée, accès aux yachts et services maritimes, gestion de résidences de luxe, conception de voyages, expériences sur mesure et assistance à l'acquisition d'actifs. La disponibilité des services peut varier selon le niveau d'adhésion."
+            en: "Enclaire Private provides luxury concierge services including but not limited to: private aviation coordination, yacht and maritime access, luxury residence management, travel design, curated experiences, and asset acquisition assistance. Service availability may vary based on membership tier.",
+            fr: "Enclaire Privé fournit des services de conciergerie de luxe incluant mais non limités à : coordination d'aviation privée, accès aux yachts et services maritimes, gestion de résidences de luxe, conception de voyages, expériences sur mesure et assistance à l'acquisition d'actifs. La disponibilité des services peut varier selon le niveau d'adhésion."
           }
         },
         {
@@ -538,8 +538,8 @@ export const translations = {
         {
           title: { en: "5. Limitation of Liability", fr: "5. Limitation de Responsabilité" },
           content: {
-            en: "ENCLAIRE Private shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of our services. Our total liability shall not exceed the fees paid by you in the twelve months preceding the claim.",
-            fr: "ENCLAIRE Privé ne sera pas responsable des dommages indirects, accessoires, spéciaux, consécutifs ou punitifs découlant de votre utilisation de nos services. Notre responsabilité totale ne dépassera pas les frais que vous avez payés au cours des douze mois précédant la réclamation."
+            en: "Enclaire Private shall not be liable for any indirect, incidental, special, consequential, or punitive damages arising from your use of our services. Our total liability shall not exceed the fees paid by you in the twelve months preceding the claim.",
+            fr: "Enclaire Privé ne sera pas responsable des dommages indirects, accessoires, spéciaux, consécutifs ou punitifs découlant de votre utilisation de nos services. Notre responsabilité totale ne dépassera pas les frais que vous avez payés au cours des douze mois précédant la réclamation."
           }
         }
       ]
@@ -549,8 +549,8 @@ export const translations = {
     privacy: {
       heading: { en: "Privacy Policy", fr: "Politique de Confidentialité" },
       intro: {
-        en: "At ENCLAIRE Private, your privacy is paramount. This Privacy Policy explains how we collect, use, protect, and handle your personal information when you use our services.",
-        fr: "Chez ENCLAIRE Privé, votre vie privée est primordiale. Cette Politique de Confidentialité explique comment nous collectons, utilisons, protégeons et gérons vos informations personnelles lorsque vous utilisez nos services."
+        en: "At Enclaire Private, your privacy is paramount. This Privacy Policy explains how we collect, use, protect, and handle your personal information when you use our services.",
+        fr: "Chez Enclaire Privé, votre vie privée est primordiale. Cette Politique de Confidentialité explique comment nous collectons, utilisons, protégeons et gérons vos informations personnelles lorsque vous utilisez nos services."
       },
       sections: [
         {
@@ -595,22 +595,22 @@ export const translations = {
     nda: {
       heading: { en: "Non-Disclosure Agreement", fr: "Accord de Non-Divulgation" },
       intro: {
-        en: "This Non-Disclosure Agreement governs the confidential relationship between ENCLAIRE Private and its members. All members are bound by these confidentiality obligations upon acceptance of membership.",
-        fr: "Cet Accord de Non-Divulgation régit la relation confidentielle entre ENCLAIRE Privé et ses membres. Tous les membres sont liés par ces obligations de confidentialité dès l'acceptation de leur adhésion."
+        en: "This Non-Disclosure Agreement governs the confidential relationship between Enclaire Private and its members. All members are bound by these confidentiality obligations upon acceptance of membership.",
+        fr: "Cet Accord de Non-Divulgation régit la relation confidentielle entre Enclaire Privé et ses membres. Tous les membres sont liés par ces obligations de confidentialité dès l'acceptation de leur adhésion."
       },
       sections: [
         {
           title: { en: "1. Definition of Confidential Information", fr: "1. Définition des Informations Confidentielles" },
           content: {
-            en: "Confidential Information includes all non-public information about ENCLAIRE Private's operations, member identities, service methodologies, partner networks, pricing structures, and any information designated as confidential.",
-            fr: "Les Informations Confidentielles comprennent toutes les informations non publiques sur les opérations d'ENCLAIRE Privé, l'identité des membres, les méthodologies de service, les réseaux de partenaires, les structures tarifaires et toute information désignée comme confidentielle."
+            en: "Confidential Information includes all non-public information about Enclaire Private's operations, member identities, service methodologies, partner networks, pricing structures, and any information designated as confidential.",
+            fr: "Les Informations Confidentielles comprennent toutes les informations non publiques sur les opérations d'Enclaire Privé, l'identité des membres, les méthodologies de service, les réseaux de partenaires, les structures tarifaires et toute information désignée comme confidentielle."
           }
         },
         {
           title: { en: "2. Obligations of Confidentiality", fr: "2. Obligations de Confidentialité" },
           content: {
-            en: "Members agree to maintain strict confidentiality of all Confidential Information, use such information only for authorized purposes, and not disclose it to any third party without prior written consent from ENCLAIRE Private.",
-            fr: "Les membres s'engagent à maintenir une stricte confidentialité de toutes les Informations Confidentielles, à n'utiliser ces informations qu'à des fins autorisées et à ne pas les divulguer à des tiers sans le consentement écrit préalable d'ENCLAIRE Privé."
+            en: "Members agree to maintain strict confidentiality of all Confidential Information, use such information only for authorized purposes, and not disclose it to any third party without prior written consent from Enclaire Private.",
+            fr: "Les membres s'engagent à maintenir une stricte confidentialité de toutes les Informations Confidentielles, à n'utiliser ces informations qu'à des fins autorisées et à ne pas les divulguer à des tiers sans le consentement écrit préalable d'Enclaire Privé."
           }
         },
         {
@@ -623,8 +623,8 @@ export const translations = {
         {
           title: { en: "4. Permitted Disclosures", fr: "4. Divulgations Autorisées" },
           content: {
-            en: "Disclosure may be permitted if required by law, court order, or governmental authority, provided that the disclosing party gives prompt notice to ENCLAIRE Private and cooperates in seeking protective measures.",
-            fr: "La divulgation peut être autorisée si elle est requise par la loi, une décision de justice ou une autorité gouvernementale, à condition que la partie divulgatrice donne un préavis rapide à ENCLAIRE Privé et coopère dans la recherche de mesures de protection."
+            en: "Disclosure may be permitted if required by law, court order, or governmental authority, provided that the disclosing party gives prompt notice to Enclaire Private and cooperates in seeking protective measures.",
+            fr: "La divulgation peut être autorisée si elle est requise par la loi, une décision de justice ou une autorité gouvernementale, à condition que la partie divulgatrice donne un préavis rapide à Enclaire Privé et coopère dans la recherche de mesures de protection."
           }
         },
         {
@@ -641,15 +641,15 @@ export const translations = {
     compliance: {
       heading: { en: "Compliance", fr: "Conformité" },
       intro: {
-        en: "ENCLAIRE Private is committed to maintaining the highest standards of legal and regulatory compliance. This page outlines our commitment to ethical operations and regulatory adherence.",
-        fr: "ENCLAIRE Privé s'engage à maintenir les plus hauts standards de conformité légale et réglementaire. Cette page décrit notre engagement envers des opérations éthiques et le respect des réglementations."
+        en: "Enclaire Private is committed to maintaining the highest standards of legal and regulatory compliance. This page outlines our commitment to ethical operations and regulatory adherence.",
+        fr: "Enclaire Privé s'engage à maintenir les plus hauts standards de conformité légale et réglementaire. Cette page décrit notre engagement envers des opérations éthiques et le respect des réglementations."
       },
       sections: [
         {
           title: { en: "1. Regulatory Framework", fr: "1. Cadre Réglementaire" },
           content: {
-            en: "ENCLAIRE Private operates in compliance with all applicable laws and regulations in the jurisdictions where we provide services. We maintain appropriate licenses and registrations as required by local authorities.",
-            fr: "ENCLAIRE Privé opère en conformité avec toutes les lois et réglementations applicables dans les juridictions où nous fournissons des services. Nous maintenons les licences et enregistrements appropriés requis par les autorités locales."
+            en: "Enclaire Private operates in compliance with all applicable laws and regulations in the jurisdictions where we provide services. We maintain appropriate licenses and registrations as required by local authorities.",
+            fr: "Enclaire Privé opère en conformité avec toutes les lois et réglementations applicables dans les juridictions où nous fournissons des services. Nous maintenons les licences et enregistrements appropriés requis par les autorités locales."
           }
         },
         {

@@ -90,7 +90,7 @@ export default function Navbar({ variant = "home" }: NavbarProps) {
           )}
         >
             <Image src={Logo} alt="Logo" width={250} height={100} className="hidden md:block" />
-            <Image src={LogoMob} alt="Logo" width={160} height={60} className="block md:hidden" />
+            <Image src={LogoMob} alt="Logo" width={180} height={70} className="block md:hidden" />
         </Link>
 
         {/* Language Switcher - Right side */}

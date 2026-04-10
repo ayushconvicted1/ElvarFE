@@ -67,7 +67,7 @@ export default function ContactSection() {
     <section className="py-12 px-6">
       {/* FAQ */}
       <div className="max-w-2xl mx-auto mb-16">
-        <h2 className="font-omega text-[35px] text-center text-[#14403A] mb-6 uppercase">
+        <h2 className="font-omega text-[24px] md:text-[28px] text-center text-[#14403A] mb-6 uppercase">
           {getText(t.contact.faqHeading, language)}
         </h2>
         <div className="border-t border-[var(--color-ink)]/20">
@@ -98,7 +98,7 @@ export default function ContactSection() {
 
       {/* Form */}
       <div id="contact-form" className="max-w-xl mx-auto text-center">
-        <h2 className="font-omega text-[35px] text-[#14403A] mb-3 uppercase">
+        <h2 className="font-omega text-[24px] md:text-[28px] text-[#14403A] mb-3 uppercase">
           {getText(t.contact.formHeading, language)}
         </h2> 
         <p className="mb-12 opacity-80 font-cormorant text-lg">

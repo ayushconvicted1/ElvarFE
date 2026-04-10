@@ -88,7 +88,7 @@ export default function ServicesPage() {
     <section className="w-full py-16 lg:py-24 max-w-7xl mx-auto">
       {/* Header */}
       <div className="text-center mb-16 px-5 lg:mb-24">
-        <h2 className="font-omega text-[35px] text-[#14403A] mb-6">
+        <h2 className="font-omega text-[24px] md:text-[28px] text-[#14403A] mb-6">
           {getText(t.servicesPage.heading, language)}
         </h2>
         <p className="font-cormorant text-xl lg:text-2xl text-ink/70 max-w-3xl mx-auto leading-relaxed">

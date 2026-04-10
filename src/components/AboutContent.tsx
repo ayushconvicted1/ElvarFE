@@ -23,7 +23,7 @@ export default function AboutContent() {
       </div>
 
       {/* "About us" Heading */}
-      <h1 className="font-omega text-[35px] md:text-6xl text-[#14403A] mb-8">
+      <h1 className="font-omega text-[24px] md:text-[28px] md:text-6xl text-[#14403A] mb-8">
         {getText(t.about.heading, language)}
       </h1>
 

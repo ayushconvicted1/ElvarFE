@@ -17,7 +17,7 @@ export default function MembershipContent() {
   return (
     <div className="pt-24 pb-16 px-6 max-w-2xl mx-auto">
       {/* Heading */}
-      <h1 className="font-omega text-[#14403A] text-[35px] md:text-5xl text-center mb-8">
+      <h1 className="font-omega text-[#14403A] text-[24px] md:text-[28px] md:text-5xl text-center mb-8">
         {getText(t.membership.heading, language)}
       </h1>
 

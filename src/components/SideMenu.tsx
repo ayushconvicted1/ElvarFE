@@ -3,6 +3,7 @@ import Link from "next/link";
 import { X } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import LanguageSwitcher from "./LanguageSwitcher";
+import HorseLogo from "./HorseLogo";
 
 interface MenuItem {
   label: string;
@@ -47,8 +48,10 @@ export default function SideMenu({ isOpen, onClose, menuItems }: SideMenuProps) 
               <X className="w-5 h-5 text-white group-hover:scale-90 transition-transform" strokeWidth={1} />
             </button>
 
+            <HorseLogo className="w-20 md:w-24 h-auto text-[#c49a4e] mt-2 mb-6" />
+
             {/* Menu Links */}
-            <div className="flex flex-col gap-6 text-left mt-8">
+            <div className="flex flex-col gap-10 text-left mt-4">
               {menuItems.map((item, i) => (
                 <motion.div
                   key={item.label}
