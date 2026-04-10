@@ -85,6 +85,7 @@ export default function Hero() {
             fill
             className="hidden md:block object-cover object-top"
             priority
+            fetchPriority="high"
             quality={90}
             sizes="100vw"
           />
@@ -95,6 +96,7 @@ export default function Hero() {
             fill
             className="block md:hidden object-cover object-top"
             priority
+            fetchPriority="high"
             quality={90}
             sizes="100vw"
           />
