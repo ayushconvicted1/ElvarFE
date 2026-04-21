@@ -110,7 +110,7 @@ export default function ServicesPage() {
 
       {/* Single Request Service Button */}
       <div className="text-center pt-12">
-        <Link href="/#contact-form" className="font-brilliant-cut bg-[#14403A] text-[#C49A4E] px-12 py-4 text-sm tracking-[0.2em] uppercase hover:bg-[#14403A]/90 transition-colors duration-300 inline-block">
+        <Link href="/#contact-form" className="font-omega bg-[#14403A] text-[#C49A4E] px-12 py-4 text-sm tracking-[0.2em] uppercase hover:bg-[#14403A]/90 transition-colors duration-300 inline-block">
           {getText(t.servicesPage.requestService, language)}
         </Link>
       </div>

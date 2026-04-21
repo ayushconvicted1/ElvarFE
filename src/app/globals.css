@@ -96,4 +96,5 @@ body {
 /* Helper for the Omega font */
 @utility font-omega {
   font-family: var(--font-omega);
+  letter-spacing: 0.15em;
 }

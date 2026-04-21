@@ -107,7 +107,7 @@ export default function MembershipContent() {
       <div className="flex justify-center">
         <Link 
           href="/#contact-form"
-          className="font-brilliant-cut bg-[#14403A] text-[#C49A4E] px-10 py-4 text-xs tracking-[0.2em] uppercase hover:bg-[#14403A]/90 transition-colors inline-block"
+          className="font-omega bg-[#14403A] text-[#C49A4E] px-10 py-4 text-xs tracking-[0.2em] uppercase hover:bg-[#14403A]/90 transition-colors inline-block"
         >
           {getText(t.membership.requestInvitation, language)}
         </Link>

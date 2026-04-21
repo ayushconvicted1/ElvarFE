@@ -37,7 +37,7 @@ export default function Security() {
       </div>
 
       <div className="text-center">
-        <Link href="/#contact-form" className="font-brilliant-cut bg-[#14403A] hover:bg-[#14403A]/90 text-[#C49A4E] px-10 py-4 text-xs tracking-[0.2em] uppercase transition-colors duration-300 shadow-sm inline-block">
+        <Link href="/#contact-form" className="font-omega bg-[#14403A] hover:bg-[#14403A]/90 text-[#C49A4E] px-10 py-4 text-xs tracking-[0.2em] uppercase transition-colors duration-300 shadow-sm inline-block">
           {getText(t.security.requestInvitation, language)}
         </Link>
       </div>

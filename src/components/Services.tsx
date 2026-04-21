@@ -307,7 +307,7 @@ export default function Services() {
                 >
                   {/* Current Service - Center (Prominent) */}
                   <div className="flex justify-center items-center">
-                    <div className="text-[20px] md:text-[24px] font-medium text-[#14403A] font-cormorant text-center uppercase tracking-wide">
+                    <div className="text-[20px] md:text-[24px] font-medium text-[#14403A] font-cormorant text-center capitalize tracking-wide">
                       {getText(activeService.label, language)}
                     </div>
                   </div>
@@ -378,7 +378,7 @@ export default function Services() {
                       <span className="block w-0 h-0 border-t-[5px] border-t-transparent border-l-8 border-l-gold border-b-[5px] border-b-transparent" />
                     </span>
 
-                    <span className="text-lg md:text-xl font-cormorant uppercase tracking-wide">
+                    <span className="text-lg md:text-xl font-cormorant capitalize tracking-wide">
                       {getText(service.label, language)}
                     </span>
                   </button>

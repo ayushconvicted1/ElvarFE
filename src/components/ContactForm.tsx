@@ -201,7 +201,7 @@ export default function ContactSection() {
             <button
               type="submit"
               disabled={submitStatus === "loading"}
-              className="font-brilliant-cut bg-[#14403A] hover:bg-[#14403A]/90 text-[#C49A4E] px-12 py-4 text-sm tracking-[0.2em] uppercase w-full md:w-auto shadow-md transition-all active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed"
+              className="font-omega bg-[#14403A] hover:bg-[#14403A]/90 text-[#C49A4E] px-12 py-4 text-sm tracking-[0.2em] uppercase w-full md:w-auto shadow-md transition-all active:scale-95 disabled:opacity-70 disabled:cursor-not-allowed"
             >
               {submitStatus === "loading"
                 ? language === "en"
